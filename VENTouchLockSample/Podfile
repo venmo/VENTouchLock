@@ -1,0 +1,5 @@
+platform :ios, "7.0"
+
+target "VENTouchLockSample" do
+	pod 'SSKeychain', '~> 1.2.2'
+end
