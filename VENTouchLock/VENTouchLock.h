@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "VENTouchLockSetPasscodeViewController.h"
+#import "VENTouchLockEnterPasscodeViewController.h"
 
 @interface VENTouchLock : NSObject
 
++ (instancetype)sharedInstance;
 
 /**
  Set the keychain service and account names in order to specify where in the keychain the passcode persists. The touch ID reason will be displayed when touch ID is requested.
@@ -20,6 +22,11 @@
  Returns a string containing the passcode for a given account and service, or `nil` if the keychain doesn't have a password for the given parameters.
  */
 - (NSString *)currentPasscode;
+
+/**
+ Returns NO if a passcode is not set, or if the current passcode is not equal to the given parameter.
+ */
+- (BOOL)isPasscodeValid:(NSString *)passcode;
 
 /**
  Sets the given string to be the current passcode.

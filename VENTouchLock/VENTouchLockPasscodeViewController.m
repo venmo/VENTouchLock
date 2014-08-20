@@ -23,6 +23,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
     self.view.backgroundColor = [UIColor whiteColor];
     [self configureInvisiblePasscodeField];
+    [self configureNavigationItems];
 }
 
 - (void)configureInvisiblePasscodeField
@@ -33,6 +34,16 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     [self.invisiblePasscodeField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.invisiblePasscodeField];
     [self.invisiblePasscodeField becomeFirstResponder];
+}
+
+- (void)configureNavigationItems
+{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewController)];
+}
+
+- (void)dismissViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UINavigationController *)embedInNavigationController

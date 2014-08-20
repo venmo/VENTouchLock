@@ -14,6 +14,16 @@
 
 @implementation VENTouchLock
 
++ (instancetype)sharedInstance
+{
+    static VENTouchLock *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[[self class] alloc] init];
+    });
+    return sharedInstance;
+}
+
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
@@ -35,6 +45,11 @@
     NSString *service = self.keychainService;
     NSString *account = self.keychainAccount;
     return [SSKeychain passwordForService:service account:account];
+}
+
+- (BOOL)isPasscodeValid:(NSString *)passcode
+{
+    return [passcode isEqualToString:[self currentPasscode]];
 }
 
 - (void)setPasscode:(NSString *)passcode

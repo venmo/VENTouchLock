@@ -14,9 +14,11 @@
 }
 - (IBAction)userTappedUseTouchID:(id)sender
 {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)userTappedSkip:(id)sender
 {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 @end

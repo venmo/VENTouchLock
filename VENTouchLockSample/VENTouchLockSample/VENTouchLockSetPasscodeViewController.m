@@ -14,13 +14,14 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Set Passcode", nil);
-}   
+}
 
 - (void)enteredPasscode:(NSString *)passcode;
 {
     if (self.firstPasscode) {
         if ([passcode isEqualToString:self.firstPasscode]) {
-            if ([VENTouchLock canUseTouchID]) {
+            [[VENTouchLock sharedInstance] setPasscode:passcode];
+            if (YES) {
                 VENTouchLockActivateTouchIDViewController *touchIDViewController = [[VENTouchLockActivateTouchIDViewController alloc] initWithNibName:NSStringFromClass([VENTouchLockActivateTouchIDViewController class]) bundle:nil];
                 [self.navigationController pushViewController:touchIDViewController animated:YES];
             }
@@ -30,7 +31,6 @@
                 self.firstPasscode = nil;
                 [self showFirstPasscodeView];
             }];
-
         }
     }
     else {

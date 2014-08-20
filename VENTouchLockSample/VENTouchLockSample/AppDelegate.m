@@ -9,12 +9,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    VENTouchLock *touchLock = [[VENTouchLock alloc] init];
-    [touchLock setKeychainService:@"testService" keychainAccount:@"testAccount" touchIDReason:@"Scan your fingerprint to use the app."];
-    if ([VENTouchLock canUseTouchID]) {
-        [touchLock requestTouchID];
-    }
-    self.window.rootViewController = [[[VENTouchLockSetPasscodeViewController alloc] init] embedInNavigationController];
+    [[VENTouchLock sharedInstance] setKeychainService:@"testService" keychainAccount:@"testAccount" touchIDReason:@"Scan your fingerprint to use the app."];
     return YES;
 }
 
