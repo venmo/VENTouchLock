@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "VENTouchLockViewController.h"
-
+#import "VENTouchLockSetPasscodeViewController.h"
 
 @interface VENTouchLock : NSObject
 

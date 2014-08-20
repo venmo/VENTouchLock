@@ -1,14 +1,19 @@
 #import "VENTouchLockViewController.h"
-#import "VENTouchLockPasscodeView.h"
+
+static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 @interface VENTouchLockViewController () <UITextFieldDelegate>
 
-@property (strong, nonatomic) VENTouchLockPasscodeView *passcodeView;
 @property (strong, nonatomic) UITextField *invisiblePasscodeField;
 
 @end
 
 @implementation VENTouchLockViewController
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
@@ -25,6 +30,7 @@
     self.invisiblePasscodeField = [[UITextField alloc] init];
     self.invisiblePasscodeField.keyboardType = UIKeyboardTypeNumberPad;
     self.invisiblePasscodeField.delegate = self;
+    [self.invisiblePasscodeField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.invisiblePasscodeField];
     [self.invisiblePasscodeField becomeFirstResponder];
 }
@@ -51,21 +57,33 @@
     }
 }
 
-#pragma mark - UITextField Delegate Methods
+- (void)enteredPasscode:(NSString *)passcode
+{
+
+}
+
+#pragma mark - UITextField Methods
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSUInteger newLength = [newString length];
-    NSUInteger passcodeLength = 4;
-    if (newLength == passcodeLength) {
-        return YES;
-    } else if (newLength < passcodeLength) {
-        return YES;
-    } else {
+    if (newLength > VENTouchLockViewControllerPasscodeLength) {
         [self.passcodeView shakeAndVibrate];
         textField.text = @"";
         return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
+- (void)textFieldDidChange:(UITextField *)textField
+{
+    NSString *newString = textField.text;
+    NSUInteger newLength = [newString length];
+    if (newLength == VENTouchLockViewControllerPasscodeLength) {
+        [self enteredPasscode:newString];
     }
 }
 
