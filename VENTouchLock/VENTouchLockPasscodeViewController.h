@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "VENTouchLockPasscodeView.h"
 
-@interface VENTouchLockViewController : UIViewController
+@interface VENTouchLockPasscodeViewController : UIViewController
 
 /**
  Encapsulates the view controller in a navigation controller.

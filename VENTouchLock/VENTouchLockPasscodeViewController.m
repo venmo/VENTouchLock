@@ -1,14 +1,14 @@
-#import "VENTouchLockViewController.h"
+#import "VENTouchLockPasscodeViewController.h"
 
 static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
-@interface VENTouchLockViewController () <UITextFieldDelegate>
+@interface VENTouchLockPasscodeViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) UITextField *invisiblePasscodeField;
 
 @end
 
-@implementation VENTouchLockViewController
+@implementation VENTouchLockPasscodeViewController
 
 - (void)dealloc
 {
@@ -49,9 +49,6 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
         CGFloat passcodeLockViewHeight = CGRectGetHeight(self.view.frame) - CGRectGetHeight(newKeyboardFrame);
         CGFloat passcodeLockViewWidth = CGRectGetWidth(self.view.frame);
         VENTouchLockPasscodeView *passcodeView = [[VENTouchLockPasscodeView alloc] initWithFrame:CGRectMake(0, 0, passcodeLockViewWidth, passcodeLockViewHeight)];
-        passcodeView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin |
-        UIViewAutoresizingFlexibleBottomMargin;
-
         [self.view addSubview:passcodeView];
         self.passcodeView = passcodeView;
     }
@@ -83,6 +80,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     NSString *newString = textField.text;
     NSUInteger newLength = [newString length];
     if (newLength == VENTouchLockViewControllerPasscodeLength) {
+        textField.text = @"";
         [self enteredPasscode:newString];
     }
 }
