@@ -1,37 +1,27 @@
-//
-//  VENTouchLockSetPasscodeViewController.m
-//  VENTouchLockSample
-//
-//  Created by Dasmer Singh on 8/20/14.
-//  Copyright (c) 2014 Venmo. All rights reserved.
-//
-
 #import "VENTouchLockSetPasscodeViewController.h"
 
 @interface VENTouchLockSetPasscodeViewController ()
+
+@property (strong, nonatomic) NSString *firstPasscode;
 
 @end
 
 @implementation VENTouchLockSetPasscodeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = NSLocalizedString(@"Set Passcode", nil);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (void)enteredPasscode:(NSString *)passcode;
+{
+    if (self.firstPasscode) {
+    }
+    else {
+        self.firstPasscode;
+    }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end
