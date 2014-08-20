@@ -8,7 +8,7 @@
 @property (copy, nonatomic) NSString *keychainService;
 @property (copy, nonatomic) NSString *keychainAccount;
 
-@property (copy, nonatomic) NSString *touchIDDefaultReason;
+@property (copy, nonatomic) NSString *touchIDReason;
 
 @end
 
@@ -16,11 +16,11 @@
 
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
-      touchIDDefaultReason:(NSString *)reason
+             touchIDReason:(NSString *)reason
 {
     self.keychainService = service;
     self.keychainAccount = account;
-    self.touchIDDefaultReason = reason;
+    self.touchIDReason = reason;
 }
 
 #pragma mark - Keychain Methods
@@ -60,20 +60,22 @@
                                 error:nil];
 }
 
-- (void)showTouchID
+- (void)requestTouchID
 {
-    NSString *localizedReason = self.touchIDDefaultReason;
-    LAContext *context = [[LAContext alloc] init];
-    [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-            localizedReason:localizedReason
-                      reply:^(BOOL success, NSError *error) {
-                          if (success) {
-                              // Unlock
-                          }
-                          else {
-                              // Show Passcode
-                          }
-                      }];
+    if ([self canUseTouchID]) {
+        NSString *localizedReason = self.touchIDReason;
+        LAContext *context = [[LAContext alloc] init];
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                localizedReason:localizedReason
+                          reply:^(BOOL success, NSError *error) {
+                              if (success) {
+                                  // Unlock
+                              }
+                              else {
+                                  // Show Passcode
+                              }
+                          }];
+    }
 }
 
 @end

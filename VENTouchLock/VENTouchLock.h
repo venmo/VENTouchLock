@@ -1,10 +1,16 @@
 #import <Foundation/Foundation.h>
+#import "VENTouchLockViewController.h"
+
 
 @interface VENTouchLock : NSObject
 
+
+/**
+ Set the keychain service and account names in order to specify where in the keychain the passcode persists. The touch ID reason will be displayed when touch ID is requested.
+ */
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
-      touchIDDefaultReason:(NSString *)reason;
+             touchIDReason:(NSString *)reason;
 
 /**
  Returns YES if a passcode exists, and NO otherwise.
@@ -31,6 +37,9 @@
  */
 - (BOOL)canUseTouchID;
 
-- (void)showTouchID;
+/**
+ Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.
+ */
+- (void)requestTouchID;
 
 @end
