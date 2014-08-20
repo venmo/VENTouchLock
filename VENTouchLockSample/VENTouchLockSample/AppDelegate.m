@@ -11,7 +11,7 @@
 {
     VENTouchLock *touchLock = [[VENTouchLock alloc] init];
     [touchLock setKeychainService:@"testService" keychainAccount:@"testAccount" touchIDReason:@"Scan your fingerprint to use the app."];
-    if ([touchLock canUseTouchID]) {
+    if ([VENTouchLock canUseTouchID]) {
         [touchLock requestTouchID];
     }
     self.window.rootViewController = [[[VENTouchLockSetPasscodeViewController alloc] init] embedInNavigationController];

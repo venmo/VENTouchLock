@@ -53,7 +53,7 @@
 
 #pragma mark - TouchID Methods
 
-- (BOOL)canUseTouchID
++ (BOOL)canUseTouchID
 {
     LAContext *context = [[LAContext alloc] init];
     return [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
@@ -62,7 +62,7 @@
 
 - (void)requestTouchID
 {
-    if ([self canUseTouchID]) {
+    if ([[self class] canUseTouchID]) {
         NSString *localizedReason = self.touchIDReason;
         LAContext *context = [[LAContext alloc] init];
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics

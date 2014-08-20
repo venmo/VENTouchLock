@@ -66,7 +66,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSUInteger newLength = [newString length];
     if (newLength > VENTouchLockViewControllerPasscodeLength) {
-        [self.passcodeView shakeAndVibrate];
+        [self.passcodeView shakeAndVibrateCompletion:nil];
         textField.text = @"";
         return NO;
     }

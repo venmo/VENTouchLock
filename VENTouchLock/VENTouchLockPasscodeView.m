@@ -15,8 +15,15 @@
     return self;
 }
 
-- (void)shakeAndVibrate
+- (void)shakeAndVibrateCompletion:(void (^)())completionBlock
 {
+    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        if (completionBlock) {
+            completionBlock();
+        }
+    }];
     NSString *keyPath = @"position";
     CABasicAnimation *animation =
     [CABasicAnimation animationWithKeyPath:keyPath];
@@ -30,7 +37,8 @@
     [animation setToValue:[NSValue valueWithCGPoint:
                            CGPointMake(center.x + delta, center.y)]];
     [[self layer] addAnimation:animation forKey:keyPath];
-    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    [CATransaction commit];
+
 }
 
 @end

@@ -1,4 +1,6 @@
 #import "VENTouchLockSetPasscodeViewController.h"
+#import "VENTouchLockActivateTouchIDViewController.h"
+#import "VENTouchLock.h"
 
 @interface VENTouchLockSetPasscodeViewController ()
 
@@ -12,17 +14,23 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Set Passcode", nil);
-}
+}   
 
 - (void)enteredPasscode:(NSString *)passcode;
 {
     if (self.firstPasscode) {
         if ([passcode isEqualToString:self.firstPasscode]) {
-            // Go to next step
+            if ([VENTouchLock canUseTouchID]) {
+                VENTouchLockActivateTouchIDViewController *touchIDViewController = [[VENTouchLockActivateTouchIDViewController alloc] initWithNibName:NSStringFromClass([VENTouchLockActivateTouchIDViewController class]) bundle:nil];
+                [self.navigationController pushViewController:touchIDViewController animated:YES];
+            }
         }
         else {
-            // Go back to Set Pass code
-            [self showFirstPasscodeView];
+            [self.passcodeView shakeAndVibrateCompletion:^{
+                self.firstPasscode = nil;
+                [self showFirstPasscodeView];
+            }];
+
         }
     }
     else {

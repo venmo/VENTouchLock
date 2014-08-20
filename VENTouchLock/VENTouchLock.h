@@ -34,7 +34,7 @@
 /**
  Returns YES if the device has TouchID enabled and is running a minimum of iOS 8.0, and NO otherwise.
  */
-- (BOOL)canUseTouchID;
++ (BOOL)canUseTouchID;
 
 /**
  Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.

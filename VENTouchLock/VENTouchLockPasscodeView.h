@@ -2,6 +2,6 @@
 
 @interface VENTouchLockPasscodeView : UIView
 
-- (void)shakeAndVibrate;
+- (void)shakeAndVibrateCompletion:(void (^)())completionBlock;
 
 @end
