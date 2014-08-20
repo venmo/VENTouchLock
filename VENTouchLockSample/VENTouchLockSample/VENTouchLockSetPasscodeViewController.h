@@ -1,5 +1,5 @@
-#import "VENTouchLockViewController.h"
+#import "VENTouchLockPasscodeViewController.h"
 
-@interface VENTouchLockSetPasscodeViewController : VENTouchLockViewController
+@interface VENTouchLockSetPasscodeViewController : VENTouchLockPasscodeViewController
 
 @end
