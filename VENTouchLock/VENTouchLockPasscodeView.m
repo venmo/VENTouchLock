@@ -10,6 +10,7 @@
     self = [nibArray firstObject];
     if (self) {
         self.frame = frame;
+        self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     }
     return self;
 }
