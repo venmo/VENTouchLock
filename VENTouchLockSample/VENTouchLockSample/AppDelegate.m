@@ -14,7 +14,7 @@
     if ([touchLock canUseTouchID]) {
         [touchLock requestTouchID];
     }
-    self.window.rootViewController = [[[VENTouchLockViewController alloc] init] embedInNavigationController];
+    self.window.rootViewController = [[[VENTouchLockSetPasscodeViewController alloc] init] embedInNavigationController];
     return YES;
 }
 
