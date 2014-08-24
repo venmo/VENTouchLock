@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6205"/>
     </dependencies>
     <objects>
@@ -10,19 +11,37 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0n-QC-KYR">
-                    <rect key="frame" x="233" y="40" width="151" height="27"/>
-                    <color key="backgroundColor" red="0.004200255305" green="0.28650207770000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-B4-kMw">
+                    <rect key="frame" x="235" y="287" width="130" height="25"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iua-bQ-4SM" customClass="VENTouchLockPasscodeCharacterView">
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqv-eX-aBs" customClass="VENTouchLockPasscodeCharacterView">
+                            <rect key="frame" x="70" y="0.0" width="25" height="25"/>
+                            <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-0E-RL0" customClass="VENTouchLockPasscodeCharacterView">
+                            <rect key="frame" x="105" y="0.0" width="25" height="25"/>
+                            <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L07-uS-BwE" customClass="VENTouchLockPasscodeCharacterView">
+                            <rect key="frame" x="35" y="0.0" width="25" height="25"/>
+                            <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="151" id="4gS-aC-6gd"/>
-                        <constraint firstAttribute="height" constant="27" id="GtA-Qv-Dxw"/>
+                        <constraint firstAttribute="height" constant="25" id="Pp8-uj-3LL"/>
+                        <constraint firstAttribute="width" constant="130" id="niO-0V-7Dv"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="M0n-QC-KYR" firstAttribute="top" secondItem="bdw-Aj-hKx" secondAttribute="top" constant="40" id="8Bs-IY-erg"/>
-                <constraint firstAttribute="centerX" secondItem="M0n-QC-KYR" secondAttribute="centerX" constant="-8.5" id="8Rj-Us-XDd"/>
+                <constraint firstAttribute="centerX" secondItem="hmH-B4-kMw" secondAttribute="centerX" id="HmG-at-sYJ"/>
+                <constraint firstAttribute="centerY" secondItem="hmH-B4-kMw" secondAttribute="centerY" constant="0.5" id="axr-wq-hvx"/>
             </constraints>
             <point key="canvasLocation" x="556" y="320"/>
         </view>
