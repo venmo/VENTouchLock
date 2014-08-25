@@ -183,9 +183,9 @@
 		3A71E6CB19A4E69600A09EF3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A38986419A3DE1E0099A2FE /* VENTouchLockPasscodeView.xib */,
 				3A2AD44519AAA373002482C5 /* VENTouchLockPasscodeCharacterView.h */,
 				3A2AD44619AAA373002482C5 /* VENTouchLockPasscodeCharacterView.m */,
+				3A38986419A3DE1E0099A2FE /* VENTouchLockPasscodeView.xib */,
 				3A38986919A3DFEE0099A2FE /* VENTouchLockPasscodeView.h */,
 				3A38986A19A3DFEE0099A2FE /* VENTouchLockPasscodeView.m */,
 			);

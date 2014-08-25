@@ -1,10 +1,6 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLock.h"
 
-@interface VENTouchLockEnterPasscodeViewController ()
-
-@end
-
 @implementation VENTouchLockEnterPasscodeViewController
 
 - (void)viewDidLoad

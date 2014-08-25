@@ -1,4 +1,5 @@
 #import "VENTouchLockPasscodeViewController.h"
+#import "VENTouchLockPasscodeCharacterView.h"
 
 static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
@@ -82,6 +83,10 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
         return NO;
     }
     else {
+        for (VENTouchLockPasscodeCharacterView *characterView in self.passcodeView.characters) {
+            NSUInteger index = [self.passcodeView.characters indexOfObject:characterView];
+            characterView.isEmpty = (index >= newLength);
+        }
         return YES;
     }
 }
@@ -90,9 +95,10 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 {
     NSString *newString = textField.text;
     NSUInteger newLength = [newString length];
+
     if (newLength == VENTouchLockViewControllerPasscodeLength) {
         textField.text = @"";
-        [self enteredPasscode:newString];
+        [self performSelector:@selector(enteredPasscode:) withObject:newString afterDelay:0.3];
     }
 }
 

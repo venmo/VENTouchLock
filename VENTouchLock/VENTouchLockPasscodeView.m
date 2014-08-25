@@ -1,5 +1,15 @@
 #import "VENTouchLockPasscodeView.h"
+#import "VENTouchLockPasscodeCharacterView.h"
 @import AudioToolbox;
+
+@interface VENTouchLockPasscodeView ()
+
+@property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *firstCharacter;
+@property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *secondCharacter;
+@property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *thirdCharacter;
+@property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *fourthCharacter;
+
+@end
 
 @implementation VENTouchLockPasscodeView
 
@@ -10,7 +20,8 @@
     self = [nibArray firstObject];
     if (self) {
         self.frame = frame;
-        self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+        _characters = @[_firstCharacter, _secondCharacter, _thirdCharacter, _fourthCharacter];
     }
     return self;
 }

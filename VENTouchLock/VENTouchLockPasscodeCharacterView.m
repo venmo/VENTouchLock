@@ -1,12 +1,11 @@
-//
-//  VENTouchLockPasscodeCharacterView.m
-//  VENTouchLockSample
-//
-//  Created by Dasmer Singh on 8/24/14.
-//  Copyright (c) 2014 Venmo. All rights reserved.
-//
-
 #import "VENTouchLockPasscodeCharacterView.h"
+
+@interface VENTouchLockPasscodeCharacterView ()
+
+@property (strong, nonatomic) CAShapeLayer *circle;
+@property (strong, nonatomic) CAShapeLayer *hyphen;
+
+@end
 
 @implementation VENTouchLockPasscodeCharacterView
 
@@ -14,22 +13,25 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
         _isEmpty = YES;
+        self.backgroundColor = [UIColor clearColor];
         [self drawCircle];
+        [self drawHyphen];
+        [self redraw];
     }
     return self;
 }
 
-- (void)draw
+- (void)redraw
 {
-
+    self.circle.hidden = self.isEmpty;
+    self.hyphen.hidden = !self.isEmpty;
 }
 
 - (void)drawCircle
 {
     CGFloat borderWidth = 2;
-    CGFloat radius = (CGRectGetWidth(self.frame) - borderWidth) / 2;
+    CGFloat radius = (CGRectGetWidth(self.bounds) - borderWidth) / 2;
     CAShapeLayer *circle = [CAShapeLayer layer];
     circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 2.0*radius, 2.0*radius)
 
@@ -39,7 +41,39 @@
     circle.strokeColor =  circleColor.CGColor;
     circle.borderWidth = borderWidth;
     [self.layer addSublayer:circle];
-    [self setNeedsDisplay];
+    self.circle = circle;
+}
+
+- (void)drawHyphen
+{
+    CGFloat hyphenHeight = CGRectGetHeight(self.bounds) / 5;
+    CAShapeLayer *hyphen = [CAShapeLayer layer];
+    UIBezierPath *hyphenPath = [UIBezierPath bezierPath];
+
+    CGPoint leftTopCorner = CGPointMake(0, 2 * hyphenHeight);
+    CGPoint rightTopCorner = CGPointMake(CGRectGetWidth(self.bounds), 2 * hyphenHeight);
+    CGPoint rightBottomCorner = CGPointMake(CGRectGetWidth(self.bounds), 3 * hyphenHeight);
+    CGPoint leftBottomCorner = CGPointMake(0, 3 * hyphenHeight);
+
+    [hyphenPath moveToPoint:leftTopCorner];
+    [hyphenPath addLineToPoint:rightTopCorner];
+    [hyphenPath addLineToPoint:rightBottomCorner];
+    [hyphenPath addLineToPoint:leftBottomCorner];
+
+    hyphen.path = hyphenPath.CGPath;
+    UIColor *color = self.color ?: [UIColor blackColor];
+    hyphen.fillColor = color.CGColor;
+    hyphen.strokeColor = color.CGColor;
+    [self.layer addSublayer:hyphen];
+    self.hyphen = hyphen;
+}
+
+- (void)setIsEmpty:(BOOL)isEmpty {
+    if (_isEmpty != isEmpty) {
+        _isEmpty = isEmpty;
+        [self redraw];
+    }
+
 }
 
 @end

@@ -12,37 +12,43 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-B4-kMw">
-                    <rect key="frame" x="235" y="287" width="130" height="25"/>
+                    <rect key="frame" x="213" y="287" width="175" height="25"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iua-bQ-4SM" customClass="VENTouchLockPasscodeCharacterView">
                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqv-eX-aBs" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="70" y="0.0" width="25" height="25"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-0E-RL0" customClass="VENTouchLockPasscodeCharacterView">
+                            <rect key="frame" x="150" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-0E-RL0" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="105" y="0.0" width="25" height="25"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqv-eX-aBs" customClass="VENTouchLockPasscodeCharacterView">
+                            <rect key="frame" x="100" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L07-uS-BwE" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="35" y="0.0" width="25" height="25"/>
+                            <rect key="frame" x="50" y="0.0" width="25" height="25"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="Pp8-uj-3LL"/>
-                        <constraint firstAttribute="width" constant="130" id="niO-0V-7Dv"/>
+                        <constraint firstAttribute="width" constant="175" id="niO-0V-7Dv"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="hmH-B4-kMw" secondAttribute="centerX" id="HmG-at-sYJ"/>
+                <constraint firstAttribute="centerX" secondItem="hmH-B4-kMw" secondAttribute="centerX" constant="-0.5" id="OB4-g9-djM"/>
                 <constraint firstAttribute="centerY" secondItem="hmH-B4-kMw" secondAttribute="centerY" constant="0.5" id="axr-wq-hvx"/>
             </constraints>
+            <connections>
+                <outlet property="firstCharacter" destination="Iua-bQ-4SM" id="MJi-m9-IE7"/>
+                <outlet property="fourthCharacter" destination="ny9-0E-RL0" id="SCl-TF-9lZ"/>
+                <outlet property="secondCharacter" destination="L07-uS-BwE" id="qkR-69-ysy"/>
+                <outlet property="thirdCharacter" destination="Mqv-eX-aBs" id="yzV-IW-7l2"/>
+            </connections>
             <point key="canvasLocation" x="556" y="320"/>
         </view>
     </objects>
