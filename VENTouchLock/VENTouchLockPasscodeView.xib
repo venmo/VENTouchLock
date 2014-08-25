@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6205"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -37,11 +38,19 @@
                         <constraint firstAttribute="width" constant="175" id="niO-0V-7Dv"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new Passcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLU-Cf-PfB">
+                    <rect key="frame" x="209" y="248" width="182" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="hmH-B4-kMw" firstAttribute="top" secondItem="eLU-Cf-PfB" secondAttribute="bottom" multiplier="0.95" constant="32" id="IsB-ew-b5o"/>
                 <constraint firstAttribute="centerX" secondItem="hmH-B4-kMw" secondAttribute="centerX" constant="-0.5" id="OB4-g9-djM"/>
                 <constraint firstAttribute="centerY" secondItem="hmH-B4-kMw" secondAttribute="centerY" constant="0.5" id="axr-wq-hvx"/>
+                <constraint firstItem="hmH-B4-kMw" firstAttribute="trailing" secondItem="eLU-Cf-PfB" secondAttribute="trailing" constant="-3" id="ryR-Fo-xZU"/>
+                <constraint firstItem="hmH-B4-kMw" firstAttribute="centerX" secondItem="eLU-Cf-PfB" secondAttribute="centerX" constant="0.5" id="zEQ-8F-Hf2"/>
             </constraints>
             <connections>
                 <outlet property="firstCharacter" destination="Iua-bQ-4SM" id="MJi-m9-IE7"/>
