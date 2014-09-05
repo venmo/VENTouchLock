@@ -14,6 +14,7 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Set Passcode", nil);
+    self.passcodeView.title = (@"Enter a new Passcode");
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -52,7 +53,9 @@
                                         CGRectGetMinY(firstPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(firstPasscodeView.frame));
-    VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc] initWithFrame:confirmInitialFrame];
+    VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
+                                                     initWithTitle:@"Please re-enter your passcode"
+                                                                                              frame:confirmInitialFrame];
     [self.view addSubview:confirmPasscodeView];
     [UIView animateWithDuration: 0.2
                           delay: 0.0
@@ -81,7 +84,7 @@
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithFrame:firstInitialFrame];
+    VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:@"Passwords did not match. Try again." frame:firstInitialFrame];
     [self.view addSubview:firstPasscodeView];
     [UIView animateWithDuration: 0.2
                           delay: 0.0

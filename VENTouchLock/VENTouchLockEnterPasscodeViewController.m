@@ -22,7 +22,8 @@
     }
     else {
         [self.passcodeView shakeAndVibrateCompletion:^{
-            
+            self.passcodeView.title = @"Incorrect Passcode. Try again.";
+            [self clearPasscode];
         }];
     }
 }

@@ -9,6 +9,11 @@
 - (UINavigationController *)embedInNavigationController;
 
 /**
+ Clears passcode in view if one exist.
+ */
+- (void)clearPasscode;
+
+/**
  Called when a user enters a complete passcode. By default, this method has no action, but should be overriden in subclasses.
  */
 - (void)enteredPasscode:(NSString *)passcode;

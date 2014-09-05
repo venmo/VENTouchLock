@@ -4,6 +4,7 @@
 
 @interface VENTouchLockPasscodeView ()
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *firstCharacter;
 @property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *secondCharacter;
 @property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *thirdCharacter;
@@ -13,7 +14,7 @@
 
 @implementation VENTouchLockPasscodeView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame
 {
     NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
                                                       owner:self options:nil];
@@ -21,9 +22,21 @@
     if (self) {
         self.frame = frame;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+        _title = title;
+        _titleLabel.text = title;
         _characters = @[_firstCharacter, _secondCharacter, _thirdCharacter, _fourthCharacter];
     }
     return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    return [self initWithTitle:@"" frame:frame];
+}
+
+- (instancetype)init
+{
+    return [self initWithFrame:CGRectZero];
 }
 
 - (void)shakeAndVibrateCompletion:(void (^)())completionBlock
@@ -49,7 +62,12 @@
                            CGPointMake(center.x + delta, center.y)]];
     [[self layer] addAnimation:animation forKey:keyPath];
     [CATransaction commit];
+}
 
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    self.titleLabel.text = _title;
 }
 
 @end

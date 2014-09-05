@@ -26,6 +26,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     self.view.backgroundColor = [UIColor vtl_grayColor];
     [self configureInvisiblePasscodeField];
     [self configureNavigationItems];
+    [self configurePasscodeView];
 }
 
 - (void)configureInvisiblePasscodeField
@@ -43,6 +44,13 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewController)];
 }
 
+- (void)configurePasscodeView
+{
+    VENTouchLockPasscodeView *passcodeView = [[VENTouchLockPasscodeView alloc] init];
+    [self.view addSubview:passcodeView];
+    self.passcodeView = passcodeView;
+}
+
 - (void)dismissViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -58,18 +66,23 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     CGRect newKeyboardFrame = [(NSValue *)[notification.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-    if (!self.passcodeView) {
         CGFloat passcodeLockViewHeight = CGRectGetHeight(self.view.frame) - CGRectGetHeight(newKeyboardFrame);
         CGFloat passcodeLockViewWidth = CGRectGetWidth(self.view.frame);
-        VENTouchLockPasscodeView *passcodeView = [[VENTouchLockPasscodeView alloc] initWithFrame:CGRectMake(0, 0, passcodeLockViewWidth, passcodeLockViewHeight)];
-        [self.view addSubview:passcodeView];
-        self.passcodeView = passcodeView;
-    }
+    self.passcodeView.frame = CGRectMake(0, 0, passcodeLockViewWidth, passcodeLockViewHeight);
 }
 
 - (void)enteredPasscode:(NSString *)passcode
 {
 
+}
+
+- (void)clearPasscode
+{
+    UITextField *textField = self.invisiblePasscodeField;
+    textField.text = @"";
+    for (VENTouchLockPasscodeCharacterView *characterView in self.passcodeView.characters) {
+        characterView.isEmpty = YES;
+    }
 }
 
 #pragma mark - UITextField Methods
