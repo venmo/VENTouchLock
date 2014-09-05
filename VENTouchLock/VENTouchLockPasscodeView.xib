@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,52 +12,60 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-B4-kMw">
-                    <rect key="frame" x="213" y="287" width="175" height="25"/>
+                    <rect key="frame" x="230" y="290" width="140" height="20"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iua-bQ-4SM" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ny9-0E-RL0" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="150" y="0.0" width="25" height="25"/>
+                            <rect key="frame" x="120" y="0.0" width="20" height="20"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqv-eX-aBs" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="100" y="0.0" width="25" height="25"/>
+                            <rect key="frame" x="80" y="0.0" width="20" height="20"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L07-uS-BwE" customClass="VENTouchLockPasscodeCharacterView">
-                            <rect key="frame" x="50" y="0.0" width="25" height="25"/>
+                            <rect key="frame" x="40" y="0.0" width="20" height="20"/>
                             <color key="backgroundColor" red="0.004200255305" green="0.81905241939999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="25" id="Pp8-uj-3LL"/>
-                        <constraint firstAttribute="width" constant="175" id="niO-0V-7Dv"/>
+                        <constraint firstAttribute="height" constant="20" id="Pp8-uj-3LL"/>
+                        <constraint firstAttribute="width" constant="140" id="niO-0V-7Dv"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new Passcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLU-Cf-PfB">
-                    <rect key="frame" x="209" y="248" width="182" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="223.5" y="253" width="153" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="hmH-B4-kMw" firstAttribute="top" secondItem="eLU-Cf-PfB" secondAttribute="bottom" multiplier="0.95" constant="32" id="IsB-ew-b5o"/>
+                <constraint firstItem="hmH-B4-kMw" firstAttribute="top" secondItem="eLU-Cf-PfB" secondAttribute="bottom" constant="20" id="O0X-T3-NJ0"/>
                 <constraint firstAttribute="centerX" secondItem="hmH-B4-kMw" secondAttribute="centerX" constant="-0.5" id="OB4-g9-djM"/>
                 <constraint firstAttribute="centerY" secondItem="hmH-B4-kMw" secondAttribute="centerY" constant="0.5" id="axr-wq-hvx"/>
-                <constraint firstItem="hmH-B4-kMw" firstAttribute="trailing" secondItem="eLU-Cf-PfB" secondAttribute="trailing" constant="-3" id="ryR-Fo-xZU"/>
-                <constraint firstItem="hmH-B4-kMw" firstAttribute="centerX" secondItem="eLU-Cf-PfB" secondAttribute="centerX" constant="0.5" id="zEQ-8F-Hf2"/>
+                <constraint firstAttribute="centerX" secondItem="eLU-Cf-PfB" secondAttribute="centerX" constant="-0.5" id="xb2-T8-rCA"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="firstCharacter" destination="Iua-bQ-4SM" id="MJi-m9-IE7"/>
                 <outlet property="fourthCharacter" destination="ny9-0E-RL0" id="SCl-TF-9lZ"/>
                 <outlet property="secondCharacter" destination="L07-uS-BwE" id="qkR-69-ysy"/>
                 <outlet property="thirdCharacter" destination="Mqv-eX-aBs" id="yzV-IW-7l2"/>
             </connections>
-            <point key="canvasLocation" x="556" y="320"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
 </document>

@@ -1,5 +1,6 @@
 #import "VENTouchLockPasscodeViewController.h"
 #import "VENTouchLockPasscodeCharacterView.h"
+#import "UIColor+VENTouchLock.h"
 
 static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
@@ -22,7 +23,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor vtl_grayColor];
     [self configureInvisiblePasscodeField];
     [self configureNavigationItems];
 }
@@ -39,7 +40,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)configureNavigationItems
 {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewController)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewController)];
 }
 
 - (void)dismissViewController
