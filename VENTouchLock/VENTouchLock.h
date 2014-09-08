@@ -1,6 +1,14 @@
 #import <Foundation/Foundation.h>
 #import "VENTouchLockSetPasscodeViewController.h"
 #import "VENTouchLockEnterPasscodeViewController.h"
+#import "VENTouchLockSplashViewController.h"
+
+typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
+    VENTouchLockTouchIDResponseUndefined,
+    VENTouchLockTouchIDResponseSuccess,
+    VENTouchLockTouchIDResponseUsePasscode,
+    VENTouchLockTouchIDResponseCanceled,
+};
 
 @interface VENTouchLock : NSObject
 
@@ -11,7 +19,8 @@
  */
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
-             touchIDReason:(NSString *)reason;
+             touchIDReason:(NSString *)reason
+ splashViewControllerClass:(Class)splashViewControllerClass;
 
 /**
  Returns YES if a passcode exists, and NO otherwise.
@@ -46,6 +55,6 @@
 /**
  Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.
  */
-- (void)requestTouchID;
+- (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock;
 
 @end

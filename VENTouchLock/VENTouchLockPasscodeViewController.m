@@ -7,6 +7,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 @interface VENTouchLockPasscodeViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) UITextField *invisiblePasscodeField;
+@property (assign, nonatomic) BOOL shouldIgnoreTextFieldDelegateCalls;
 
 @end
 
@@ -41,7 +42,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)configureNavigationItems
 {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissViewController)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(userTappedCancel)];
 }
 
 - (void)configurePasscodeView
@@ -51,9 +52,18 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     self.passcodeView = passcodeView;
 }
 
-- (void)dismissViewController
+- (void)userTappedCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)finishWithResult:(BOOL)success
+{
+    if (self.willFinishWithResult) {
+        self.willFinishWithResult(success);
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (UINavigationController *)embedInNavigationController
@@ -73,7 +83,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)enteredPasscode:(NSString *)passcode
 {
-
+    self.shouldIgnoreTextFieldDelegateCalls = NO;
 }
 
 - (void)clearPasscode
@@ -89,6 +99,9 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (self.shouldIgnoreTextFieldDelegateCalls) {
+        return NO;
+    }
     NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     NSUInteger newLength = [newString length];
     if (newLength > VENTouchLockViewControllerPasscodeLength) {
@@ -107,10 +120,14 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)textFieldDidChange:(UITextField *)textField
 {
+    if (self.shouldIgnoreTextFieldDelegateCalls) {
+        return;
+    }
     NSString *newString = textField.text;
     NSUInteger newLength = [newString length];
 
     if (newLength == VENTouchLockViewControllerPasscodeLength) {
+        self.shouldIgnoreTextFieldDelegateCalls = YES;
         textField.text = @"";
         [self performSelector:@selector(enteredPasscode:) withObject:newString afterDelay:0.3];
     }

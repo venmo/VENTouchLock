@@ -19,10 +19,11 @@
 
 - (void)enteredPasscode:(NSString *)passcode;
 {
+    [super enteredPasscode:passcode];
     if (self.firstPasscode) {
         if ([passcode isEqualToString:self.firstPasscode]) {
             [[VENTouchLock sharedInstance] setPasscode:passcode];
-            if (YES) {
+            if ([VENTouchLock canUseTouchID]) {
                 VENTouchLockActivateTouchIDViewController *touchIDViewController = [[VENTouchLockActivateTouchIDViewController alloc] initWithNibName:NSStringFromClass([VENTouchLockActivateTouchIDViewController class]) bundle:nil];
                 [self.navigationController pushViewController:touchIDViewController animated:YES];
             }

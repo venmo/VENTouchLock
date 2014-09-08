@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "VENTouchLock.h"
+#import "LockSplashViewController.h"
 
 @interface AppDelegate ()
 
@@ -9,7 +10,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[VENTouchLock sharedInstance] setKeychainService:@"testService" keychainAccount:@"testAccount" touchIDReason:@"Scan your fingerprint to use the app."];
+    [[VENTouchLock sharedInstance] setKeychainService:@"testService" keychainAccount:@"testAccount" touchIDReason:@"Scan your fingerprint to use the app." splashViewControllerClass:[LockSplashViewController class]];
     return YES;
 }
 

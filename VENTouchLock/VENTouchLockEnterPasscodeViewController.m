@@ -7,22 +7,23 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Enter Passcode", nil);
+    self.passcodeView.title = NSLocalizedString(@"Enter your Passcode", nil);
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[VENTouchLock sharedInstance] requestTouchID];
 }
 
 - (void)enteredPasscode:(NSString *)passcode
 {
+    [super enteredPasscode:passcode];
     if ([[VENTouchLock sharedInstance] isPasscodeValid:passcode]) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self finishWithResult:YES];
     }
     else {
         [self.passcodeView shakeAndVibrateCompletion:^{
-            self.passcodeView.title = @"Incorrect Passcode. Try again.";
+            self.passcodeView.title = NSLocalizedString(@"Incorrect Passcode. Try again.", nil);
             [self clearPasscode];
         }];
     }
