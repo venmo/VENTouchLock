@@ -1,11 +1,7 @@
-#import "ViewController.h"
+#import "SampleViewController.h"
 #import "VENTouchLock.h"
 
-@interface ViewController ()
-
-@end
-
-@implementation ViewController
+@implementation SampleViewController
             
 - (IBAction)userTappedSetPasscode:(id)sender
 {

@@ -10,20 +10,20 @@
 		3A1DB96619BA4EE8004A17D8 /* UIColor+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DB96519BA4EE8004A17D8 /* UIColor+VENTouchLock.m */; };
 		3A2AD44719AAA373002482C5 /* VENTouchLockPasscodeCharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AD44619AAA373002482C5 /* VENTouchLockPasscodeCharacterView.m */; };
 		3A30CE3019A2E7570098AAD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE2F19A2E7570098AAD1 /* main.m */; };
-		3A30CE3319A2E7570098AAD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE3219A2E7570098AAD1 /* AppDelegate.m */; };
-		3A30CE3619A2E7570098AAD1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE3519A2E7570098AAD1 /* ViewController.m */; };
+		3A30CE3319A2E7570098AAD1 /* SampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE3219A2E7570098AAD1 /* SampleAppDelegate.m */; };
+		3A30CE3619A2E7570098AAD1 /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE3519A2E7570098AAD1 /* SampleViewController.m */; };
 		3A30CE3919A2E7570098AAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A30CE3719A2E7570098AAD1 /* Main.storyboard */; };
 		3A30CE3B19A2E7570098AAD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A30CE3A19A2E7570098AAD1 /* Images.xcassets */; };
 		3A30CE4719A2E7570098AAD1 /* VENTouchLockSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE4619A2E7570098AAD1 /* VENTouchLockSampleTests.m */; };
 		3A30CE5319A2E8AA0098AAD1 /* VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE5219A2E8AA0098AAD1 /* VENTouchLock.m */; };
 		3A30CE5619A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE5519A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.m */; };
-		3A32465419BCBBBA00BE6EBC /* LockSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32465319BCBBBA00BE6EBC /* LockSplashViewController.m */; };
-		3A32465619BCBBC500BE6EBC /* LockSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A32465519BCBBC500BE6EBC /* LockSplashViewController.xib */; };
+		3A31A9A219BE372000E44CAD /* VENTouchLockSetPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A31A9A119BE372000E44CAD /* VENTouchLockSetPasscodeViewController.m */; };
+		3A32465419BCBBBA00BE6EBC /* SampleLockSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32465319BCBBBA00BE6EBC /* SampleLockSplashViewController.m */; };
+		3A32465619BCBBC500BE6EBC /* SampleLockSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A32465519BCBBC500BE6EBC /* SampleLockSplashViewController.xib */; };
 		3A32465919BCBEF800BE6EBC /* VENTouchLockSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32465819BCBEF800BE6EBC /* VENTouchLockSplashViewController.m */; };
 		3A32465C19BCC7D700BE6EBC /* UIViewController+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32465B19BCC7D700BE6EBC /* UIViewController+VENTouchLock.m */; };
 		3A38986519A3DE1E0099A2FE /* VENTouchLockPasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A38986419A3DE1E0099A2FE /* VENTouchLockPasscodeView.xib */; };
 		3A38986B19A3DFEE0099A2FE /* VENTouchLockPasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A38986A19A3DFEE0099A2FE /* VENTouchLockPasscodeView.m */; };
-		3A71E6C919A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A71E6C819A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.m */; };
 		3A71E6CF19A507FC00A09EF3 /* VENTouchLockActivateTouchIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A71E6CE19A507FC00A09EF3 /* VENTouchLockActivateTouchIDViewController.xib */; };
 		3A71E6D219A50EF100A09EF3 /* VENTouchLockActivateTouchIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A71E6D119A50EF100A09EF3 /* VENTouchLockActivateTouchIDViewController.m */; };
 		3A71E6D619A510F200A09EF3 /* ActivateTouchID_Fingerprint.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A71E6D419A510F200A09EF3 /* ActivateTouchID_Fingerprint.png */; };
@@ -51,10 +51,10 @@
 		3A30CE2A19A2E7570098AAD1 /* VENTouchLockSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VENTouchLockSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A30CE2E19A2E7570098AAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A30CE2F19A2E7570098AAD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A30CE3119A2E7570098AAD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3A30CE3219A2E7570098AAD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3A30CE3419A2E7570098AAD1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3A30CE3519A2E7570098AAD1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3A30CE3119A2E7570098AAD1 /* SampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleAppDelegate.h; sourceTree = "<group>"; };
+		3A30CE3219A2E7570098AAD1 /* SampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleAppDelegate.m; sourceTree = "<group>"; };
+		3A30CE3419A2E7570098AAD1 /* SampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
+		3A30CE3519A2E7570098AAD1 /* SampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		3A30CE3819A2E7570098AAD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A30CE3A19A2E7570098AAD1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A30CE4019A2E7570098AAD1 /* VENTouchLockSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VENTouchLockSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,9 +64,11 @@
 		3A30CE5219A2E8AA0098AAD1 /* VENTouchLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLock.m; path = ../../VENTouchLock/VENTouchLock.m; sourceTree = "<group>"; };
 		3A30CE5419A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeViewController.h; path = ../../VENTouchLock/VENTouchLockPasscodeViewController.h; sourceTree = "<group>"; };
 		3A30CE5519A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeViewController.m; path = ../../VENTouchLock/VENTouchLockPasscodeViewController.m; sourceTree = "<group>"; };
-		3A32465219BCBBBA00BE6EBC /* LockSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockSplashViewController.h; sourceTree = "<group>"; };
-		3A32465319BCBBBA00BE6EBC /* LockSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockSplashViewController.m; sourceTree = "<group>"; };
-		3A32465519BCBBC500BE6EBC /* LockSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LockSplashViewController.xib; sourceTree = "<group>"; };
+		3A31A9A019BE372000E44CAD /* VENTouchLockSetPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockSetPasscodeViewController.h; path = ../../VENTouchLock/VENTouchLockSetPasscodeViewController.h; sourceTree = "<group>"; };
+		3A31A9A119BE372000E44CAD /* VENTouchLockSetPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockSetPasscodeViewController.m; path = ../../VENTouchLock/VENTouchLockSetPasscodeViewController.m; sourceTree = "<group>"; };
+		3A32465219BCBBBA00BE6EBC /* SampleLockSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleLockSplashViewController.h; sourceTree = "<group>"; };
+		3A32465319BCBBBA00BE6EBC /* SampleLockSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleLockSplashViewController.m; sourceTree = "<group>"; };
+		3A32465519BCBBC500BE6EBC /* SampleLockSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleLockSplashViewController.xib; sourceTree = "<group>"; };
 		3A32465719BCBEF800BE6EBC /* VENTouchLockSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockSplashViewController.h; path = ../../VENTouchLock/VENTouchLockSplashViewController.h; sourceTree = "<group>"; };
 		3A32465819BCBEF800BE6EBC /* VENTouchLockSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockSplashViewController.m; path = ../../VENTouchLock/VENTouchLockSplashViewController.m; sourceTree = "<group>"; };
 		3A32465A19BCC7D700BE6EBC /* UIViewController+VENTouchLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+VENTouchLock.h"; path = "../../VENTouchLock/UIViewController+VENTouchLock.h"; sourceTree = "<group>"; };
@@ -74,8 +76,6 @@
 		3A38986419A3DE1E0099A2FE /* VENTouchLockPasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VENTouchLockPasscodeView.xib; path = ../../VENTouchLock/VENTouchLockPasscodeView.xib; sourceTree = "<group>"; };
 		3A38986919A3DFEE0099A2FE /* VENTouchLockPasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeView.h; path = ../../VENTouchLock/VENTouchLockPasscodeView.h; sourceTree = "<group>"; };
 		3A38986A19A3DFEE0099A2FE /* VENTouchLockPasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeView.m; path = ../../VENTouchLock/VENTouchLockPasscodeView.m; sourceTree = "<group>"; };
-		3A71E6C719A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENTouchLockSetPasscodeViewController.h; sourceTree = "<group>"; };
-		3A71E6C819A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockSetPasscodeViewController.m; sourceTree = "<group>"; };
 		3A71E6CE19A507FC00A09EF3 /* VENTouchLockActivateTouchIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VENTouchLockActivateTouchIDViewController.xib; path = ../../VENTouchLock/VENTouchLockActivateTouchIDViewController.xib; sourceTree = "<group>"; };
 		3A71E6D019A50EF100A09EF3 /* VENTouchLockActivateTouchIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockActivateTouchIDViewController.h; path = ../../VENTouchLock/VENTouchLockActivateTouchIDViewController.h; sourceTree = "<group>"; };
 		3A71E6D119A50EF100A09EF3 /* VENTouchLockActivateTouchIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockActivateTouchIDViewController.m; path = ../../VENTouchLock/VENTouchLockActivateTouchIDViewController.m; sourceTree = "<group>"; };
@@ -140,13 +140,13 @@
 			isa = PBXGroup;
 			children = (
 				3A30CE5019A2E7870098AAD1 /* VENTouchLock */,
-				3A30CE3119A2E7570098AAD1 /* AppDelegate.h */,
-				3A30CE3219A2E7570098AAD1 /* AppDelegate.m */,
-				3A30CE3419A2E7570098AAD1 /* ViewController.h */,
-				3A32465219BCBBBA00BE6EBC /* LockSplashViewController.h */,
-				3A32465319BCBBBA00BE6EBC /* LockSplashViewController.m */,
-				3A32465519BCBBC500BE6EBC /* LockSplashViewController.xib */,
-				3A30CE3519A2E7570098AAD1 /* ViewController.m */,
+				3A30CE3119A2E7570098AAD1 /* SampleAppDelegate.h */,
+				3A30CE3219A2E7570098AAD1 /* SampleAppDelegate.m */,
+				3A30CE3419A2E7570098AAD1 /* SampleViewController.h */,
+				3A30CE3519A2E7570098AAD1 /* SampleViewController.m */,
+				3A32465219BCBBBA00BE6EBC /* SampleLockSplashViewController.h */,
+				3A32465319BCBBBA00BE6EBC /* SampleLockSplashViewController.m */,
+				3A32465519BCBBC500BE6EBC /* SampleLockSplashViewController.xib */,
 				3A30CE3719A2E7570098AAD1 /* Main.storyboard */,
 				3A30CE3A19A2E7570098AAD1 /* Images.xcassets */,
 				3A30CE2D19A2E7570098AAD1 /* Supporting Files */,
@@ -198,8 +198,8 @@
 			children = (
 				3A71E6DB19A52A3B00A09EF3 /* VENTouchLockEnterPasscodeViewController.h */,
 				3A71E6DC19A52A3B00A09EF3 /* VENTouchLockEnterPasscodeViewController.m */,
-				3A71E6C719A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.h */,
-				3A71E6C819A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.m */,
+				3A31A9A019BE372000E44CAD /* VENTouchLockSetPasscodeViewController.h */,
+				3A31A9A119BE372000E44CAD /* VENTouchLockSetPasscodeViewController.m */,
 				3A30CE5419A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.h */,
 				3A30CE5519A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.m */,
 				3A71E6CE19A507FC00A09EF3 /* VENTouchLockActivateTouchIDViewController.xib */,
@@ -323,7 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A32465619BCBBC500BE6EBC /* LockSplashViewController.xib in Resources */,
+				3A32465619BCBBC500BE6EBC /* SampleLockSplashViewController.xib in Resources */,
 				3A30CE3919A2E7570098AAD1 /* Main.storyboard in Resources */,
 				3A71E6D719A510F200A09EF3 /* ActivateTouchID_Fingerprint@2x.png in Resources */,
 				3A30CE3B19A2E7570098AAD1 /* Images.xcassets in Resources */,
@@ -380,17 +380,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A30CE3619A2E7570098AAD1 /* ViewController.m in Sources */,
+				3A30CE3619A2E7570098AAD1 /* SampleViewController.m in Sources */,
 				3A32465C19BCC7D700BE6EBC /* UIViewController+VENTouchLock.m in Sources */,
-				3A30CE3319A2E7570098AAD1 /* AppDelegate.m in Sources */,
+				3A30CE3319A2E7570098AAD1 /* SampleAppDelegate.m in Sources */,
 				3A71E6DD19A52A3B00A09EF3 /* VENTouchLockEnterPasscodeViewController.m in Sources */,
+				3A31A9A219BE372000E44CAD /* VENTouchLockSetPasscodeViewController.m in Sources */,
 				3A2AD44719AAA373002482C5 /* VENTouchLockPasscodeCharacterView.m in Sources */,
 				3A1DB96619BA4EE8004A17D8 /* UIColor+VENTouchLock.m in Sources */,
 				3A30CE5319A2E8AA0098AAD1 /* VENTouchLock.m in Sources */,
 				3A71E6D219A50EF100A09EF3 /* VENTouchLockActivateTouchIDViewController.m in Sources */,
-				3A32465419BCBBBA00BE6EBC /* LockSplashViewController.m in Sources */,
+				3A32465419BCBBBA00BE6EBC /* SampleLockSplashViewController.m in Sources */,
 				3A30CE3019A2E7570098AAD1 /* main.m in Sources */,
-				3A71E6C919A4E67100A09EF3 /* VENTouchLockSetPasscodeViewController.m in Sources */,
 				3A32465919BCBEF800BE6EBC /* VENTouchLockSplashViewController.m in Sources */,
 				3A30CE5619A2E96B0098AAD1 /* VENTouchLockPasscodeViewController.m in Sources */,
 				3A38986B19A3DFEE0099A2FE /* VENTouchLockPasscodeView.m in Sources */,
