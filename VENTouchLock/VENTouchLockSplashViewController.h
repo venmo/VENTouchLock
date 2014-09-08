@@ -2,11 +2,11 @@
 
 @interface VENTouchLockSplashViewController : UIViewController
 
-- (void)showUnlock;
+- (void)showUnlockAnimated:(BOOL)animated;
 
 - (void)showTouchID;
 
-- (void)showPasscode;
+- (void)showPasscodeAnimated:(BOOL)animated;
 
 @property (nonatomic, copy) void (^didUnlockSuccesfullyBlock)();
 

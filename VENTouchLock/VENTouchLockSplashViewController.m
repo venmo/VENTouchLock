@@ -19,13 +19,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
-- (void)showUnlock
+- (void)showUnlockAnimated:(BOOL)animated
 {
     if ([VENTouchLock canUseTouchID]) {
         [self showTouchID];
     }
     else {
-        [self showPasscode];
+        [self showPasscodeAnimated:animated];
     }
 }
 
@@ -38,7 +38,7 @@
                 [weakSelf unlock];
                 break;
             case VENTouchLockTouchIDResponseUsePasscode:
-                [weakSelf showPasscode];
+                [weakSelf showPasscodeAnimated:YES];
                 break;
             default:
                 break;
@@ -46,9 +46,9 @@
     }];
 }
 
-- (void)showPasscode
+- (void)showPasscodeAnimated:(BOOL)animated
 {
-    [self.navigationController presentViewController:[[self enterPasscodeVC] embedInNavigationController] animated:YES completion:nil];
+    [self.navigationController presentViewController:[[self enterPasscodeVC] embedInNavigationController] animated:animated completion:nil];
 }
 
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC

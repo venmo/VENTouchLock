@@ -157,13 +157,22 @@
                 [mainWindow addSubview:self.snapshotView];
             }
             self.isLocked = YES;
+            if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.001 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 [rootViewController presentViewController:navigationController animated:NO completion:^{
                     if (!fromBackground) {
-                        [splashViewController showUnlock];
+                        [splashViewController showUnlockAnimated:NO];
                     }
                 }];
             });
+            }
+            else {
+            [rootViewController presentViewController:navigationController animated:NO completion:^{
+                if (!fromBackground) {
+                    [splashViewController showUnlockAnimated:NO];
+                }
+            }];
+            }
         }
     }
 }
