@@ -57,6 +57,16 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 + (BOOL)canUseTouchID;
 
 /**
+ Returns YES if the user activated touchID in app passcode settings, and NO otherwise.
+ */
++ (BOOL)shouldUseTouchID;
+
+/**
+ Sets and persists the user's preference for using TouchID.
+ */
++ (void)setShouldUseTouchID:(BOOL)shouldUseTouchID;
+
+/**
  Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.
  */
 - (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock;

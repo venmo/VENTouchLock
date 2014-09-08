@@ -21,7 +21,7 @@
 
 - (void)showUnlockAnimated:(BOOL)animated
 {
-    if ([VENTouchLock canUseTouchID]) {
+    if ([VENTouchLock shouldUseTouchID]) {
         [self showTouchID];
     }
     else {
@@ -69,7 +69,7 @@
 - (void)appWillEnterForeground
 {
     if (!self.presentedViewController) {
-        if ([VENTouchLock canUseTouchID]) {
+        if ([VENTouchLock shouldUseTouchID]) {
             [self showTouchID];
         }
     }

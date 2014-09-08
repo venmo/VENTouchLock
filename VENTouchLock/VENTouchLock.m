@@ -4,6 +4,8 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+VENTouchLock.h"
 
+static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
+
 @interface VENTouchLock ()
 
 @property (copy, nonatomic) NSString *keychainService;
@@ -100,6 +102,17 @@
     LAContext *context = [[LAContext alloc] init];
     return [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                                 error:nil];
+}
+
++ (BOOL)shouldUseTouchID
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VENTouchLockUserDefaultsKeyTouchIDActivated] && [self canUseTouchID];
+}
+
++ (void)setShouldUseTouchID:(BOOL)shouldUseTouchID
+{
+    [[NSUserDefaults standardUserDefaults] setBool:shouldUseTouchID forKey:VENTouchLockUserDefaultsKeyTouchIDActivated];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)requestTouchIDWithCompletion:(void (^)(VENTouchLockTouchIDResponse))completionBlock

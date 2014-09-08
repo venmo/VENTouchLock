@@ -1,8 +1,5 @@
 #import "VENTouchLockActivateTouchIDViewController.h"
-
-@interface VENTouchLockActivateTouchIDViewController ()
-
-@end
+#import "VENTouchLock.h"
 
 @implementation VENTouchLockActivateTouchIDViewController
 
@@ -14,11 +11,13 @@
 }
 - (IBAction)userTappedUseTouchID:(id)sender
 {
+    [VENTouchLock setShouldUseTouchID:YES];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)userTappedSkip:(id)sender
 {
+    [VENTouchLock setShouldUseTouchID:NO];
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 @end
