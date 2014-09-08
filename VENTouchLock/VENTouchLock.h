@@ -15,7 +15,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 + (instancetype)sharedInstance;
 
 /**
- Set the keychain service and account names in order to specify where in the keychain the passcode persists. The touch ID reason will be displayed when touch ID is requested.
+ Set the defaults. This method should be called at launch.
+ @param service The keychain service for which to set and return a passcode
+ @param account The keychain account for which to set and return a passcode
+ @param reason The message displayed on the TouchID prompt
+ @param splashViewControllerClass The class of the custom splash view controller. This class must be a subclass of VENTouchLockSplashViewController with any custom initialization in its init function
  */
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account

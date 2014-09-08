@@ -160,7 +160,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.001 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 [rootViewController presentViewController:navigationController animated:NO completion:^{
                     if (!fromBackground) {
-                        [splashViewController showTouchID];
+                        [splashViewController showUnlock];
                     }
                 }];
             });
