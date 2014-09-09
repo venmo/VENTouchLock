@@ -1,5 +1,6 @@
 #import "VENTouchLockActivateTouchIDViewController.h"
 #import "VENTouchLock.h"
+#import "VENTouchLockSetPasscodeViewController.h"
 
 @implementation VENTouchLockActivateTouchIDViewController
 
@@ -12,12 +13,12 @@
 - (IBAction)userTappedUseTouchID:(id)sender
 {
     [VENTouchLock setShouldUseTouchID:YES];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.sourceViewController finishWithResult:YES];
 }
 
 - (IBAction)userTappedSkip:(id)sender
 {
     [VENTouchLock setShouldUseTouchID:NO];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.sourceViewController finishWithResult:YES];
 }
 @end

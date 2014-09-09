@@ -25,7 +25,11 @@
             [[VENTouchLock sharedInstance] setPasscode:passcode];
             if ([VENTouchLock canUseTouchID]) {
                 VENTouchLockActivateTouchIDViewController *touchIDViewController = [[VENTouchLockActivateTouchIDViewController alloc] initWithNibName:NSStringFromClass([VENTouchLockActivateTouchIDViewController class]) bundle:nil];
+                touchIDViewController.sourceViewController = self;
                 [self.navigationController pushViewController:touchIDViewController animated:YES];
+            }
+            else {
+                [self finishWithResult:YES];
             }
         }
         else {

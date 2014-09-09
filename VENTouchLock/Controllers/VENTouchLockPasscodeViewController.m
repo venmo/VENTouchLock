@@ -1,6 +1,7 @@
 #import "VENTouchLockPasscodeViewController.h"
 #import "VENTouchLockPasscodeCharacterView.h"
 #import "UIColor+VENTouchLock.h"
+#import "UIViewController+VENTouchLock.h"
 
 static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
@@ -66,11 +67,9 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     }
 }
 
-- (UINavigationController *)embedInNavigationController
+- (UINavigationController *)embeddedInNavigationController
 {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-    navigationController.navigationBar.translucent = NO;
-    return navigationController;
+    return [super embeddedInNavigationController];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification

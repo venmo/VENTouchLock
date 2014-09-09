@@ -10,7 +10,7 @@
     }
     else {
         VENTouchLockSetPasscodeViewController *setPasscodeVC = [[VENTouchLockSetPasscodeViewController alloc] init];
-        [self presentViewController:[setPasscodeVC embedInNavigationController] animated:YES completion:nil];
+        [self presentViewController:[setPasscodeVC embeddedInNavigationController] animated:YES completion:nil];
     }
 }
 
@@ -18,7 +18,7 @@
 {
     if ([[VENTouchLock sharedInstance] isPasscodeSet]) {
     VENTouchLockEnterPasscodeViewController *showPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-    [self presentViewController:[showPasscodeVC embedInNavigationController] animated:YES completion:nil];
+    [self presentViewController:[showPasscodeVC embeddedInNavigationController] animated:YES completion:nil];
     }
     else {
         [[[UIAlertView alloc] initWithTitle:@"No passcode" message:@"Please set a passcode first" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];

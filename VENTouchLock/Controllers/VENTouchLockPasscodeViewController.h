@@ -6,7 +6,7 @@
 /**
  Encapsulates the view controller in a navigation controller.
  */
-- (UINavigationController *)embedInNavigationController;
+- (UINavigationController *)embeddedInNavigationController;
 
 /**
  Clears passcode in view if one exist.
