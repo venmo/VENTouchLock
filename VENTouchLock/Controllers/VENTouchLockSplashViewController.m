@@ -72,9 +72,9 @@
         if ([VENTouchLock shouldUseTouchID]) {
             [self showTouchID];
         }
-    }
-    else {
-        [self presentViewController:[[self enterPasscodeVC] embedInNavigationController] animated:NO completion:nil];
+        else {
+            [self presentViewController:[[self enterPasscodeVC] embedInNavigationController] animated:NO completion:nil];
+        }
     }
 }
 
