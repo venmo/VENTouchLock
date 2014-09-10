@@ -4,4 +4,6 @@
 
 - (UINavigationController *)embeddedInNavigationController;
 
++ (UIViewController*) topMostController;
+
 @end

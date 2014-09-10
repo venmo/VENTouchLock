@@ -170,7 +170,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 }
             };
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-            UIViewController *rootViewController = mainWindow.rootViewController;
+            UIViewController *rootViewController = [UIViewController topMostController];
             UINavigationController *navigationController = [splashViewController embeddedInNavigationController];
             if (fromBackground) {
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
