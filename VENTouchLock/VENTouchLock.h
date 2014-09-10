@@ -79,6 +79,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 /**
  Requests YES if the app was locked automatically after having entered the background, and NO otherwise.
  */
-- (BOOL)backgroundLockIsVisible;
+- (BOOL)backgroundLockVisible;
 
 @end
