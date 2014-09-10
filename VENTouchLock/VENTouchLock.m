@@ -10,12 +10,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 @property (copy, nonatomic) NSString *keychainService;
 @property (copy, nonatomic) NSString *keychainAccount;
-
 @property (copy, nonatomic) NSString *touchIDReason;
 
 @property (strong, nonatomic) UIView *snapshotView;
-@property (assign, nonatomic) BOOL isLocked;
 @property (assign, nonatomic) Class splashViewControllerClass;
+@property (assign, nonatomic) BOOL backgroundLockVisible;
 
 @end
 
@@ -62,6 +61,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     self.splashViewControllerClass = splashViewControllerClass;
 }
 
+
 #pragma mark - Keychain Methods
 
 - (BOOL)isPasscodeSet
@@ -95,13 +95,13 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     [SSKeychain deletePasswordForService:service account:account];
 }
 
+
 #pragma mark - TouchID Methods
 
 + (BOOL)canUseTouchID
 {
-    LAContext *context = [[LAContext alloc] init];
-    return [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                                error:nil];
+    return [[[LAContext alloc] init] canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
+                                                 error:nil];
 }
 
 + (BOOL)shouldUseTouchID
@@ -117,11 +117,15 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)requestTouchIDWithCompletion:(void (^)(VENTouchLockTouchIDResponse))completionBlock
 {
+    [self requestTouchIDWithCompletion:completionBlock reason:self.touchIDReason];
+}
+
+- (void)requestTouchIDWithCompletion:(void (^)(VENTouchLockTouchIDResponse))completionBlock reason:(NSString *)reason
+{
     if ([[self class] canUseTouchID]) {
-        NSString *localizedReason = self.touchIDReason;
         LAContext *context = [[LAContext alloc] init];
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                localizedReason:localizedReason
+                localizedReason:reason
                           reply:^(BOOL success, NSError *error) {
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   if (success) {
@@ -157,8 +161,13 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
             __weak VENTouchLock *weakSelf = self;
+            void (^oldDidUnlockSuccesfullyBlock)() =[splashViewController.didUnlockSuccesfullyBlock copy];
+
             splashViewController.didUnlockSuccesfullyBlock = ^{
-                weakSelf.isLocked = NO;
+                weakSelf.backgroundLockVisible = NO;
+                if (oldDidUnlockSuccesfullyBlock) {
+                    oldDidUnlockSuccesfullyBlock();
+                }
             };
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
             UIViewController *rootViewController = mainWindow.rootViewController;
@@ -169,26 +178,18 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 self.snapshotView = [snapshotSplashViewController embeddedInNavigationController].view;
                 [mainWindow addSubview:self.snapshotView];
             }
-            self.isLocked = YES;
-            if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.001 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 [rootViewController presentViewController:navigationController animated:NO completion:^{
+                    weakSelf.backgroundLockVisible = YES;
                     if (!fromBackground) {
                         [splashViewController showUnlockAnimated:NO];
                     }
                 }];
             });
-            }
-            else {
-            [rootViewController presentViewController:navigationController animated:NO completion:^{
-                if (!fromBackground) {
-                    [splashViewController showUnlockAnimated:NO];
-                }
-            }];
-            }
         }
     }
 }
+
 
 #pragma mark - NSNotifications
 
@@ -201,7 +202,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
-    if ([self isPasscodeSet] && !self.isLocked) {
+    if ([self isPasscodeSet] && !self.backgroundLockVisible) {
         [self lockFromBackground:YES];
     }
 }

@@ -1,15 +1,8 @@
-//
-//  LockViewController.m
-//  VENTouchLockSample
-//
-//  Created by Dasmer Singh on 9/7/14.
-//  Copyright (c) 2014 Venmo. All rights reserved.
-//
-
 #import "SampleLockSplashViewController.h"
 #import "VENTouchLock.h"
 
 @interface SampleLockSplashViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *touchIDButton;
 
 @end
@@ -18,7 +11,13 @@
 
 - (instancetype)init
 {
-    return [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+    if (self) {
+        self.didUnlockSuccesfullyBlock = ^{
+            NSLog(@"Sample App Unlocked");
+        };
+    }
+    return self;
 }
 
 - (void)viewDidLoad
@@ -36,6 +35,5 @@
 {
     [self showPasscodeAnimated:YES];
 }
-
 
 @end

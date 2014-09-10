@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  Set the defaults. This method should be called at launch.
  @param service The keychain service for which to set and return a passcode
  @param account The keychain account for which to set and return a passcode
- @param reason The message displayed on the TouchID prompt
+ @param reason The default message displayed on the TouchID prompt
  @param splashViewControllerClass The class of the custom splash view controller. This class must be a subclass of VENTouchLockSplashViewController with any custom initialization in its init function
  */
 - (void)setKeychainService:(NSString *)service
@@ -67,8 +67,18 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 + (void)setShouldUseTouchID:(BOOL)shouldUseTouchID;
 
 /**
- Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.
+ Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing. The displayed string on the touch id prompt will be the default touchIDReason.
  */
 - (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock;
+
+/**
+ Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.
+ */
+- (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock reason:(NSString *)reason;
+
+/**
+ Requests YES if the app was locked automatically after having entered the background, and NO otherwise.
+ */
+- (BOOL)backgroundLockIsVisible;
 
 @end
