@@ -48,7 +48,9 @@
 
 - (void)showPasscodeAnimated:(BOOL)animated
 {
-    [self.navigationController presentViewController:[[self enterPasscodeVC] embeddedInNavigationController] animated:animated completion:nil];
+    [self.navigationController presentViewController:[[self enterPasscodeVC] embeddedInNavigationController]
+                                            animated:animated
+                                          completion:nil];
 }
 
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC
@@ -80,12 +82,20 @@
 
 - (void)unlock
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-        if (self.didUnlockSuccesfullyBlock) {
-            self.didUnlockSuccesfullyBlock();
+    [self dismissWithUnlockSuccess:YES animated:YES];
+}
+
+- (void)dismissWithUnlockSuccess:(BOOL)success animated:(BOOL)animated
+{
+    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
+        [VENTouchLock sharedInstance].backgroundLockVisible = NO;
+        if (!success && [[VENTouchLock sharedInstance] exceededLimitActionBlock]) {
+            [[VENTouchLock sharedInstance] exceededLimitActionBlock]();
+        }
+        if (self.didFinishWithSuccess) {
+            self.didFinishWithSuccess(success);
         }
     }];
-
 }
 
 @end

@@ -13,8 +13,13 @@
 {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
-        self.didUnlockSuccesfullyBlock = ^{
-            NSLog(@"Sample App Unlocked");
+        self.didFinishWithSuccess = ^(BOOL success){
+            if (success) {
+                NSLog(@"Sample App Unlocked");
+            }
+            else {
+                NSLog(@"Sample App not Unlocked");
+            }
         };
     }
     return self;

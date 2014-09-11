@@ -13,12 +13,12 @@
 - (IBAction)userTappedUseTouchID:(id)sender
 {
     [VENTouchLock setShouldUseTouchID:YES];
-    [self.sourceViewController finishWithResult:YES];
+    [self.sourceViewController finishWithResult:YES animated:YES];
 }
 
 - (IBAction)userTappedSkip:(id)sender
 {
     [VENTouchLock setShouldUseTouchID:NO];
-    [self.sourceViewController finishWithResult:YES];
+    [self.sourceViewController finishWithResult:YES animated:YES];
 }
 @end

@@ -8,6 +8,8 @@
 
 - (void)showPasscodeAnimated:(BOOL)animated;
 
-@property (nonatomic, copy) void (^didUnlockSuccesfullyBlock)();
+- (void)dismissWithUnlockSuccess:(BOOL)success animated:(BOOL)animated;
+
+@property (nonatomic, copy) void (^didFinishWithSuccess)(BOOL success);
 
 @end

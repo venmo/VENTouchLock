@@ -14,7 +14,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 @property (strong, nonatomic) UIView *snapshotView;
 @property (assign, nonatomic) Class splashViewControllerClass;
-@property (assign, nonatomic) BOOL backgroundLockVisible;
 
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (copy, nonatomic) void(^exceededLimitActionBlock)();
@@ -171,15 +170,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            __weak VENTouchLock *weakSelf = self;
-            void (^oldDidUnlockSuccesfullyBlock)() =[splashViewController.didUnlockSuccesfullyBlock copy];
-
-            splashViewController.didUnlockSuccesfullyBlock = ^{
-                weakSelf.backgroundLockVisible = NO;
-                if (oldDidUnlockSuccesfullyBlock) {
-                    oldDidUnlockSuccesfullyBlock();
-                }
-            };
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
             UIViewController *rootViewController = [UIViewController topMostController];
             UINavigationController *navigationController = [splashViewController embeddedInNavigationController];
@@ -189,14 +179,12 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 self.snapshotView = [snapshotSplashViewController embeddedInNavigationController].view;
                 [mainWindow addSubview:self.snapshotView];
             }
-            weakSelf.backgroundLockVisible = YES;
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.001 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            self.backgroundLockVisible = YES;
                 [rootViewController presentViewController:navigationController animated:NO completion:^{
                     if (!fromBackground) {
                         [splashViewController showUnlockAnimated:NO];
                     }
                 }];
-            });
         }
     }
 }

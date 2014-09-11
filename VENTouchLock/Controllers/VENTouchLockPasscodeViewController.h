@@ -18,7 +18,7 @@
  */
 - (void)enteredPasscode:(NSString *)passcode;
 
-- (void)finishWithResult:(BOOL)success;
+- (void)finishWithResult:(BOOL)success animated:(BOOL)animated;
 
 /**
  This block is called directly before the passcode view controller has completed its intended operation. If the operation was completed successfully, the returned BOOL will return YES, and NO otherwise.

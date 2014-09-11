@@ -17,7 +17,7 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
     [super enteredPasscode:passcode];
     if ([[VENTouchLock sharedInstance] isPasscodeValid:passcode]) {
         [[self class] resetPasscodeAttemptHistory];
-        [self finishWithResult:YES];
+        [self finishWithResult:YES animated:YES];
     }
     else {
         [self.passcodeView shakeAndVibrateCompletion:^{
@@ -36,17 +36,25 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
     numberOfAttemptsSoFar ++;
     [standardDefaults setInteger:numberOfAttemptsSoFar forKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
     [standardDefaults synchronize];
-    if (numberOfAttemptsSoFar > [[VENTouchLock sharedInstance] passcodeAttemptLimit] && [[VENTouchLock sharedInstance] exceededLimitActionBlock]) {
-        UIViewController *navcontroller = self.presentingViewController;
-        UIViewController *rootViewController = ([navcontroller isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)navcontroller).viewControllers firstObject] : nil;
-        if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            [rootViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
-        }
-        else {
-            [self finishWithResult:NO];
-        }
-        [[VENTouchLock sharedInstance] exceededLimitActionBlock]();
+    if (numberOfAttemptsSoFar > [[VENTouchLock sharedInstance] passcodeAttemptLimit]) {
+        [self callExceededLimitActionBlock];
     }
+}
+
+- (void)callExceededLimitActionBlock
+{
+    UIViewController *navcontroller = self.presentingViewController;
+    UIViewController *rootViewController = ([navcontroller isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)navcontroller).viewControllers firstObject] : nil;
+    if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
+        [((VENTouchLockSplashViewController *)rootViewController) dismissWithUnlockSuccess:NO animated:NO];
+    }
+    else {
+        [self finishWithResult:NO animated:NO];
+        if ([[VENTouchLock sharedInstance] exceededLimitActionBlock]) {
+            [[VENTouchLock sharedInstance] exceededLimitActionBlock]();
+        }
+    }
+
 }
 
 + (void)resetPasscodeAttemptHistory

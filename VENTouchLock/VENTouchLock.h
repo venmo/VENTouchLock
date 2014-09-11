@@ -80,11 +80,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock reason:(NSString *)reason;
 
 /**
- Requests YES if the app was locked automatically after having entered the background, and NO otherwise.
- */
-- (BOOL)backgroundLockVisible;
-
-/**
  The maximum number of incorrect passcode attempts before the exceededLimitAction is called.
  */
 - (NSUInteger)passcodeAttemptLimit;
@@ -93,5 +88,10 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  The block that executed by VENTouchLockEnterPasscodeViewControllers when number of incorrect attempts > passcodeAttemptLimit
  */
 - (void (^)())exceededLimitActionBlock;
+
+/**
+ Requests YES if the app was locked automatically after having entered the background, and NO otherwise.
+ */
+@property (assign, nonatomic) BOOL backgroundLockVisible;
 
 @end

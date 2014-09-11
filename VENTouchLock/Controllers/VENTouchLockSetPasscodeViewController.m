@@ -29,7 +29,7 @@
                 [self.navigationController pushViewController:touchIDViewController animated:YES];
             }
             else {
-                [self finishWithResult:YES];
+                [self finishWithResult:YES animated:YES];
             }
         }
         else {
