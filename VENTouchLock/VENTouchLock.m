@@ -16,7 +16,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (assign, nonatomic) Class splashViewControllerClass;
 
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
-@property (copy, nonatomic) void(^exceededLimitActionBlock)();
 
 @end
 
@@ -56,15 +55,13 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
  splashViewControllerClass:(Class)splashViewControllerClass
-      passcodeAttemptLimit:(NSUInteger)attemptLimit
-       exceededLimitAction:(void(^)())exceededLimitActionBlock
+      passcodeAttemptLimit:(NSUInteger)attemptLimit;
 {
     self.keychainService = service;
     self.keychainAccount = account;
     self.touchIDReason = reason;
     self.splashViewControllerClass = splashViewControllerClass;
     self.passcodeAttemptLimit = attemptLimit;
-    self.exceededLimitActionBlock = exceededLimitActionBlock;
 }
 
 

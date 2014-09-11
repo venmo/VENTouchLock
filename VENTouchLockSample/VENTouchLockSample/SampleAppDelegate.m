@@ -14,14 +14,7 @@
                                       keychainAccount:@"testAccount"
                                         touchIDReason:@"Scan your fingerprint to use the app."
                             splashViewControllerClass:[SampleLockSplashViewController class]
-                                 passcodeAttemptLimit:5 exceededLimitAction:^{
-                                     [[[UIAlertView alloc] initWithTitle:@"Limited Exceeded"
-                                                                message:@"You have exceeded the maximum number of passcode attempts"
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil] show];
-                                 }
-     ];
+                                 passcodeAttemptLimit:5];
     return YES;
 }
 

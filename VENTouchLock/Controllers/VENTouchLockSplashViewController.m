@@ -89,9 +89,6 @@
 {
     [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
         [VENTouchLock sharedInstance].backgroundLockVisible = NO;
-        if (!success && [[VENTouchLock sharedInstance] exceededLimitActionBlock]) {
-            [[VENTouchLock sharedInstance] exceededLimitActionBlock]();
-        }
         if (self.didFinishWithSuccess) {
             self.didFinishWithSuccess(success);
         }

@@ -20,15 +20,12 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  @param account The keychain account for which to set and return a passcode
  @param reason The default message displayed on the TouchID prompt
  @param splashViewControllerClass The class of the custom splash view controller. This class must be a subclass of VENTouchLockSplashViewController with any custom initialization in its init function
- @param attemptLimit The maximum number of consecutive incorrect passcoe attempts before the exceededLimitAction is called
  */
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
  splashViewControllerClass:(Class)splashViewControllerClass
-      passcodeAttemptLimit:(NSUInteger)attemptLimit
-       exceededLimitAction:(void(^)())exceededLimitActionBlock;
-
+      passcodeAttemptLimit:(NSUInteger)attemptLimit;
 /**
  Returns YES if a passcode exists, and NO otherwise.
  */
@@ -83,11 +80,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  The maximum number of incorrect passcode attempts before the exceededLimitAction is called.
  */
 - (NSUInteger)passcodeAttemptLimit;
-
-/**
- The block that executed by VENTouchLockEnterPasscodeViewControllers when number of incorrect attempts > passcodeAttemptLimit
- */
-- (void (^)())exceededLimitActionBlock;
 
 /**
  Requests YES if the app was locked automatically after having entered the background, and NO otherwise.

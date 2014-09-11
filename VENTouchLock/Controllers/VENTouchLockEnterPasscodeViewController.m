@@ -23,7 +23,9 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
         [self.passcodeView shakeAndVibrateCompletion:^{
             self.passcodeView.title = NSLocalizedString(@"Incorrect Passcode. Try again.", nil);
             [self clearPasscode];
-            [self recordIncorrectPasscodeAttempt];
+            if ([self parentSplashViewController]) {
+                [self recordIncorrectPasscodeAttempt];
+            }
         }];
 
     }
@@ -36,25 +38,14 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
     numberOfAttemptsSoFar ++;
     [standardDefaults setInteger:numberOfAttemptsSoFar forKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
     [standardDefaults synchronize];
-    if (numberOfAttemptsSoFar > [[VENTouchLock sharedInstance] passcodeAttemptLimit]) {
+    if (numberOfAttemptsSoFar >= [[VENTouchLock sharedInstance] passcodeAttemptLimit]) {
         [self callExceededLimitActionBlock];
     }
 }
 
 - (void)callExceededLimitActionBlock
 {
-    UIViewController *navcontroller = self.presentingViewController;
-    UIViewController *rootViewController = ([navcontroller isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)navcontroller).viewControllers firstObject] : nil;
-    if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-        [((VENTouchLockSplashViewController *)rootViewController) dismissWithUnlockSuccess:NO animated:NO];
-    }
-    else {
-        [self finishWithResult:NO animated:NO];
-        if ([[VENTouchLock sharedInstance] exceededLimitActionBlock]) {
-            [[VENTouchLock sharedInstance] exceededLimitActionBlock]();
-        }
-    }
-
+    [[self parentSplashViewController] dismissWithUnlockSuccess:NO animated:NO];
 }
 
 + (void)resetPasscodeAttemptHistory
@@ -62,6 +53,17 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
     NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
     [standardDefaults removeObjectForKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
     [standardDefaults synchronize];
+}
+
+- (VENTouchLockSplashViewController *)parentSplashViewController
+{
+    VENTouchLockSplashViewController *splashViewController = nil;
+    UIViewController *navcontroller = self.presentingViewController;
+    UIViewController *rootViewController = ([navcontroller isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)navcontroller).viewControllers firstObject] : nil;
+    if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
+        splashViewController = (VENTouchLockSplashViewController *)rootViewController;
+    }
+    return splashViewController;
 }
 
 @end

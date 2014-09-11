@@ -13,12 +13,16 @@
 {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
-        self.didFinishWithSuccess = ^(BOOL success){
+        self.didFinishWithSuccess = ^(BOOL success) {
             if (success) {
                 NSLog(@"Sample App Unlocked");
             }
             else {
-                NSLog(@"Sample App not Unlocked");
+                [[[UIAlertView alloc] initWithTitle:@"Limited Exceeded"
+                                            message:@"You have exceeded the maximum number of passcode attempts"
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
             }
         };
     }
