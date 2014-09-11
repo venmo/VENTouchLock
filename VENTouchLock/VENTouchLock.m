@@ -90,6 +90,9 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)deletePasscode
 {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:VENTouchLockUserDefaultsKeyTouchIDActivated];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     NSString *service = self.keychainService;
     NSString *account = self.keychainAccount;
     [SSKeychain deletePasswordForService:service account:account];
