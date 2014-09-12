@@ -2,7 +2,9 @@
 
 @interface VENTouchLockPasscodeCharacterView : UIView
 
+/**
+ * YES if the view represents no character (to display a hyphen character). NO otherwise (to display a bullet character).
+ */
 @property (assign, nonatomic) BOOL isEmpty;
-@property (strong, nonatomic) UIColor *color;
 
 @end

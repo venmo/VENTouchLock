@@ -36,7 +36,7 @@
     circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 2.0*radius, 2.0*radius)
 
                                              cornerRadius:radius].CGPath;
-    UIColor *circleColor = self.color ?: [UIColor blackColor];
+    UIColor *circleColor = [UIColor blackColor];
     circle.fillColor = circleColor.CGColor;
     circle.strokeColor =  circleColor.CGColor;
     circle.borderWidth = borderWidth;
@@ -61,9 +61,9 @@
     [hyphenPath addLineToPoint:leftBottomCorner];
 
     hyphen.path = hyphenPath.CGPath;
-    UIColor *color = self.color ?: [UIColor blackColor];
-    hyphen.fillColor = color.CGColor;
-    hyphen.strokeColor = color.CGColor;
+    UIColor *hyphenColor = [UIColor blackColor];
+    hyphen.fillColor = hyphenColor.CGColor;
+    hyphen.strokeColor = hyphenColor.CGColor;
     [self.layer addSublayer:hyphen];
     self.hyphen = hyphen;
 }
@@ -73,7 +73,6 @@
         _isEmpty = isEmpty;
         [self redraw];
     }
-
 }
 
 @end

@@ -18,6 +18,11 @@
  */
 - (void)enteredPasscode:(NSString *)passcode;
 
+/**
+ Called by superclasses in order to dismiss this view controller.
+ @param success YES if the intended operation was successful. NO otherwise.
+ @param animated YES to animated the view controller's dismissal. NO otherwise.
+ */
 - (void)finishWithResult:(BOOL)success animated:(BOOL)animated;
 
 /**
@@ -27,6 +32,9 @@
  */
 @property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);
 
+/**
+ The initial passcode view attached to this view controller.
+ */
 @property (strong, nonatomic) VENTouchLockPasscodeView *passcodeView;
 
 @end

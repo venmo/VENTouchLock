@@ -2,13 +2,18 @@
 
 @interface VENTouchLockPasscodeView : UIView
 
+/**
+ The title string directly on top of the passcode characters.
+ */
 @property (strong, nonatomic) NSString *title;
 
+/**
+ An array of the passcode character subviews.
+ */
 @property (strong, nonatomic) NSArray *characters;
 
 /**
  Creates a passcode view controller with the given title and frame.
- @param completionBlock called after shake and vibrate complete
  */
 - (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame;
 

@@ -5,6 +5,18 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
 
 @implementation VENTouchLockEnterPasscodeViewController
 
+#pragma mark - Class Methods
+
++ (void)resetPasscodeAttemptHistory
+{
+    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+    [standardDefaults removeObjectForKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
+    [standardDefaults synchronize];
+}
+
+
+#pragma mark - Instance Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,13 +58,6 @@ static NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
 - (void)callExceededLimitActionBlock
 {
     [[self parentSplashViewController] dismissWithUnlockSuccess:NO animated:NO];
-}
-
-+ (void)resetPasscodeAttemptHistory
-{
-    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-    [standardDefaults removeObjectForKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
-    [standardDefaults synchronize];
 }
 
 - (VENTouchLockSplashViewController *)parentSplashViewController

@@ -12,6 +12,14 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 
 @interface VENTouchLock : NSObject
 
+/**
+ YES if the app is locked after having entered the background, and NO otherwise.
+ */
+@property (assign, nonatomic) BOOL backgroundLockVisible;
+
+/**
+ @return A singleton VENTouchLock instance.
+ */
 + (instancetype)sharedInstance;
 
 /**
@@ -19,13 +27,14 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  @param service The keychain service for which to set and return a passcode
  @param account The keychain account for which to set and return a passcode
  @param reason The default message displayed on the TouchID prompt
- @param splashViewControllerClass The class of the custom splash view controller. This class must be a subclass of VENTouchLockSplashViewController with any custom initialization in its init function
+ @param splashViewControllerClass The class of the custom splash view controller. This class should be a subclass of VENTouchLockSplashViewController and any of its custom initialization must be in its init function
  */
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
  splashViewControllerClass:(Class)splashViewControllerClass
       passcodeAttemptLimit:(NSUInteger)attemptLimit;
+
 /**
  Returns YES if a passcode exists, and NO otherwise.
  */
@@ -74,16 +83,12 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 /**
  Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing.
  */
-- (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock reason:(NSString *)reason;
+- (void)requestTouchIDWithCompletion:(void(^)(VENTouchLockTouchIDResponse response))completionBlock
+                              reason:(NSString *)reason;
 
 /**
  The maximum number of incorrect passcode attempts before the exceededLimitAction is called.
  */
 - (NSUInteger)passcodeAttemptLimit;
-
-/**
- Requests YES if the app was locked automatically after having entered the background, and NO otherwise.
- */
-@property (assign, nonatomic) BOOL backgroundLockVisible;
 
 @end

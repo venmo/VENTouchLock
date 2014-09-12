@@ -1,10 +1,10 @@
 #import "VENTouchLockSetPasscodeViewController.h"
 #import "VENTouchLock.h"
 
+static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.2;
+
 @interface VENTouchLockSetPasscodeViewController ()
-
 @property (strong, nonatomic) NSString *firstPasscode;
-
 @end
 
 @implementation VENTouchLockSetPasscodeViewController
@@ -13,7 +13,7 @@
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Set Passcode", nil);
-    self.passcodeView.title = (@"Enter a new Passcode");
+    self.passcodeView.title = NSLocalizedString(@"Enter a new Passcode",nil);
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -50,11 +50,12 @@
                                         CGRectGetMinY(firstPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(firstPasscodeView.frame));
+    NSString *confirmPasscodeTitle = NSLocalizedString(@"Please re-enter your passcode", nil);
     VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
-                                                     initWithTitle:@"Please re-enter your passcode"
-                                                                                              frame:confirmInitialFrame];
+                                                     initWithTitle:confirmPasscodeTitle
+                                                     frame:confirmInitialFrame];
     [self.view addSubview:confirmPasscodeView];
-    [UIView animateWithDuration: 0.2
+    [UIView animateWithDuration: VENTouchLockSetPasscodeViewControllerAnimationDuration
                           delay: 0.0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
@@ -81,9 +82,11 @@
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:@"Passwords did not match. Try again." frame:firstInitialFrame];
+    NSString *firstPasscodeTitle = NSLocalizedString(@"Passwords did not match. Try again.", nil);
+    VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:firstPasscodeTitle
+                                                                                            frame:firstInitialFrame];
     [self.view addSubview:firstPasscodeView];
-    [UIView animateWithDuration: 0.2
+    [UIView animateWithDuration: VENTouchLockSetPasscodeViewControllerAnimationDuration
                           delay: 0.0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
