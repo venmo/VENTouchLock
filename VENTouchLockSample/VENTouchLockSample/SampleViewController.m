@@ -1,7 +1,20 @@
 #import "SampleViewController.h"
 #import "VENTouchLock.h"
 
+@interface SampleViewController ()
+
+@property (weak, nonatomic) IBOutlet UISwitch *touchIDSwitch;
+
+@end
+
 @implementation SampleViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.touchIDSwitch.enabled = [[VENTouchLock sharedInstance] isPasscodeSet] && [VENTouchLock canUseTouchID];
+    self.touchIDSwitch.on = [VENTouchLock shouldUseTouchID];
+}
             
 - (IBAction)userTappedSetPasscode:(id)sender
 {
@@ -32,6 +45,9 @@
     else {
         [[[UIAlertView alloc] initWithTitle:@"No passcode" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
+}
+- (IBAction)userTappedSwitch:(UISwitch *)toggle {
+    [VENTouchLock setShouldUseTouchID:toggle.on];
 }
 
 @end
