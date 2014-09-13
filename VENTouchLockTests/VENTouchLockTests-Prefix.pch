@@ -1,0 +1,21 @@
+#ifndef SignupFormTests_Prefix_pch
+#define SignupFormTests_Prefix_pch
+
+#import <XCTest/XCTest.h>
+
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
+#import <OCMock/OCMock.h>
+
+#define EXP_SHORTHAND
+#import <Expecta/Expecta.h>
+
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+
+#import <Specta/Specta.h>
+
+#import "Constants.h"
+
+#endif
