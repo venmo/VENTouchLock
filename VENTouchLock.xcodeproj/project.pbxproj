@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3A709A7619BE67D800AC9238 /* VENTouchLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A7519BE67D800AC9238 /* VENTouchLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3A709A8019BE67D800AC9238 /* VENTouchLockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A7F19BE67D800AC9238 /* VENTouchLockTests.m */; };
 		3A709A8A19BE686900AC9238 /* VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A8919BE686900AC9238 /* VENTouchLock.m */; };
 		3A709A9019BE688000AC9238 /* UIColor+VENTouchLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A8C19BE688000AC9238 /* UIColor+VENTouchLock.h */; };
 		3A709A9119BE688000AC9238 /* UIColor+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A8D19BE688000AC9238 /* UIColor+VENTouchLock.m */; };
@@ -28,15 +27,16 @@
 		3A709AB419BE68BF00AC9238 /* VENTouchLockPasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709AAF19BE68BF00AC9238 /* VENTouchLockPasscodeView.m */; };
 		3A709AB519BE68BF00AC9238 /* VENTouchLockPasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A709AB019BE68BF00AC9238 /* VENTouchLockPasscodeView.xib */; };
 		79839AD1D01A4F5292738CB7 /* libPods-VENTouchLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8322082DAA4E4E8840A4D1 /* libPods-VENTouchLock.a */; };
+		B0AAA75C21C74F8DA9D13175 /* libPods-VENTouchLockTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBF12C3327B45B5803FC9C5 /* libPods-VENTouchLockTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A03EAC919C4F4E40095708C /* VENTouchLockTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENTouchLockTests-Prefix.pch"; sourceTree = "<group>"; };
 		3A709A7019BE67D800AC9238 /* VENTouchLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VENTouchLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A709A7419BE67D800AC9238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A709A7519BE67D800AC9238 /* VENTouchLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VENTouchLock.h; sourceTree = "<group>"; };
 		3A709A7B19BE67D800AC9238 /* VENTouchLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VENTouchLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A709A7E19BE67D800AC9238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A709A7F19BE67D800AC9238 /* VENTouchLockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockTests.m; sourceTree = "<group>"; };
 		3A709A8919BE686900AC9238 /* VENTouchLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENTouchLock.m; sourceTree = "<group>"; };
 		3A709A8C19BE688000AC9238 /* UIColor+VENTouchLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+VENTouchLock.h"; path = "Categories/UIColor+VENTouchLock.h"; sourceTree = "<group>"; };
 		3A709A8D19BE688000AC9238 /* UIColor+VENTouchLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+VENTouchLock.m"; path = "Categories/UIColor+VENTouchLock.m"; sourceTree = "<group>"; };
@@ -55,8 +55,10 @@
 		3A709AAE19BE68BF00AC9238 /* VENTouchLockPasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeView.h; path = Views/VENTouchLockPasscodeView.h; sourceTree = "<group>"; };
 		3A709AAF19BE68BF00AC9238 /* VENTouchLockPasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeView.m; path = Views/VENTouchLockPasscodeView.m; sourceTree = "<group>"; };
 		3A709AB019BE68BF00AC9238 /* VENTouchLockPasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VENTouchLockPasscodeView.xib; path = Views/VENTouchLockPasscodeView.xib; sourceTree = "<group>"; };
+		4BBF12C3327B45B5803FC9C5 /* libPods-VENTouchLockTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENTouchLockTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		786CC8E46A994C21B7BBD87F /* Pods-VENTouchLock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLock.xcconfig"; path = "Pods/Pods-VENTouchLock.xcconfig"; sourceTree = "<group>"; };
 		8A8322082DAA4E4E8840A4D1 /* libPods-VENTouchLock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENTouchLock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockTests.xcconfig"; path = "Pods/Pods-VENTouchLockTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0AAA75C21C74F8DA9D13175 /* libPods-VENTouchLockTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 				3A709A7119BE67D800AC9238 /* Products */,
 				786CC8E46A994C21B7BBD87F /* Pods-VENTouchLock.xcconfig */,
 				3D5E0250C8A240A2922F55F7 /* Frameworks */,
+				CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,7 +126,6 @@
 		3A709A7C19BE67D800AC9238 /* VENTouchLockTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A709A7F19BE67D800AC9238 /* VENTouchLockTests.m */,
 				3A709A7D19BE67D800AC9238 /* Supporting Files */,
 			);
 			path = VENTouchLockTests;
@@ -132,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				3A709A7E19BE67D800AC9238 /* Info.plist */,
+				3A03EAC919C4F4E40095708C /* VENTouchLockTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8A8322082DAA4E4E8840A4D1 /* libPods-VENTouchLock.a */,
+				4BBF12C3327B45B5803FC9C5 /* libPods-VENTouchLockTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,9 +233,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A709A8619BE67D800AC9238 /* Build configuration list for PBXNativeTarget "VENTouchLockTests" */;
 			buildPhases = (
+				006CE543BCFC47E7AB666869 /* Check Pods Manifest.lock */,
 				3A709A7719BE67D800AC9238 /* Sources */,
 				3A709A7819BE67D800AC9238 /* Frameworks */,
 				3A709A7919BE67D800AC9238 /* Resources */,
+				8B971D45E9814AC3A4071695 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -295,6 +302,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		006CE543BCFC47E7AB666869 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		578CFE7974F84E93ACDBAB3E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +330,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B971D45E9814AC3A4071695 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-VENTouchLockTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DBA0684AD4E9464DAC14CC9A /* Copy Pods Resources */ = {
@@ -348,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A709A8019BE67D800AC9238 /* VENTouchLockTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,11 +509,13 @@
 		};
 		3A709A8719BE67D800AC9238 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = "VENTouchLockTests/VENTouchLockTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -490,11 +528,13 @@
 		};
 		3A709A8819BE67D800AC9238 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = "VENTouchLockTests/VENTouchLockTests-Prefix.pch";
 				INFOPLIST_FILE = VENTouchLockTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

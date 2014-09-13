@@ -1,10 +1,19 @@
 PODS:
+  - Expecta (0.3.1)
+  - OCMock (2.2.4)
+  - Specta (0.2.1)
   - SSKeychain (1.2.2)
 
 DEPENDENCIES:
+  - Expecta (~> 0.2)
+  - OCMock (~> 2.2.2)
+  - Specta (~> 0.2.1)
   - SSKeychain (~> 1.2.2)
 
 SPEC CHECKSUMS:
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
 
 COCOAPODS: 0.33.1
