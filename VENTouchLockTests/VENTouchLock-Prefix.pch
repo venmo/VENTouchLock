@@ -1,0 +1,15 @@
+//
+//  VENTouchLock-Prefix.pch
+//  VENTouchLock
+//
+//  Created by Dasmer Singh on 9/13/14.
+//  Copyright (c) 2014 Venmo. All rights reserved.
+//
+
+#ifndef VENTouchLock_VENTouchLock_Prefix_pch
+#define VENTouchLock_VENTouchLock_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
