@@ -94,4 +94,8 @@ describe(@"recordIncorrectPasscodeAttempt", ^{
 
 });
 
+afterAll(^{
+    mockTouchLock = [[VENTouchLock alloc] init]; // Restore [VENTouchLock sharedInstance] natural behavior
+});
+
 SpecEnd
