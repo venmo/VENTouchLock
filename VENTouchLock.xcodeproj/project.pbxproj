@@ -20,6 +20,7 @@
 		3A03EAD519C4FF990095708C /* UIColor+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A8D19BE688000AC9238 /* UIColor+VENTouchLock.m */; };
 		3A03EAD619C4FF990095708C /* UIViewController+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A8F19BE688000AC9238 /* UIViewController+VENTouchLock.m */; };
 		3A03EAD919C56C9E0095708C /* UIViewController+VENTouchLockSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A03EAD819C56C9E0095708C /* UIViewController+VENTouchLockSpec.m */; };
+		3A03EADB19C5E41A0095708C /* VENTouchLockSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A03EADA19C5E41A0095708C /* VENTouchLockSpec.m */; };
 		3A709A7619BE67D800AC9238 /* VENTouchLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A7519BE67D800AC9238 /* VENTouchLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A709A8A19BE686900AC9238 /* VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A8919BE686900AC9238 /* VENTouchLock.m */; };
 		3A709A9019BE688000AC9238 /* UIColor+VENTouchLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A8C19BE688000AC9238 /* UIColor+VENTouchLock.h */; };
@@ -46,6 +47,7 @@
 		3A03EAC919C4F4E40095708C /* VENTouchLockTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENTouchLockTests-Prefix.pch"; sourceTree = "<group>"; };
 		3A03EACA19C4F72C0095708C /* VENTouchLockEnterPasscodeViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockEnterPasscodeViewControllerSpec.m; sourceTree = "<group>"; };
 		3A03EAD819C56C9E0095708C /* UIViewController+VENTouchLockSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+VENTouchLockSpec.m"; sourceTree = "<group>"; };
+		3A03EADA19C5E41A0095708C /* VENTouchLockSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockSpec.m; sourceTree = "<group>"; };
 		3A709A7019BE67D800AC9238 /* VENTouchLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VENTouchLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A709A7419BE67D800AC9238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A709A7519BE67D800AC9238 /* VENTouchLock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VENTouchLock.h; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		3A709A7C19BE67D800AC9238 /* VENTouchLockTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A03EADA19C5E41A0095708C /* VENTouchLockSpec.m */,
 				3A03EACA19C4F72C0095708C /* VENTouchLockEnterPasscodeViewControllerSpec.m */,
 				3A03EAD819C56C9E0095708C /* UIViewController+VENTouchLockSpec.m */,
 				3A709A7D19BE67D800AC9238 /* Supporting Files */,
@@ -415,6 +418,7 @@
 				3A03EAD419C4FF990095708C /* VENTouchLockPasscodeView.m in Sources */,
 				3A03EAD519C4FF990095708C /* UIColor+VENTouchLock.m in Sources */,
 				3A03EAD619C4FF990095708C /* UIViewController+VENTouchLock.m in Sources */,
+				3A03EADB19C5E41A0095708C /* VENTouchLockSpec.m in Sources */,
 				3A03EACE19C4FF440095708C /* VENTouchLockEnterPasscodeViewController.m in Sources */,
 				3A03EACB19C4F72C0095708C /* VENTouchLockEnterPasscodeViewControllerSpec.m in Sources */,
 			);
