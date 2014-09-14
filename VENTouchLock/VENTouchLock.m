@@ -170,12 +170,12 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
             #pragma clang diagnostic ignored "-Wunused-variable"
             __weak VENTouchLock *weakSelf = self;
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-            UIViewController *rootViewController = [UIViewController topMostController];
-            UINavigationController *navigationController = [splashViewController embeddedInNavigationController];
+            UIViewController *rootViewController = [UIViewController ven_topMostController];
+            UINavigationController *navigationController = [splashViewController ven_embeddedInNavigationController];
             if (fromBackground) {
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
-                self.snapshotView = [snapshotSplashViewController embeddedInNavigationController].view;
+                self.snapshotView = [snapshotSplashViewController ven_embeddedInNavigationController].view;
                 [mainWindow addSubview:self.snapshotView];
             }
             self.backgroundLockVisible = YES;

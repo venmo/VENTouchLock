@@ -48,7 +48,7 @@
 
 - (void)showPasscodeAnimated:(BOOL)animated
 {
-    [self.navigationController presentViewController:[[self enterPasscodeVC] embeddedInNavigationController]
+    [self.navigationController presentViewController:[[self enterPasscodeVC] ven_embeddedInNavigationController]
                                             animated:animated
                                           completion:nil];
 }

@@ -70,7 +70,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (UINavigationController *)embeddedInNavigationController
 {
-    return [super embeddedInNavigationController];
+    return [super ven_embeddedInNavigationController];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification

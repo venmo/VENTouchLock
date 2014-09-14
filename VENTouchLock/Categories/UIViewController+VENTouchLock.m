@@ -2,7 +2,7 @@
 
 @implementation UIViewController (VENTouchLock)
 
-- (UINavigationController *)embeddedInNavigationController
+- (UINavigationController *)ven_embeddedInNavigationController
 {
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
     navigationController.navigationBar.translucent = NO;
