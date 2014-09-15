@@ -13,8 +13,8 @@
     [[VENTouchLock sharedInstance] setKeychainService:@"testService"
                                       keychainAccount:@"testAccount"
                                         touchIDReason:@"Scan your fingerprint to use the app."
-                            splashViewControllerClass:[SampleLockSplashViewController class]
-                                 passcodeAttemptLimit:5];
+                                 passcodeAttemptLimit:5
+                            splashViewControllerClass:[SampleLockSplashViewController class]];
     return YES;
 }
 

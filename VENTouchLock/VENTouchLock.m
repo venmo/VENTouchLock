@@ -11,11 +11,9 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (copy, nonatomic) NSString *keychainService;
 @property (copy, nonatomic) NSString *keychainAccount;
 @property (copy, nonatomic) NSString *touchIDReason;
-
-@property (strong, nonatomic) UIView *snapshotView;
-@property (assign, nonatomic) Class splashViewControllerClass;
-
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
+@property (assign, nonatomic) Class splashViewControllerClass;
+@property (strong, nonatomic) UIView *snapshotView;
 
 @end
 
@@ -54,14 +52,15 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
+      passcodeAttemptLimit:(NSUInteger)attemptLimit
  splashViewControllerClass:(Class)splashViewControllerClass
-      passcodeAttemptLimit:(NSUInteger)attemptLimit;
+
 {
     self.keychainService = service;
     self.keychainAccount = account;
     self.touchIDReason = reason;
-    self.splashViewControllerClass = splashViewControllerClass;
     self.passcodeAttemptLimit = attemptLimit;
+    self.splashViewControllerClass = splashViewControllerClass;
 }
 
 

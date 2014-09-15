@@ -26,14 +26,14 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  Set the defaults. This method should be called at launch.
  @param service The keychain service for which to set and return a passcode
  @param account The keychain account for which to set and return a passcode
- @param reason The default message displayed on the TouchID prompt
  @param splashViewControllerClass The class of the custom splash view controller. This class should be a subclass of VENTouchLockSplashViewController and any of its custom initialization must be in its init function
+ @param reason The default message displayed on the TouchID prompt
  */
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
- splashViewControllerClass:(Class)splashViewControllerClass
-      passcodeAttemptLimit:(NSUInteger)attemptLimit;
+      passcodeAttemptLimit:(NSUInteger)attemptLimit
+ splashViewControllerClass:(Class)splashViewControllerClass;
 
 /**
  Returns YES if a passcode exists, and NO otherwise.
