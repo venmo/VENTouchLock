@@ -39,7 +39,6 @@
 		3A709AB319BE68BF00AC9238 /* VENTouchLockPasscodeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709AAE19BE68BF00AC9238 /* VENTouchLockPasscodeView.h */; };
 		3A709AB419BE68BF00AC9238 /* VENTouchLockPasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709AAF19BE68BF00AC9238 /* VENTouchLockPasscodeView.m */; };
 		3A709AB519BE68BF00AC9238 /* VENTouchLockPasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A709AB019BE68BF00AC9238 /* VENTouchLockPasscodeView.xib */; };
-		79839AD1D01A4F5292738CB7 /* libPods-VENTouchLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8322082DAA4E4E8840A4D1 /* libPods-VENTouchLock.a */; };
 		B0AAA75C21C74F8DA9D13175 /* libPods-VENTouchLockTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BBF12C3327B45B5803FC9C5 /* libPods-VENTouchLockTests.a */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79839AD1D01A4F5292738CB7 /* libPods-VENTouchLock.a in Frameworks */,
 				0E8BBA2F9ED2474C8534716D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

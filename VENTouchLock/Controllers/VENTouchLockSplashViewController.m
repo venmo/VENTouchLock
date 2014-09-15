@@ -2,10 +2,6 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLock.h"
 
-@interface VENTouchLockSplashViewController ()
-
-@end
-
 @implementation VENTouchLockSplashViewController
 
 - (void)dealloc
@@ -48,7 +44,7 @@
 
 - (void)showPasscodeAnimated:(BOOL)animated
 {
-    [self.navigationController presentViewController:[[self enterPasscodeVC] ven_embeddedInNavigationController]
+    [self.navigationController presentViewController:[[self enterPasscodeVC] embeddedInNavigationController]
                                             animated:animated
                                           completion:nil];
 }

@@ -95,6 +95,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     }
 }
 
+
 #pragma mark - UITextField Methods
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

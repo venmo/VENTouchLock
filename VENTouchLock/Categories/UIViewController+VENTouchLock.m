@@ -9,7 +9,7 @@
     return navigationController;
 }
 
-+ (UIViewController*) topMostController
++ (UIViewController*)ven_topMostController
 {
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
 
