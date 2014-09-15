@@ -1,15 +1,5 @@
 #import "VENTouchLock.h"
 
-//static id mockTouchLock = nil;
-
-
-//#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-//+ (instancetype)sharedInstance
-//{
-//    return mockTouchLock;
-//}
-
-
 SpecBegin(VENTouchLock)
 
 beforeAll(^{
