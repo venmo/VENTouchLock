@@ -2,7 +2,7 @@ VENTouchLock
 =============
 <!--  [![Build Status](https://travis-ci.org/venmo/VENTouchLock.svg?branch=master)](https://travis-ci.org/venmo/VENTouchLock) -->
 
-```VENTouchLock``` secures your app by requiring a Touch ID fingerprint scan or Passcode to gain access on launch and on background and is used in the Venmo app.
+VENTouchLock secures your app by requiring a Touch ID fingerprint scan or Passcode to gain access on launch and on background and is used in the Venmo app.
 
 <!-- ![alt text](http://i.imgur.com/a1FfEBi.gif "VENTouchLock demo") -->
 
@@ -44,7 +44,7 @@ Add the following code to initialize VENTouchLock in your app delegate's ```appl
 In order for your users to enable Touch ID and / or Passcode, they must set a passcode. In the Venmo app, this option is in the settings page. To let your users create a passcode, use a ```VENTouchLockSetPasscodeViewController```.
 
 ### 4. Enable Touch ID
-If the user's device supports Touch ID (ie. ```[VENTouchLock canUseTouchID]``` returns ```YES```), after setting a passcode prompt the user with the option to authenticate with Touch ID. Set their preference with the VENTouchLock class method ```setShouldUseTouchID:(BOOL)preference``` 
+If the user's device supports Touch ID (ie. ```[VENTouchLock canUseTouchID]``` returns ```YES```), after setting a passcode prompt the user with the option to unlock with Touch ID. Set their preference with the VENTouchLock class method ```setShouldUseTouchID:(BOOL)preference``` 
 
 Sample Project
 --------------
