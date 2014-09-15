@@ -97,5 +97,4 @@ describe(@"shouldUseTouchID", ^{
 
 });
 
-
 SpecEnd
