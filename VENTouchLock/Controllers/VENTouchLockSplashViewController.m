@@ -31,7 +31,7 @@
     [[VENTouchLock sharedInstance] requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
         switch (response) {
             case VENTouchLockTouchIDResponseSuccess:
-                [weakSelf unlock];
+                [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypeTouchID];
                 break;
             case VENTouchLockTouchIDResponseUsePasscode:
                 [weakSelf showPasscodeAnimated:YES];
@@ -55,7 +55,7 @@
     __weak VENTouchLockSplashViewController *weakSelf = self;
     enterPasscodeVC.willFinishWithResult = ^(BOOL success) {
         if (success) {
-            [weakSelf unlock];
+            [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypePasscode];
         }
         else {
             [weakSelf dismissViewControllerAnimated:YES completion:nil];
@@ -76,17 +76,21 @@
     }
 }
 
-- (void)unlock
+- (void)unlockWithType:(VENTouchLockSplashViewControllerUnlockType)unlockType
 {
-    [self dismissWithUnlockSuccess:YES animated:YES];
+    [self dismissWithUnlockSuccess:YES
+                        unlockType:unlockType
+                          animated:YES];
 }
 
-- (void)dismissWithUnlockSuccess:(BOOL)success animated:(BOOL)animated
+- (void)dismissWithUnlockSuccess:(BOOL)success
+                      unlockType:(VENTouchLockSplashViewControllerUnlockType)unlockType
+                        animated:(BOOL)animated
 {
     [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
         [VENTouchLock sharedInstance].backgroundLockVisible = NO;
         if (self.didFinishWithSuccess) {
-            self.didFinishWithSuccess(success);
+            self.didFinishWithSuccess(success, unlockType);
         }
     }];
 }

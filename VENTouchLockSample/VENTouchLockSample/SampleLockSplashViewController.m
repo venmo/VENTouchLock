@@ -13,9 +13,22 @@
 {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
-        self.didFinishWithSuccess = ^(BOOL success) {
+        self.didFinishWithSuccess = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
             if (success) {
-                NSLog(@"Sample App Unlocked");
+                NSString *logString = @"Sample App Unlocked";
+                switch (unlockType) {
+                    case VENTouchLockSplashViewControllerUnlockTypeTouchID: {
+                        logString = [logString stringByAppendingString:@" with Touch ID."];
+                        break;
+                    }
+                    case VENTouchLockSplashViewControllerUnlockTypePasscode: {
+                        logString = [logString stringByAppendingString:@" with Passcode."];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                NSLog(@"%@", logString);
             }
             else {
                 [[[UIAlertView alloc] initWithTitle:@"Limited Exceeded"
