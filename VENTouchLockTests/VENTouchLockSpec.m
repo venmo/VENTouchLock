@@ -6,8 +6,8 @@ beforeAll(^{
     [[VENTouchLock sharedInstance] setKeychainService:@"keychainService"
                                       keychainAccount:@"keychainAccount"
                                         touchIDReason:@"touchIDReason"
-                            splashViewControllerClass:NULL
-                                 passcodeAttemptLimit:0];
+                                 passcodeAttemptLimit:0
+                            splashViewControllerClass:NULL];
 });
 
 beforeEach(^{
