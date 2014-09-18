@@ -40,5 +40,10 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
 - (void)dismissWithUnlockSuccess:(BOOL)success
                       unlockType:(VENTouchLockSplashViewControllerUnlockType)unlockType
                         animated:(BOOL)animated;
+/**
+ Signals the splash view controller to behave like a snapshot view for app-switch.
+ @param isSnapshotViewController YES if the splash view controller is for the app-switch snapshot. NO othwerise.
+ */
+- (void)setIsSnapshotViewController:(BOOL)isSnapshotViewController;
 
 @end

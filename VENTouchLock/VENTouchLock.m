@@ -177,12 +177,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 self.snapshotView = [snapshotSplashViewController ventouchlock_embeddedInNavigationController].view;
                 [mainWindow addSubview:self.snapshotView];
             }
-            self.backgroundLockVisible = YES;
-                [rootViewController presentViewController:navigationController animated:NO completion:^{
-                    if (!fromBackground) {
-                        [splashViewController showUnlockAnimated:NO];
-                    }
-                }];
+            [rootViewController presentViewController:navigationController animated:NO completion:^{
+                if (!fromBackground) {
+                    [splashViewController showUnlockAnimated:NO];
+                }
+            }];
         }
     }
 }

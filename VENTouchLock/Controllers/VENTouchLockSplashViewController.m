@@ -2,16 +2,26 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLock.h"
 
+@interface VENTouchLockSplashViewController ()
+@property (nonatomic, assign) BOOL isSnapshotViewController;
+@end
+
 @implementation VENTouchLockSplashViewController
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    if (!self.isSnapshotViewController) {
+        [VENTouchLock sharedInstance].backgroundLockVisible = NO;
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (!self.isSnapshotViewController) {
+        [VENTouchLock sharedInstance].backgroundLockVisible = YES;
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
@@ -88,7 +98,6 @@
                         animated:(BOOL)animated
 {
     [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-        [VENTouchLock sharedInstance].backgroundLockVisible = NO;
         if (self.didFinishWithSuccess) {
             self.didFinishWithSuccess(success, unlockType);
         }
