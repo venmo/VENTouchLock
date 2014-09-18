@@ -8,6 +8,8 @@
 
 @implementation VENTouchLockSplashViewController
 
+#pragma mark - Creation and Lifecycle
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -16,14 +18,41 @@
     }
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setLockVisible];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setLockVisible];
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self setLockVisible];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (!self.isSnapshotViewController) {
-        [VENTouchLock sharedInstance].backgroundLockVisible = YES;
-    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
+
+
+#pragma mark - Present unlock methods
 
 - (void)showUnlockAnimated:(BOOL)animated
 {
@@ -102,6 +131,13 @@
             self.didFinishWithSuccess(success, unlockType);
         }
     }];
+}
+
+- (void)setLockVisible
+{
+    if (!self.isSnapshotViewController) {
+        [VENTouchLock sharedInstance].backgroundLockVisible = YES;
+    }
 }
 
 @end
