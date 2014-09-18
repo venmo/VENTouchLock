@@ -11,6 +11,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
 /**
  Called when the VENTouchLockSplashViewController instance is dismissed.
  @param success YES if the splash view controller was unlocked successfully. NO if the user reached passcodeAttemptLimit.
+ @param unlockType The type of unlock method used when unlock is successful.
  @note A secure use-case of this block is to log out of your app when success is NO.
  */
 @property (nonatomic, copy) void (^didFinishWithSuccess)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType);
@@ -33,7 +34,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
 /**
  Dismisses the VENTouchLockSplashViewController instance. This method should not be called outside of the VENTouchLock framework.
  @param success YES if the splash view controller was unlocked successfully. NO if the user reached passcodeAttemptLimit.
- @param unlockType The type of unlock method used when unlock is successful
+ @param unlockType The type of unlock method used when unlock is successful.
  @param animated YES to animated the view controller's dismissal. NO otherwise.
  */
 - (void)dismissWithUnlockSuccess:(BOOL)success
