@@ -2,8 +2,8 @@
 
 @interface UIViewController (VENTouchLock)
 
-- (UINavigationController *)ven_embeddedInNavigationController;
+- (UINavigationController *)ventouchlock_embeddedInNavigationController;
 
-+ (UIViewController*)ven_topMostController;
++ (UIViewController*)ventouchlock_topMostController;
 
 @end

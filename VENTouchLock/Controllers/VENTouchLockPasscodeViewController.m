@@ -25,7 +25,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
-    self.view.backgroundColor = [UIColor ven_greyColor];
+    self.view.backgroundColor = [UIColor ventouchlock_greyColor];
     [self configureInvisiblePasscodeField];
     [self configureNavigationItems];
     [self configurePasscodeView];
@@ -70,7 +70,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (UINavigationController *)embeddedInNavigationController
 {
-    return [super ven_embeddedInNavigationController];
+    return [super ventouchlock_embeddedInNavigationController];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification

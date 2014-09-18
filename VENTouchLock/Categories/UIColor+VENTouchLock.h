@@ -2,6 +2,6 @@
 
 @interface UIColor (VENTouchLock)
 
-+ (UIColor *)ven_greyColor;
++ (UIColor *)ventouchlock_greyColor;
 
 @end
