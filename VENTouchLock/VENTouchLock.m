@@ -175,7 +175,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
                 [snapshotSplashViewController setIsSnapshotViewController:YES];
-                self.snapshotView = [snapshotSplashViewController ventouchlock_embeddedInNavigationController].view;
+                UINavigationController *snapshotSplashNavigationController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
+                [snapshotSplashNavigationController loadView];
+                [snapshotSplashNavigationController viewDidLoad];
+                self.snapshotView = snapshotSplashNavigationController.view;
                 [mainWindow addSubview:self.snapshotView];
             }
             [rootViewController presentViewController:navigationController animated:NO completion:^{
