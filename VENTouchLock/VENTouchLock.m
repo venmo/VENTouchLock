@@ -166,8 +166,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            #pragma clang diagnostic ignored "-Wunused-variable"
-            __weak VENTouchLock *weakSelf = self;
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
             UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
             UINavigationController *navigationController = [splashViewController ventouchlock_embeddedInNavigationController];
@@ -175,7 +173,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
                 [snapshotSplashViewController setIsSnapshotViewController:YES];
-                self.snapshotView = [snapshotSplashViewController ventouchlock_embeddedInNavigationController].view;
+                UINavigationController *snapshotSplashNavigationController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
+                [snapshotSplashNavigationController loadView];
+                [snapshotSplashNavigationController viewDidLoad];
+                self.snapshotView = snapshotSplashNavigationController.view;
                 [mainWindow addSubview:self.snapshotView];
             }
             [rootViewController presentViewController:navigationController animated:NO completion:^{
