@@ -166,8 +166,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            #pragma clang diagnostic ignored "-Wunused-variable"
-            __weak VENTouchLock *weakSelf = self;
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
             UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
             UINavigationController *navigationController = [splashViewController ventouchlock_embeddedInNavigationController];
