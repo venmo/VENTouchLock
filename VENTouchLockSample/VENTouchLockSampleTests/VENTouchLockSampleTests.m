@@ -1,3 +1,4 @@
+#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <KIF/KIF.h>
 #import "VENTouchLock.h"
