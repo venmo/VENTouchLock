@@ -48,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLockVisible];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
@@ -136,7 +137,6 @@
 - (void)initialize
 {
     _touchLock = [VENTouchLock sharedInstance];
-    [self setLockVisible];
 }
 
 - (void)setLockVisible
