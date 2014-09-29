@@ -1,4 +1,5 @@
 #import "VENTouchLockCreatePasscodeViewController.h"
+#import "VENTouchLockPasscodeView.h"
 #import "VENTouchLock.h"
 
 static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration = 0.2;
@@ -13,7 +14,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 {
     self = [super init];
     if (self) {
-        self.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeViewControllerTitle;
+        self.title = [self.touchLock appearance].enterPasscodeViewControllerTitle;
     }
     return self;
 }
@@ -21,7 +22,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.passcodeView.title = [[VENTouchLock sharedInstance] appearance].createPasscodeInitialLabelText;
+    self.passcodeView.title = [self.touchLock appearance].createPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -29,7 +30,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
     [super enteredPasscode:passcode];
     if (self.firstPasscode) {
         if ([passcode isEqualToString:self.firstPasscode]) {
-            [[VENTouchLock sharedInstance] setPasscode:passcode];
+            [self.touchLock setPasscode:passcode];
             [self finishWithResult:YES animated:YES];
         }
         else {
@@ -58,7 +59,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
                                         CGRectGetMinY(firstPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(firstPasscodeView.frame));
-    NSString *confirmPasscodeTitle = [[VENTouchLock sharedInstance] appearance].createPasscodeConfirmLabelText;
+    NSString *confirmPasscodeTitle = [self.touchLock appearance].createPasscodeConfirmLabelText;
     VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
                                                      initWithTitle:confirmPasscodeTitle
                                                      frame:confirmInitialFrame];
@@ -90,7 +91,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    NSString *firstPasscodeTitle = [[VENTouchLock sharedInstance] appearance].createPasscodeMismatchedLabelText;
+    NSString *firstPasscodeTitle = [self.touchLock appearance].createPasscodeMismatchedLabelText;
     VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:firstPasscodeTitle
                                                                                             frame:firstInitialFrame];
     [self.view addSubview:firstPasscodeView];

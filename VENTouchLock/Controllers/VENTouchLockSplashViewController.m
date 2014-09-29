@@ -14,7 +14,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if (!self.isSnapshotViewController) {
-        [VENTouchLock sharedInstance].backgroundLockVisible = NO;
+        self.touchLock.backgroundLockVisible = NO;
     }
 }
 
@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        [self setLockVisible];
+        [self initialize];
     }
     return self;
 }
@@ -31,7 +31,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setLockVisible];
+        [self initialize];
     }
     return self;
 }
@@ -40,7 +40,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self setLockVisible];
+        [self initialize];
     }
     return self;
 }
@@ -48,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLockVisible];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
@@ -67,7 +68,7 @@
 - (void)showTouchID
 {
     __weak VENTouchLockSplashViewController *weakSelf = self;
-    [[VENTouchLock sharedInstance] requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
+    [self.touchLock requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
         switch (response) {
             case VENTouchLockTouchIDResponseSuccess:
                 [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypeTouchID];
@@ -133,10 +134,15 @@
     }];
 }
 
+- (void)initialize
+{
+    _touchLock = [VENTouchLock sharedInstance];
+}
+
 - (void)setLockVisible
 {
     if (!self.isSnapshotViewController) {
-        [VENTouchLock sharedInstance].backgroundLockVisible = YES;
+        self.touchLock.backgroundLockVisible = YES;
     }
 }
 

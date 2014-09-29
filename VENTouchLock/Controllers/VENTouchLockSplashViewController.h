@@ -6,6 +6,8 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
     VENTouchLockSplashViewControllerUnlockTypePasscode
 };
 
+@class VENTouchLock;
+
 @interface VENTouchLockSplashViewController : UIViewController
 
 /**
@@ -15,6 +17,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
  @note A secure use-case of this block is to log out of your app when success is NO.
  */
 @property (nonatomic, copy) void (^didFinishWithSuccess)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType);
+
+/**
+ The VENTouchLock framework this class interacts with. This property should not be set outside of VENTouchLock framework's automated tests.  By default, it is set to the [VENTouchLock sharedInstance] singleton on initialization.
+ */
+@property (nonatomic, strong) VENTouchLock *touchLock;
 
 /**
  Displays a Touch ID prompt if the device can support it.
@@ -41,7 +48,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
                       unlockType:(VENTouchLockSplashViewControllerUnlockType)unlockType
                         animated:(BOOL)animated;
 /**
- Signals the splash view controller to behave like a snapshot view for app-switch.
+ Signals the splash view controller to behave like a snapshot view for app-switch. This method should not be called outside of the VENTouchLock framework.
  @param isSnapshotViewController YES if the splash view controller is for the app-switch snapshot. NO othwerise.
  */
 - (void)setIsSnapshotViewController:(BOOL)isSnapshotViewController;
