@@ -25,7 +25,7 @@
         [[[UIAlertView alloc] initWithTitle:@"Passcode already exists" message:@"To set a new one, first delete the existing one" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
     else {
-        VENTouchLockSetPasscodeViewController *setPasscodeVC = [[VENTouchLockSetPasscodeViewController alloc] init];
+        VENTouchLockCreatePasscodeViewController *setPasscodeVC = [[VENTouchLockCreatePasscodeViewController alloc] init];
         [self presentViewController:[setPasscodeVC embeddedInNavigationController] animated:YES completion:nil];
     }
 }

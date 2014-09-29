@@ -1,19 +1,19 @@
-#import "VENTouchLockSetPasscodeViewController.h"
+#import "VENTouchLockCreatePasscodeViewController.h"
 #import "VENTouchLock.h"
 
-static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.2;
+static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration = 0.2;
 
-@interface VENTouchLockSetPasscodeViewController ()
+@interface VENTouchLockCreatePasscodeViewController ()
 @property (strong, nonatomic) NSString *firstPasscode;
 @end
 
-@implementation VENTouchLockSetPasscodeViewController
+@implementation VENTouchLockCreatePasscodeViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Set Passcode", nil);
-    self.passcodeView.title = [VENTouchLock appearance].initialSetPasscodeLabelText;
+    self.passcodeView.title = [VENTouchLock appearance].createPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -50,12 +50,12 @@ static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.
                                         CGRectGetMinY(firstPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(firstPasscodeView.frame));
-    NSString *confirmPasscodeTitle = [VENTouchLock appearance].confirmSetPasscodeLabelText;
+    NSString *confirmPasscodeTitle = [VENTouchLock appearance].createPasscodeConfirmLabelText;
     VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
                                                      initWithTitle:confirmPasscodeTitle
                                                      frame:confirmInitialFrame];
     [self.view addSubview:confirmPasscodeView];
-    [UIView animateWithDuration: VENTouchLockSetPasscodeViewControllerAnimationDuration
+    [UIView animateWithDuration: VENTouchLockCreatePasscodeViewControllerAnimationDuration
                           delay: 0.0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{
@@ -82,11 +82,11 @@ static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    NSString *firstPasscodeTitle = [VENTouchLock appearance].mismatchedSetPasscodeLabelText;
+    NSString *firstPasscodeTitle = [VENTouchLock appearance].createPasscodeMismatchedLabelText;
     VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:firstPasscodeTitle
                                                                                             frame:firstInitialFrame];
     [self.view addSubview:firstPasscodeView];
-    [UIView animateWithDuration: VENTouchLockSetPasscodeViewControllerAnimationDuration
+    [UIView animateWithDuration: VENTouchLockCreatePasscodeViewControllerAnimationDuration
                           delay: 0.0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{

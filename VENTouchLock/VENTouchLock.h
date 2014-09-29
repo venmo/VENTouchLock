@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "VENTouchLockSetPasscodeViewController.h"
+#import "VENTouchLockCreatePasscodeViewController.h"
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLockSplashViewController.h"
 #import "VENTouchLockAppearance.h"
