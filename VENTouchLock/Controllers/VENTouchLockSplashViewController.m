@@ -3,10 +3,7 @@
 #import "VENTouchLock.h"
 
 @interface VENTouchLockSplashViewController ()
-
-@property (nonatomic, strong) VENTouchLock *touchLock;
 @property (nonatomic, assign) BOOL isSnapshotViewController;
-
 @end
 
 @implementation VENTouchLockSplashViewController
