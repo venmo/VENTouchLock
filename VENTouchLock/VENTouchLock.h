@@ -93,7 +93,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (NSUInteger)passcodeAttemptLimit;
 
 /**
- @return The proxy for reciever's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
+ @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
  */
 - (VENTouchLockAppearance *)appearance;
 
