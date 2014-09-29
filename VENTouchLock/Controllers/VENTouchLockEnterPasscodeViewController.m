@@ -21,7 +21,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 {
     self = [super init];
     if (self) {
-        self.title = [VENTouchLock appearance].enterPasscodeViewControllerTitle;
+        self.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeViewControllerTitle;
     }
     return self;
 }
@@ -29,7 +29,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.passcodeView.title = [VENTouchLock appearance].enterPasscodeInitialLabelText;
+    self.passcodeView.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode
@@ -41,7 +41,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
     }
     else {
         [self.passcodeView shakeAndVibrateCompletion:^{
-            self.passcodeView.title = [VENTouchLock appearance].enterPasscodeIncorrectLabelText;
+            self.passcodeView.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeIncorrectLabelText;
             [self clearPasscode];
             if ([self parentSplashViewController]) {
                 [self recordIncorrectPasscodeAttempt];

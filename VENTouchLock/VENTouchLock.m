@@ -200,11 +200,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     }
 }
 
-+ (VENTouchLockAppearance *)appearance
-{
-    return [VENTouchLock sharedInstance].appearance;
-}
-
 
 #pragma mark - NSNotifications
 

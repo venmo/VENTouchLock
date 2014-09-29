@@ -13,7 +13,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 {
     self = [super init];
     if (self) {
-        self.title = [VENTouchLock appearance].enterPasscodeViewControllerTitle;
+        self.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeViewControllerTitle;
     }
     return self;
 }
@@ -21,7 +21,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.passcodeView.title = [VENTouchLock appearance].createPasscodeInitialLabelText;
+    self.passcodeView.title = [[VENTouchLock sharedInstance] appearance].createPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -58,7 +58,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
                                         CGRectGetMinY(firstPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(firstPasscodeView.frame));
-    NSString *confirmPasscodeTitle = [VENTouchLock appearance].createPasscodeConfirmLabelText;
+    NSString *confirmPasscodeTitle = [[VENTouchLock sharedInstance] appearance].createPasscodeConfirmLabelText;
     VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
                                                      initWithTitle:confirmPasscodeTitle
                                                      frame:confirmInitialFrame];
@@ -90,7 +90,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    NSString *firstPasscodeTitle = [VENTouchLock appearance].createPasscodeMismatchedLabelText;
+    NSString *firstPasscodeTitle = [[VENTouchLock sharedInstance] appearance].createPasscodeMismatchedLabelText;
     VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:firstPasscodeTitle
                                                                                             frame:firstInitialFrame];
     [self.view addSubview:firstPasscodeView];
