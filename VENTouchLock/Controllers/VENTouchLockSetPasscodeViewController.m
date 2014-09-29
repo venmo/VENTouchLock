@@ -13,7 +13,7 @@ static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.
 {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"Set Passcode", nil);
-    self.passcodeView.title = NSLocalizedString(@"Enter a new Passcode",nil);
+    self.passcodeView.title = [VENTouchLock appearance].initialSetPasscodeLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -50,7 +50,7 @@ static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.
                                         CGRectGetMinY(firstPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(firstPasscodeView.frame));
-    NSString *confirmPasscodeTitle = NSLocalizedString(@"Please re-enter your passcode", nil);
+    NSString *confirmPasscodeTitle = [VENTouchLock appearance].confirmSetPasscodeLabelText;
     VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
                                                      initWithTitle:confirmPasscodeTitle
                                                      frame:confirmInitialFrame];
@@ -82,7 +82,7 @@ static CGFloat const VENTouchLockSetPasscodeViewControllerAnimationDuration = 0.
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    NSString *firstPasscodeTitle = NSLocalizedString(@"Passwords did not match. Try again.", nil);
+    NSString *firstPasscodeTitle = [VENTouchLock appearance].mismatchedSetPasscodeLabelText;
     VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:firstPasscodeTitle
                                                                                             frame:firstInitialFrame];
     [self.view addSubview:firstPasscodeView];

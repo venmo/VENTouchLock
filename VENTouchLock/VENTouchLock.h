@@ -2,6 +2,7 @@
 #import "VENTouchLockSetPasscodeViewController.h"
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLockSplashViewController.h"
+#import "VENTouchLockAppearance.h"
 
 typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
     VENTouchLockTouchIDResponseUndefined,
@@ -90,5 +91,10 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  The maximum number of incorrect passcode attempts before the exceededLimitAction is called.
  */
 - (NSUInteger)passcodeAttemptLimit;
+
+/**
+ @return The proxy for VENTouchLock's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
+ */
++ (VENTouchLockAppearance *)appearance;
 
 @end

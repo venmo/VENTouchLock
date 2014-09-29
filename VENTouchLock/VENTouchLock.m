@@ -14,6 +14,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (assign, nonatomic) Class splashViewControllerClass;
 @property (strong, nonatomic) UIView *snapshotView;
+@property (strong, nonatomic) VENTouchLockAppearance *appearance;
 
 @end
 
@@ -25,12 +26,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self class] alloc] init];
+        sharedInstance.appearance = [[VENTouchLockAppearance alloc] init];
     });
     return sharedInstance;
 }
-
-
-#pragma mark - Instance Methods
 
 - (void)dealloc
 {
@@ -167,24 +166,43 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
             UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
-            UINavigationController *navigationController = [splashViewController ventouchlock_embeddedInNavigationController];
+            UIViewController *displayController;
+            if (self.appearance.embedSplashInNavigationController) {
+                displayController = [splashViewController ventouchlock_embeddedInNavigationController];
+            }
+            else {
+                displayController = splashViewController;
+            }
+
             if (fromBackground) {
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
                 [snapshotSplashViewController setIsSnapshotViewController:YES];
-                UINavigationController *snapshotSplashNavigationController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
-                [snapshotSplashNavigationController loadView];
-                [snapshotSplashNavigationController viewDidLoad];
-                self.snapshotView = snapshotSplashNavigationController.view;
+                UIViewController *snapshotDisplayController;
+                if (self.appearance.embedSplashInNavigationController) {
+                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
+                }
+                else {
+                    snapshotDisplayController = snapshotSplashViewController;
+                }
+                [snapshotDisplayController loadView];
+                [snapshotDisplayController viewDidLoad];
+                snapshotDisplayController.view.frame = mainWindow.bounds;
+                self.snapshotView = snapshotDisplayController.view;
                 [mainWindow addSubview:self.snapshotView];
             }
-            [rootViewController presentViewController:navigationController animated:NO completion:^{
+            [rootViewController presentViewController:displayController animated:NO completion:^{
                 if (!fromBackground) {
                     [splashViewController showUnlockAnimated:NO];
                 }
             }];
         }
     }
+}
+
++ (VENTouchLockAppearance *)appearance
+{
+    return [VENTouchLock sharedInstance].appearance;
 }
 
 
