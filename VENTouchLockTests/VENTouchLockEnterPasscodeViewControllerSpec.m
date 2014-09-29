@@ -1,18 +1,6 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLock.h"
 
-static id mockTouchLock = nil;
-
-@implementation VENTouchLock (UnitTests)
-
-#pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
-+ (instancetype)sharedInstance
-{
-    return mockTouchLock;
-}
-
-@end
-
 @interface VENTouchLockEnterPasscodeViewController (UnitTests)
 
 extern NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts;
@@ -47,11 +35,13 @@ describe(@"resetPasscodeAttemptHistory:", ^{
 describe(@"recordIncorrectPasscodeAttempt", ^{
 
     __block id mockEnterPasscodeVC;
+    __block id mockTouchLock;
 
     beforeEach(^{
         mockTouchLock = [OCMockObject mockForClass:[VENTouchLock class]];
         [[[mockTouchLock stub] andReturnValue:OCMOCK_VALUE((NSUInteger){3})] passcodeAttemptLimit];
         VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
+        enterPasscodeVC.touchLock = mockTouchLock;
         mockEnterPasscodeVC = [OCMockObject partialMockForObject:enterPasscodeVC];
     });
 
@@ -92,10 +82,6 @@ describe(@"recordIncorrectPasscodeAttempt", ^{
         [mockEnterPasscodeVC verify];
     });
 
-});
-
-afterAll(^{
-    mockTouchLock = [[VENTouchLock alloc] init]; // Restore [VENTouchLock sharedInstance] natural behavior
 });
 
 SpecEnd
