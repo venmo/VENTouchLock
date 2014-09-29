@@ -9,10 +9,18 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 
 @implementation VENTouchLockCreatePasscodeViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.title = [VENTouchLock appearance].enterPasscodeViewControllerTitle;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"Set Passcode", nil);
     self.passcodeView.title = [VENTouchLock appearance].createPasscodeInitialLabelText;
 }
 

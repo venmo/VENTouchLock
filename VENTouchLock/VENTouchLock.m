@@ -167,7 +167,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
             UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
             UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
             UIViewController *displayController;
-            if (self.appearance.embedSplashInNavigationController) {
+            if (self.appearance.splashShouldEmbedInNavigationController) {
                 displayController = [splashViewController ventouchlock_embeddedInNavigationController];
             }
             else {
@@ -179,7 +179,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
                 [snapshotSplashViewController setIsSnapshotViewController:YES];
                 UIViewController *snapshotDisplayController;
-                if (self.appearance.embedSplashInNavigationController) {
+                if (self.appearance.splashShouldEmbedInNavigationController) {
                 snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
                 }
                 else {
