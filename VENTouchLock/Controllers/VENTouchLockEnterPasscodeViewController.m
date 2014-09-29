@@ -1,4 +1,5 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
+#import "VENTouchLockPasscodeView.h"
 #import "VENTouchLock.h"
 
 NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts = @"VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts";
@@ -21,7 +22,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 {
     self = [super init];
     if (self) {
-        self.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeViewControllerTitle;
+        self.title = [self.touchLock appearance].enterPasscodeViewControllerTitle;
     }
     return self;
 }
@@ -29,19 +30,19 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.passcodeView.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeInitialLabelText;
+    self.passcodeView.title = [self.touchLock appearance].enterPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode
 {
     [super enteredPasscode:passcode];
-    if ([[VENTouchLock sharedInstance] isPasscodeValid:passcode]) {
+    if ([self.touchLock isPasscodeValid:passcode]) {
         [[self class] resetPasscodeAttemptHistory];
         [self finishWithResult:YES animated:YES];
     }
     else {
         [self.passcodeView shakeAndVibrateCompletion:^{
-            self.passcodeView.title = [[VENTouchLock sharedInstance] appearance].enterPasscodeIncorrectLabelText;
+            self.passcodeView.title = [self.touchLock appearance].enterPasscodeIncorrectLabelText;
             [self clearPasscode];
             if ([self parentSplashViewController]) {
                 [self recordIncorrectPasscodeAttempt];
@@ -58,7 +59,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
     numberOfAttemptsSoFar ++;
     [standardDefaults setInteger:numberOfAttemptsSoFar forKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
     [standardDefaults synchronize];
-    if (numberOfAttemptsSoFar >= [[VENTouchLock sharedInstance] passcodeAttemptLimit]) {
+    if (numberOfAttemptsSoFar >= [self.touchLock passcodeAttemptLimit]) {
         [self callExceededLimitActionBlock];
     }
 }

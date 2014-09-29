@@ -1,4 +1,5 @@
 #import "VENTouchLockPasscodeViewController.h"
+#import "VENTouchLockPasscodeView.h"
 #import "VENTouchLockPasscodeCharacterView.h"
 #import "UIViewController+VENTouchLock.h"
 #import "VENTouchLock.h"
@@ -19,13 +20,22 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _touchLock = [VENTouchLock sharedInstance];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
-    self.view.backgroundColor = [[VENTouchLock sharedInstance] appearance].passcodeViewControllerBackgroundColor;
+    self.view.backgroundColor = [self.touchLock appearance].passcodeViewControllerBackgroundColor;
     [self configureInvisiblePasscodeField];
     [self configureNavigationItems];
     [self configurePasscodeView];

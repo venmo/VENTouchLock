@@ -3,7 +3,10 @@
 #import "VENTouchLock.h"
 
 @interface VENTouchLockSplashViewController ()
+
+@property (nonatomic, strong) VENTouchLock *touchLock;
 @property (nonatomic, assign) BOOL isSnapshotViewController;
+
 @end
 
 @implementation VENTouchLockSplashViewController
@@ -14,7 +17,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if (!self.isSnapshotViewController) {
-        [VENTouchLock sharedInstance].backgroundLockVisible = NO;
+        self.touchLock.backgroundLockVisible = NO;
     }
 }
 
@@ -22,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-        [self setLockVisible];
+        [self initialize];
     }
     return self;
 }
@@ -31,7 +34,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setLockVisible];
+        [self initialize];
     }
     return self;
 }
@@ -40,7 +43,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self setLockVisible];
+        [self initialize];
     }
     return self;
 }
@@ -67,7 +70,7 @@
 - (void)showTouchID
 {
     __weak VENTouchLockSplashViewController *weakSelf = self;
-    [[VENTouchLock sharedInstance] requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
+    [self.touchLock requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
         switch (response) {
             case VENTouchLockTouchIDResponseSuccess:
                 [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypeTouchID];
@@ -133,10 +136,16 @@
     }];
 }
 
+- (void)initialize
+{
+    _touchLock = [VENTouchLock sharedInstance];
+    [self setLockVisible];
+}
+
 - (void)setLockVisible
 {
     if (!self.isSnapshotViewController) {
-        [VENTouchLock sharedInstance].backgroundLockVisible = YES;
+        self.touchLock.backgroundLockVisible = YES;
     }
 }
 

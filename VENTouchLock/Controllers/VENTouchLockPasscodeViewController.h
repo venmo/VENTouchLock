@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
-#import "VENTouchLockPasscodeView.h"
+
+@class VENTouchLock, VENTouchLockPasscodeView;
 
 @interface VENTouchLockPasscodeViewController : UIViewController
 
@@ -14,6 +15,8 @@
  If this block is nil, the payment view controller will dismiss itself.
  */
 @property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);
+
+@property (nonatomic, strong) VENTouchLock *touchLock;
 
 /**
  Encapsulates the view controller in a navigation controller.
