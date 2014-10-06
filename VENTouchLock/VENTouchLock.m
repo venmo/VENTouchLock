@@ -128,6 +128,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 {
     if ([[self class] canUseTouchID]) {
         LAContext *context = [[LAContext alloc] init];
+        context.localizedFallbackTitle = NSLocalizedString(@"Enter Passcode", nil);
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                 localizedReason:reason
                           reply:^(BOOL success, NSError *error) {
