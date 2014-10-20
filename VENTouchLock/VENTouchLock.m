@@ -193,9 +193,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 [mainWindow addSubview:self.snapshotView];
             }
             [rootViewController presentViewController:displayController animated:NO completion:^{
-                if (!fromBackground) {
-                    [splashViewController showUnlockAnimated:NO];
-                }
+                [splashViewController showUnlockAnimated:NO];
             }];
         }
     }

@@ -49,7 +49,18 @@
 {
     [super viewDidLoad];
     [self setLockVisible];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 
@@ -107,12 +118,7 @@
 - (void)appWillEnterForeground
 {
     if (!self.presentedViewController) {
-        if ([VENTouchLock shouldUseTouchID]) {
-            [self showTouchID];
-        }
-        else {
-            [self showPasscodeAnimated:NO];
-        }
+        [self showUnlockAnimated:NO];
     }
 }
 
