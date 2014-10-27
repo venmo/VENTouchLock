@@ -1,9 +1,7 @@
 language: objective-c
+script: xcodebuild test -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO && xcodebuild test -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 before_install:
-- gem update cocoapods -v
+- gem i cocoapods --no-ri --no-rdoc
 - brew uninstall xctool; brew install xctool --HEAD;
-xcode_workspace: VENTouchLock.xcworkspace
-xcode_scheme: VENTouchLock
-xcode_sdk:
-  - iphonesimulator7.0
-  - iphonesimulator7.1
+install:
+- pod install
