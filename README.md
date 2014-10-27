@@ -4,7 +4,7 @@ VENTouchLock
 
 VENTouchLock secures your app by requiring a Touch ID fingerprint scan or Passcode to gain access on launch and on background and is used in the Venmo app.
 
-<!-- ![alt text](http://i.imgur.com/a1FfEBi.gif "VENTouchLock demo") -->
+<img src="http://i.imgur.com/Wt8yi6k.jpg" height="400px" /> <img src="http://i.imgur.com/g4Xrse9.gif" height="400px" />
 
 Installation
 ------------
