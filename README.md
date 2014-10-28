@@ -1,6 +1,6 @@
 VENTouchLock
 =============
- [![Build Status](https://travis-ci.org/venmo/VENTouchLock.svg?branch=master)](https://travis-ci.org/venmo/VENTouchLock)
+[![Build Status](https://travis-ci.org/venmo/VENTouchLock.svg?branch=master)](https://travis-ci.org/venmo/VENTouchLock)
 
 VENTouchLock secures your app by requiring a Touch ID fingerprint scan or Passcode to gain access on launch and on background and is used in the Venmo app.
 
