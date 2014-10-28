@@ -1,7 +1,7 @@
 language: objective-c
 script:
 - xctool -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO 
-- xctool test -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xcodebuild test -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool test -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 before_install:
