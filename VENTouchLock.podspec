@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = 'VENTouchLock'
   s.version      = '1.0.0'
-  s.summary      = 'A passcode framework that features touch ID'
+  s.summary      = 'A passcode framework that features Touch ID'
   s.description   = <<-DESC
-                   An easy to use passcode framework used in the Venmo app
+                   An easy to use passcode framework used in the Venmo app.
                    DESC
   s.homepage     = 'https://www.github.com/venmo/VENTouchLock'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
