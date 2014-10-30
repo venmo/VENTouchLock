@@ -74,10 +74,15 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 - (VENTouchLockSplashViewController *)parentSplashViewController
 {
     VENTouchLockSplashViewController *splashViewController = nil;
-    UIViewController *navcontroller = self.presentingViewController;
-    UIViewController *rootViewController = ([navcontroller isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)navcontroller).viewControllers firstObject] : nil;
-    if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-        splashViewController = (VENTouchLockSplashViewController *)rootViewController;
+    UIViewController *presentingViewController = self.presentingViewController;
+    if (self.touchLock.appearance.splashShouldEmbedInNavigationController) {
+        UIViewController *rootViewController = ([presentingViewController isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)presentingViewController).viewControllers firstObject] : nil;
+        if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
+            splashViewController = (VENTouchLockSplashViewController *)rootViewController;
+        }
+    }
+    else if ([presentingViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
+        splashViewController = (VENTouchLockSplashViewController *)presentingViewController;
     }
     return splashViewController;
 }
