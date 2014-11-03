@@ -3,6 +3,13 @@
 #import <KIF/KIF.h>
 #import "VENTouchLock.h"
 
+@interface VENTouchLock (Internal)
+
+@property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
+@property (strong, nonatomic) VENTouchLockAppearance *appearance;
+
+@end
+
 @interface VENTouchLockSampleTests : XCTestCase
 
 @end
@@ -11,7 +18,7 @@
 
 - (void)testBasicCreatePasswordFlow
 {
-    [self dismissAutoLockAndDeletePasscode];
+    [self dismissAndResetLock];
     VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [tester tapViewWithAccessibilityLabel:@"Set Passcode"];
     [tester waitForKeyboard];
@@ -29,7 +36,7 @@
 
 - (void)testBasicEnterPasscodeFlow
 {
-    [self dismissAutoLockAndDeletePasscode];
+    [self dismissAndResetLock];
     [[VENTouchLock sharedInstance] setPasscode:@"7890"];
     [tester tapViewWithAccessibilityLabel:@"Show Passcode"];
     [tester waitForKeyboard];
@@ -42,7 +49,7 @@
 
 - (void)testAdvancedCreatePasscodeFlow
 {
-    [self dismissAutoLockAndDeletePasscode];
+    [self dismissAndResetLock];
     VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [tester tapViewWithAccessibilityLabel:@"Set Passcode"];
     [tester waitForKeyboard];
@@ -70,7 +77,7 @@
 
 - (void)testAdvancedEnterPasscodeFlow
 {
-    [self dismissAutoLockAndDeletePasscode];
+    [self dismissAndResetLock];
     VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [[VENTouchLock sharedInstance] setPasscode:@"7890"];
     [tester tapViewWithAccessibilityLabel:@"Show Passcode"];
@@ -87,10 +94,41 @@
     [tester waitForAbsenceOfKeyboard];
 }
 
+- (void)testEnterPasscodeAttemptLimitExceeded
+{
+    [self performPasscodeAttemptLimitTestWithSplashInNavVC:NO];
+    [self performPasscodeAttemptLimitTestWithSplashInNavVC:YES];
+}
+
+- (void)performPasscodeAttemptLimitTestWithSplashInNavVC:(BOOL)splashEmbeddedInNavigationController
+{
+    [self dismissAndResetLock];
+    VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    [[VENTouchLock sharedInstance] setPasscode:@"4567"];
+    [self simulateAppBackgroundThenForeground];
+    [tester waitForKeyboard];
+    for (NSUInteger i = 0 ; i < [VENTouchLock sharedInstance].passcodeAttemptLimit; i++) {
+        if (i == 0) {
+            [tester waitForViewWithAccessibilityLabel:currentAppearance.enterPasscodeInitialLabelText];
+        }
+        else {
+            [tester waitForViewWithAccessibilityLabel:currentAppearance.enterPasscodeIncorrectLabelText];
+        }
+        [tester enterTextIntoCurrentFirstResponder:@"5"];
+        [tester enterTextIntoCurrentFirstResponder:@"5"];
+        [tester enterTextIntoCurrentFirstResponder:@"5"];
+        [tester enterTextIntoCurrentFirstResponder:@"5"];
+        [tester waitForTimeInterval:1.0];
+    }
+    [tester waitForAbsenceOfKeyboard];
+    [tester waitForViewWithAccessibilityLabel:@"Limit Exceeded"];
+    [tester tapViewWithAccessibilityLabel:@"OK"];
+}
+
 
 #pragma mark - Helper Methods
 
-- (void)dismissAutoLockAndDeletePasscode
+- (void)dismissAndResetLock
 {
     UIViewController *viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     while (viewController.presentedViewController) {
@@ -100,7 +138,21 @@
             [splashViewController dismissWithUnlockSuccess:YES unlockType:VENTouchLockSplashViewControllerUnlockTypePasscode animated:NO];
         }
     }
+    [VENTouchLock sharedInstance].backgroundLockVisible = NO;
     [[VENTouchLock sharedInstance] deletePasscode];
+    [VENTouchLock sharedInstance].appearance = [[VENTouchLockAppearance alloc] init];
+}
+
+- (void)simulateAppBackgroundThenForeground
+{
+    [tester waitForTimeInterval:0.5];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationWillResignActiveNotification object:nil];
+    [tester waitForTimeInterval:0.5];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationDidEnterBackgroundNotification object:nil];
+    [tester waitForTimeInterval:0.5];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationWillEnterForegroundNotification object:nil];
+    [tester waitForTimeInterval:0.5];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 @end

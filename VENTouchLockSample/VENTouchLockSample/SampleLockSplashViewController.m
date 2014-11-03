@@ -31,7 +31,7 @@
                 NSLog(@"%@", logString);
             }
             else {
-                [[[UIAlertView alloc] initWithTitle:@"Limited Exceeded"
+                [[[UIAlertView alloc] initWithTitle:@"Limit Exceeded"
                                             message:@"You have exceeded the maximum number of passcode attempts"
                                            delegate:nil
                                   cancelButtonTitle:@"OK"
