@@ -205,7 +205,9 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     if ([self isPasscodeSet]) {
-        [self lockFromBackground:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self lockFromBackground:NO];
+        });
     }
 }
 
