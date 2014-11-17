@@ -192,9 +192,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 self.snapshotView = snapshotDisplayController.view;
                 [mainWindow addSubview:self.snapshotView];
             }
-            [rootViewController presentViewController:displayController animated:NO completion:^{
-                [splashViewController showUnlockAnimated:NO];
-            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [rootViewController presentViewController:displayController animated:NO completion:^{
+                    [splashViewController showUnlockAnimated:NO];
+                }];
+            });
         }
     }
 }
@@ -205,9 +207,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     if ([self isPasscodeSet]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self lockFromBackground:NO];
-        });
+        [self lockFromBackground:NO];
     }
 }
 
@@ -220,8 +220,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)applicationWillEnterForeground:(NSNotification *)notification
 {
-    [self.snapshotView removeFromSuperview];
-    self.snapshotView = nil;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.snapshotView removeFromSuperview];
+        self.snapshotView = nil;
+    });
+
 }
 
 @end
