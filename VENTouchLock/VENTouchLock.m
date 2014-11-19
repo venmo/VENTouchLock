@@ -40,9 +40,13 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 {
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(applicationDidEnterBackground:) name: UIApplicationDidEnterBackgroundNotification object: nil];
-        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(applicationWillEnterForeground:) name: UIApplicationWillEnterForegroundNotification object: nil];
-        [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(applicationDidFinishLaunching:) name: UIApplicationDidFinishLaunchingNotification object: nil];
+        NSDictionary *selectorsToNotifications = [[NSDictionary alloc] initWithObjectsAndKeys:
+            @selector(applicationDidEnterBackground:), UIApplicationDidEnterBackgroundNotification,
+            @selector(applicationWillEnterForeground:), UIApplicationWillEnterForegroundNotification,
+            @selector(applicationDidFinishLaunching:), UIApplicationDidFinishLaunchingNotification];
+        [selectorsToNotifications enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:(SEL)key name:(NSString *)value object:nil];
+        }];
     }
     return self;
 }
