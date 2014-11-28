@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '6.0'
 
 pod 'SSKeychain', '~> 1.2.2'
