@@ -8,7 +8,7 @@
  * -----------------------------------------------------------------------------
  */
 @property (strong, nonatomic) UIColor *passcodeViewControllerBackgroundColor;
-
+@property (strong, nonatomic) NSString *cancelBarButtonItemTitle;
 
 /**-----------------------------------------------------------------------------
  * @description Create Passcode View Controller Preferences

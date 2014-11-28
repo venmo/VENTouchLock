@@ -54,7 +54,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)configureNavigationItems
 {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(userTappedCancel)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[self.touchLock appearance].cancelBarButtonItemTitle style:UIBarButtonItemStylePlain target:self action:@selector(userTappedCancel)];
 }
 
 - (void)configurePasscodeView
