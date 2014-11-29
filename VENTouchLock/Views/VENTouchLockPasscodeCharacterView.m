@@ -13,13 +13,27 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _isEmpty = YES;
-        self.backgroundColor = [UIColor clearColor];
-        [self drawCircle];
-        [self drawHyphen];
-        [self redraw];
+        [self commonInit];
     }
     return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit
+{
+    _isEmpty = YES;
+    self.backgroundColor = [UIColor clearColor];
+    [self drawCircle];
+    [self drawHyphen];
+    [self redraw];
 }
 
 - (void)redraw
@@ -41,7 +55,7 @@
     circle.strokeColor =  circleColor.CGColor;
     circle.borderWidth = borderWidth;
     [self.layer addSublayer:circle];
-    self.circle = circle;
+    _circle = circle;
 }
 
 - (void)drawHyphen
@@ -65,7 +79,7 @@
     hyphen.fillColor = hyphenColor.CGColor;
     hyphen.strokeColor = hyphenColor.CGColor;
     [self.layer addSublayer:hyphen];
-    self.hyphen = hyphen;
+    _hyphen = hyphen;
 }
 
 - (void)setIsEmpty:(BOOL)isEmpty {
