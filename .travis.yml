@@ -3,7 +3,7 @@ script:
 - xctool -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO 
 - xcodebuild test -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-- xctool test -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator8.1 ONLY_ACTIVE_ARCH=NO
+- xctool test -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator7.1 ONLY_ACTIVE_ARCH=NO
 before_install:
 - gem i cocoapods --no-ri --no-rdoc
 - brew uninstall xctool; brew install xctool --HEAD;
