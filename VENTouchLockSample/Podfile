@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "7.0"
 
 target "VENTouchLockSample" do
@@ -6,4 +7,5 @@ end
 
 target "VENTouchLockSampleTests" do
   pod 'KIF', '~> 3.0.8'
+  pod 'FBSnapshotTestCase', '~> 1.0'
 end
