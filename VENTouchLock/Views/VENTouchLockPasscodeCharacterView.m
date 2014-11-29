@@ -45,9 +45,9 @@
 - (void)drawCircle
 {
     CGFloat borderWidth = 2;
-    CGFloat radius = (CGRectGetWidth(self.bounds) - borderWidth) / 2;
+    CGFloat radius = CGRectGetWidth(self.bounds) / 2 - borderWidth;
     CAShapeLayer *circle = [CAShapeLayer layer];
-    circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 2.0*radius, 2.0*radius)
+    circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(borderWidth, borderWidth, 2.0*radius, 2.0*radius)
 
                                              cornerRadius:radius].CGPath;
     UIColor *circleColor = [UIColor blackColor];
