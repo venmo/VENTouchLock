@@ -60,14 +60,15 @@
 
 - (void)drawHyphen
 {
+    CGFloat horizontalMargin = 1;
     CGFloat hyphenHeight = CGRectGetHeight(self.bounds) / 7;
     CAShapeLayer *hyphen = [CAShapeLayer layer];
     UIBezierPath *hyphenPath = [UIBezierPath bezierPath];
 
-    CGPoint leftTopCorner = CGPointMake(0, 3 * hyphenHeight);
-    CGPoint rightTopCorner = CGPointMake(CGRectGetWidth(self.bounds), 3 * hyphenHeight);
-    CGPoint rightBottomCorner = CGPointMake(CGRectGetWidth(self.bounds), 4 * hyphenHeight);
-    CGPoint leftBottomCorner = CGPointMake(0, 4 * hyphenHeight);
+    CGPoint leftTopCorner = CGPointMake(horizontalMargin, 3 * hyphenHeight);
+    CGPoint rightTopCorner = CGPointMake((CGRectGetWidth(self.bounds) - horizontalMargin), 3 * hyphenHeight);
+    CGPoint rightBottomCorner = CGPointMake((CGRectGetWidth(self.bounds) - horizontalMargin), 4 * hyphenHeight);
+    CGPoint leftBottomCorner = CGPointMake(horizontalMargin, 4 * hyphenHeight);
 
     [hyphenPath moveToPoint:leftTopCorner];
     [hyphenPath addLineToPoint:rightTopCorner];
