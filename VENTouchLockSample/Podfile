@@ -1,7 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "7.0"
 
 target "VENTouchLockSample" do
-	pod 'SSKeychain', '~> 1.2.2'
+	pod 'VENTouchLock', :path => '../'
 end
 
 target "VENTouchLockSampleTests" do
