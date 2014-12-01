@@ -43,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1964516EF7F0579D3EED686B /* Pods-VENTouchLockTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockTests/Pods-VENTouchLockTests.debug.xcconfig"; sourceTree = "<group>"; };
+		26437CFB2C416A76C32550CB /* Pods-VENTouchLockTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockTests/Pods-VENTouchLockTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A03EAC919C4F4E40095708C /* VENTouchLockTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENTouchLockTests-Prefix.pch"; sourceTree = "<group>"; };
 		3A03EACA19C4F72C0095708C /* VENTouchLockEnterPasscodeViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockEnterPasscodeViewControllerSpec.m; sourceTree = "<group>"; };
 		3A03EAD819C56C9E0095708C /* UIViewController+VENTouchLockSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+VENTouchLockSpec.m"; sourceTree = "<group>"; };
@@ -70,12 +72,11 @@
 		3A709AAE19BE68BF00AC9238 /* VENTouchLockPasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeView.h; path = Views/VENTouchLockPasscodeView.h; sourceTree = "<group>"; };
 		3A709AAF19BE68BF00AC9238 /* VENTouchLockPasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeView.m; path = Views/VENTouchLockPasscodeView.m; sourceTree = "<group>"; };
 		3A709AB019BE68BF00AC9238 /* VENTouchLockPasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VENTouchLockPasscodeView.xib; path = Views/VENTouchLockPasscodeView.xib; sourceTree = "<group>"; };
+		3DE4A13C940A080AC3580547 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4BBF12C3327B45B5803FC9C5 /* libPods-VENTouchLockTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENTouchLockTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		622CD86CA6BF4DB8AEA67597 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		786CC8E46A994C21B7BBD87F /* Pods-VENTouchLock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLock.xcconfig"; path = "Pods/Pods-VENTouchLock.xcconfig"; sourceTree = "<group>"; };
+		67361049BFD457223887A817 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8A8322082DAA4E4E8840A4D1 /* libPods-VENTouchLock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENTouchLock.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C50D98031904B55BA82D2E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockTests.xcconfig"; path = "Pods/Pods-VENTouchLockTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2630D9AD9AC36ABE1D1F5964 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DE4A13C940A080AC3580547 /* Pods.debug.xcconfig */,
+				67361049BFD457223887A817 /* Pods.release.xcconfig */,
+				1964516EF7F0579D3EED686B /* Pods-VENTouchLockTests.debug.xcconfig */,
+				26437CFB2C416A76C32550CB /* Pods-VENTouchLockTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3A5C456419D9C15F00E86B7C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,10 +125,8 @@
 				3A709A7219BE67D800AC9238 /* VENTouchLock */,
 				3A709A7C19BE67D800AC9238 /* VENTouchLockTests */,
 				3A709A7119BE67D800AC9238 /* Products */,
-				786CC8E46A994C21B7BBD87F /* Pods-VENTouchLock.xcconfig */,
 				3D5E0250C8A240A2922F55F7 /* Frameworks */,
-				CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */,
-				622CD86CA6BF4DB8AEA67597 /* Pods.xcconfig */,
+				2630D9AD9AC36ABE1D1F5964 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -374,7 +384,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-VENTouchLockTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockTests/Pods-VENTouchLockTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DBA0684AD4E9464DAC14CC9A /* Copy Pods Resources */ = {
@@ -389,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -519,7 +529,7 @@
 		};
 		3A709A8419BE67D800AC9238 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 622CD86CA6BF4DB8AEA67597 /* Pods.xcconfig */;
+			baseConfigurationReference = 3DE4A13C940A080AC3580547 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -535,7 +545,7 @@
 		};
 		3A709A8519BE67D800AC9238 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 622CD86CA6BF4DB8AEA67597 /* Pods.xcconfig */;
+			baseConfigurationReference = 67361049BFD457223887A817 /* Pods.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -551,7 +561,7 @@
 		};
 		3A709A8719BE67D800AC9238 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */;
+			baseConfigurationReference = 1964516EF7F0579D3EED686B /* Pods-VENTouchLockTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -570,7 +580,7 @@
 		};
 		3A709A8819BE67D800AC9238 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEECEDBF977B46BCA4503C62 /* Pods-VENTouchLockTests.xcconfig */;
+			baseConfigurationReference = 26437CFB2C416A76C32550CB /* Pods-VENTouchLockTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

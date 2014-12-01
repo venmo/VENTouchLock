@@ -1,15 +1,22 @@
 PODS:
   - KIF (3.0.8):
-    - KIF/XCTest
+    - KIF/XCTest (= 3.0.8)
   - KIF/XCTest (3.0.8)
   - SSKeychain (1.2.2)
+  - VENTouchLock (1.0.3):
+    - SSKeychain (~> 1.0)
 
 DEPENDENCIES:
   - KIF (~> 3.0.8)
-  - SSKeychain (~> 1.2.2)
+  - VENTouchLock (from `../`)
+
+EXTERNAL SOURCES:
+  VENTouchLock:
+    :path: ../
 
 SPEC CHECKSUMS:
   KIF: 2db5e8cf59136dd1267d49cca0d55883389b09d3
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
+  VENTouchLock: 1cff4f191e38536aa833aaf0de0ec9dddce8f06e
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0
