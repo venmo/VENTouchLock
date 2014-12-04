@@ -1,1562 +1,648 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>0B44D972F9524FA1F889F1FF</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-VENTouchLockSampleTests.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>37B79E730DEAACFC173CB6D8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-VENTouchLockSampleTests.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-VENTouchLockSampleTests/Pods-VENTouchLockSampleTests.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>37EB00814E9E4DCF915F1038</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-VENTouchLockSample.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>3A1DB96319BA4EA6004A17D8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A709AC519BE79DD00AC9238</string>
-				<string>3A709AC619BE79DD00AC9238</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Categories</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE2119A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE2C19A2E7570098AAD1</string>
-				<string>3A30CE4319A2E7570098AAD1</string>
-				<string>3A30CE2B19A2E7570098AAD1</string>
-				<string>4C5B3399B50044D79A831474</string>
-				<string>B343632D77310CAC73707654</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE2219A2E7570098AAD1</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0600</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Venmo</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>3A30CE2919A2E7570098AAD1</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.0</string>
-						<key>DevelopmentTeam</key>
-						<string>55377VK7X2</string>
-					</dict>
-					<key>3A30CE3F19A2E7570098AAD1</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.0</string>
-						<key>DevelopmentTeam</key>
-						<string>55377VK7X2</string>
-						<key>TestTargetID</key>
-						<string>3A30CE2919A2E7570098AAD1</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>3A30CE2519A2E7570098AAD1</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>3A30CE2119A2E7570098AAD1</string>
-			<key>productRefGroup</key>
-			<string>3A30CE2B19A2E7570098AAD1</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>3A30CE2919A2E7570098AAD1</string>
-				<string>3A30CE3F19A2E7570098AAD1</string>
-			</array>
-		</dict>
-		<key>3A30CE2519A2E7570098AAD1</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>3A30CE4819A2E7570098AAD1</string>
-				<string>3A30CE4919A2E7570098AAD1</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>3A30CE2619A2E7570098AAD1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>3A709AC819BE79DD00AC9238</string>
-				<string>3A709AD619BE79E200AC9238</string>
-				<string>3A30CE3619A2E7570098AAD1</string>
-				<string>3A30CE3319A2E7570098AAD1</string>
-				<string>3A709AC119BE79D800AC9238</string>
-				<string>3A709AD719BE79E200AC9238</string>
-				<string>3A30CE5319A2E8AA0098AAD1</string>
-				<string>3A32465419BCBBBA00BE6EBC</string>
-				<string>3A5C456219D9A40600E86B7C</string>
-				<string>3A709AD819BE79E200AC9238</string>
-				<string>3A30CE3019A2E7570098AAD1</string>
-				<string>3A709AD919BE79E200AC9238</string>
-				<string>3A709AC019BE79D800AC9238</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A30CE2719A2E7570098AAD1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>3CB39AF26C0641F6B0C50B4E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A30CE2819A2E7570098AAD1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>3A32465619BCBBC500BE6EBC</string>
-				<string>3A30CE3919A2E7570098AAD1</string>
-				<string>3A30CE3B19A2E7570098AAD1</string>
-				<string>3A709AC219BE79D800AC9238</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A30CE2919A2E7570098AAD1</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>3A30CE4A19A2E7570098AAD1</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F6AE6D92279F4D37A5D56631</string>
-				<string>3A30CE2619A2E7570098AAD1</string>
-				<string>3A30CE2719A2E7570098AAD1</string>
-				<string>3A30CE2819A2E7570098AAD1</string>
-				<string>CAD8BBBCAE654AF291F98BED</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>VENTouchLockSample</string>
-			<key>productName</key>
-			<string>VENTouchLockSample</string>
-			<key>productReference</key>
-			<string>3A30CE2A19A2E7570098AAD1</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>3A30CE2A19A2E7570098AAD1</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>VENTouchLockSample.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>3A30CE2B19A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE2A19A2E7570098AAD1</string>
-				<string>3A30CE4019A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE2C19A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE5019A2E7870098AAD1</string>
-				<string>3A30CE3119A2E7570098AAD1</string>
-				<string>3A30CE3219A2E7570098AAD1</string>
-				<string>3A30CE3419A2E7570098AAD1</string>
-				<string>3A30CE3519A2E7570098AAD1</string>
-				<string>3A32465219BCBBBA00BE6EBC</string>
-				<string>3A32465319BCBBBA00BE6EBC</string>
-				<string>3A32465519BCBBC500BE6EBC</string>
-				<string>3A30CE3719A2E7570098AAD1</string>
-				<string>3A30CE3A19A2E7570098AAD1</string>
-				<string>3A30CE2D19A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>VENTouchLockSample</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE2D19A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE2E19A2E7570098AAD1</string>
-				<string>3A30CE2F19A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE2E19A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE2F19A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3019A2E7570098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE2F19A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A30CE3119A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SampleAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3219A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SampleAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3319A2E7570098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE3219A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A30CE3419A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SampleViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3519A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SampleViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3619A2E7570098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE3519A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A30CE3719A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE3819A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3819A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3919A2E7570098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE3719A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A30CE3A19A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE3B19A2E7570098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE3A19A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A30CE3C19A2E7570098AAD1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>3A30CE4719A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A30CE3D19A2E7570098AAD1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>613DDA9350FEC1D7ABEE88A1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A30CE3E19A2E7570098AAD1</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A30CE3F19A2E7570098AAD1</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>3A30CE4D19A2E7570098AAD1</string>
-			<key>buildPhases</key>
-			<array>
-				<string>95E80BD87FBE117D0250735B</string>
-				<string>3A30CE3C19A2E7570098AAD1</string>
-				<string>3A30CE3D19A2E7570098AAD1</string>
-				<string>3A30CE3E19A2E7570098AAD1</string>
-				<string>FEC58580E8951BD81F554663</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>3A30CE4219A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>VENTouchLockSampleTests</string>
-			<key>productName</key>
-			<string>VENTouchLockSampleTests</string>
-			<key>productReference</key>
-			<string>3A30CE4019A2E7570098AAD1</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>3A30CE4019A2E7570098AAD1</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>VENTouchLockSampleTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>3A30CE4119A2E7570098AAD1</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>3A30CE2219A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>3A30CE2919A2E7570098AAD1</string>
-			<key>remoteInfo</key>
-			<string>VENTouchLockSample</string>
-		</dict>
-		<key>3A30CE4219A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>3A30CE2919A2E7570098AAD1</string>
-			<key>targetProxy</key>
-			<string>3A30CE4119A2E7570098AAD1</string>
-		</dict>
-		<key>3A30CE4319A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE4619A2E7570098AAD1</string>
-				<string>3A30CE4419A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>VENTouchLockSampleTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE4419A2E7570098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE4519A2E7570098AAD1</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE4519A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE4619A2E7570098AAD1</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>VENTouchLockSampleTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE4719A2E7570098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE4619A2E7570098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A30CE4819A2E7570098AAD1</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>3A30CE4919A2E7570098AAD1</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Distribution</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>3A30CE4A19A2E7570098AAD1</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>3A30CE4B19A2E7570098AAD1</string>
-				<string>3A30CE4C19A2E7570098AAD1</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>3A30CE4B19A2E7570098AAD1</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>D9D9E34C566576FDF01DC47B</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>INFOPLIST_FILE</key>
-				<string>VENTouchLockSample/Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>3A30CE4C19A2E7570098AAD1</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>96DC1D3043ACB53303A26DF8</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>INFOPLIST_FILE</key>
-				<string>VENTouchLockSample/Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>3A30CE4D19A2E7570098AAD1</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>3A30CE4E19A2E7570098AAD1</string>
-				<string>3A30CE4F19A2E7570098AAD1</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>3A30CE4E19A2E7570098AAD1</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>37B79E730DEAACFC173CB6D8</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>VENTouchLockSampleTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/VENTouchLockSample.app/VENTouchLockSample</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>3A30CE4F19A2E7570098AAD1</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>5AB2D7A40A8F78F5A272FB9A</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>VENTouchLockSampleTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/VENTouchLockSample.app/VENTouchLockSample</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>3A30CE5019A2E7870098AAD1</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A30CE5119A2E8AA0098AAD1</string>
-				<string>3A30CE5219A2E8AA0098AAD1</string>
-				<string>3A5C456319D9A40C00E86B7C</string>
-				<string>3A1DB96319BA4EA6004A17D8</string>
-				<string>3A71E6CA19A4E67B00A09EF3</string>
-				<string>3A71E6CB19A4E69600A09EF3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>VENTouchLock</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE5119A2E8AA0098AAD1</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLock.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/VENTouchLock.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE5219A2E8AA0098AAD1</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLock.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/VENTouchLock.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A30CE5319A2E8AA0098AAD1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A30CE5219A2E8AA0098AAD1</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A32465219BCBBBA00BE6EBC</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>SampleLockSplashViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A32465319BCBBBA00BE6EBC</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>SampleLockSplashViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A32465419BCBBBA00BE6EBC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A32465319BCBBBA00BE6EBC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A32465519BCBBC500BE6EBC</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>SampleLockSplashViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A32465619BCBBC500BE6EBC</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A32465519BCBBC500BE6EBC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A5C456019D9A40600E86B7C</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockAppearance.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Models/VENTouchLockAppearance.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A5C456119D9A40600E86B7C</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockAppearance.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Models/VENTouchLockAppearance.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A5C456219D9A40600E86B7C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A5C456119D9A40600E86B7C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A5C456319D9A40C00E86B7C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A5C456019D9A40600E86B7C</string>
-				<string>3A5C456119D9A40600E86B7C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Models</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ABB19BE79D800AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeCharacterView.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Views/VENTouchLockPasscodeCharacterView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ABC19BE79D800AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeCharacterView.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Views/VENTouchLockPasscodeCharacterView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ABD19BE79D800AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeView.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Views/VENTouchLockPasscodeView.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ABE19BE79D800AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeView.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Views/VENTouchLockPasscodeView.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ABF19BE79D800AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeView.xib</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Views/VENTouchLockPasscodeView.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AC019BE79D800AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709ABC19BE79D800AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709AC119BE79D800AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709ABE19BE79D800AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709AC219BE79D800AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709ABF19BE79D800AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709AC519BE79DD00AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>UIViewController+VENTouchLock.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Categories/UIViewController+VENTouchLock.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AC619BE79DD00AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>UIViewController+VENTouchLock.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Categories/UIViewController+VENTouchLock.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AC819BE79DD00AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709AC619BE79DD00AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709ACC19BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockEnterPasscodeViewController.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockEnterPasscodeViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ACD19BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockEnterPasscodeViewController.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockEnterPasscodeViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ACE19BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeViewController.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockPasscodeViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709ACF19BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockPasscodeViewController.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockPasscodeViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AD019BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockCreatePasscodeViewController.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockCreatePasscodeViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AD119BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockCreatePasscodeViewController.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockCreatePasscodeViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AD219BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>VENTouchLockSplashViewController.h</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockSplashViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AD319BE79E200AC9238</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>name</key>
-			<string>VENTouchLockSplashViewController.m</string>
-			<key>path</key>
-			<string>../../VENTouchLock/Controllers/VENTouchLockSplashViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A709AD619BE79E200AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709ACD19BE79E200AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709AD719BE79E200AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709ACF19BE79E200AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709AD819BE79E200AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709AD119BE79E200AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A709AD919BE79E200AC9238</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3A709AD319BE79E200AC9238</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3A71E6CA19A4E67B00A09EF3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A709ACC19BE79E200AC9238</string>
-				<string>3A709ACD19BE79E200AC9238</string>
-				<string>3A709ACE19BE79E200AC9238</string>
-				<string>3A709ACF19BE79E200AC9238</string>
-				<string>3A709AD019BE79E200AC9238</string>
-				<string>3A709AD119BE79E200AC9238</string>
-				<string>3A709AD219BE79E200AC9238</string>
-				<string>3A709AD319BE79E200AC9238</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Controllers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A71E6CB19A4E69600A09EF3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A709ABB19BE79D800AC9238</string>
-				<string>3A709ABC19BE79D800AC9238</string>
-				<string>3A709ABD19BE79D800AC9238</string>
-				<string>3A709ABE19BE79D800AC9238</string>
-				<string>3A709ABF19BE79D800AC9238</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Views</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3CB39AF26C0641F6B0C50B4E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>37EB00814E9E4DCF915F1038</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4C5B3399B50044D79A831474</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>37EB00814E9E4DCF915F1038</string>
-				<string>0B44D972F9524FA1F889F1FF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>5AB2D7A40A8F78F5A272FB9A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-VENTouchLockSampleTests.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-VENTouchLockSampleTests/Pods-VENTouchLockSampleTests.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>613DDA9350FEC1D7ABEE88A1</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0B44D972F9524FA1F889F1FF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>95E80BD87FBE117D0250735B</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>96DC1D3043ACB53303A26DF8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-VENTouchLockSample.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-VENTouchLockSample/Pods-VENTouchLockSample.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B343632D77310CAC73707654</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D9D9E34C566576FDF01DC47B</string>
-				<string>96DC1D3043ACB53303A26DF8</string>
-				<string>37B79E730DEAACFC173CB6D8</string>
-				<string>5AB2D7A40A8F78F5A272FB9A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CAD8BBBCAE654AF291F98BED</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockSample/Pods-VENTouchLockSample-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>D9D9E34C566576FDF01DC47B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-VENTouchLockSample.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods-VENTouchLockSample/Pods-VENTouchLockSample.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6AE6D92279F4D37A5D56631</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>FEC58580E8951BD81F554663</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockSampleTests/Pods-VENTouchLockSampleTests-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>3A30CE2219A2E7570098AAD1</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2FB545031A2A6EE900C8840D /* VENTouchLockPasscodeCharacterViewSnapshotTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB545021A2A6EE900C8840D /* VENTouchLockPasscodeCharacterViewSnapshotTest.m */; };
+		3A30CE3019A2E7570098AAD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE2F19A2E7570098AAD1 /* main.m */; };
+		3A30CE3319A2E7570098AAD1 /* SampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE3219A2E7570098AAD1 /* SampleAppDelegate.m */; };
+		3A30CE3619A2E7570098AAD1 /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE3519A2E7570098AAD1 /* SampleViewController.m */; };
+		3A30CE3919A2E7570098AAD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A30CE3719A2E7570098AAD1 /* Main.storyboard */; };
+		3A30CE3B19A2E7570098AAD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A30CE3A19A2E7570098AAD1 /* Images.xcassets */; };
+		3A30CE4719A2E7570098AAD1 /* VENTouchLockAutoLockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE4619A2E7570098AAD1 /* VENTouchLockAutoLockTests.m */; };
+		3A30CE5319A2E8AA0098AAD1 /* VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A30CE5219A2E8AA0098AAD1 /* VENTouchLock.m */; };
+		3A32465419BCBBBA00BE6EBC /* SampleLockSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A32465319BCBBBA00BE6EBC /* SampleLockSplashViewController.m */; };
+		3A32465619BCBBC500BE6EBC /* SampleLockSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A32465519BCBBC500BE6EBC /* SampleLockSplashViewController.xib */; };
+		3A5C456219D9A40600E86B7C /* VENTouchLockAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C456119D9A40600E86B7C /* VENTouchLockAppearance.m */; };
+		3A709AC019BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709ABC19BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.m */; };
+		3A709AC119BE79D800AC9238 /* VENTouchLockPasscodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709ABE19BE79D800AC9238 /* VENTouchLockPasscodeView.m */; };
+		3A709AC219BE79D800AC9238 /* VENTouchLockPasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A709ABF19BE79D800AC9238 /* VENTouchLockPasscodeView.xib */; };
+		3A709AC819BE79DD00AC9238 /* UIViewController+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709AC619BE79DD00AC9238 /* UIViewController+VENTouchLock.m */; };
+		3A709AD619BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709ACD19BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.m */; };
+		3A709AD719BE79E200AC9238 /* VENTouchLockPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709ACF19BE79E200AC9238 /* VENTouchLockPasscodeViewController.m */; };
+		3A709AD819BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709AD119BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.m */; };
+		3A709AD919BE79E200AC9238 /* VENTouchLockSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709AD319BE79E200AC9238 /* VENTouchLockSplashViewController.m */; };
+		3CB39AF26C0641F6B0C50B4E /* libPods-VENTouchLockSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37EB00814E9E4DCF915F1038 /* libPods-VENTouchLockSample.a */; };
+		613DDA9350FEC1D7ABEE88A1 /* libPods-VENTouchLockSampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B44D972F9524FA1F889F1FF /* libPods-VENTouchLockSampleTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A30CE4119A2E7570098AAD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A30CE2219A2E7570098AAD1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A30CE2919A2E7570098AAD1;
+			remoteInfo = VENTouchLockSample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B44D972F9524FA1F889F1FF /* libPods-VENTouchLockSampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENTouchLockSampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FB545021A2A6EE900C8840D /* VENTouchLockPasscodeCharacterViewSnapshotTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockPasscodeCharacterViewSnapshotTest.m; sourceTree = "<group>"; };
+		37B79E730DEAACFC173CB6D8 /* Pods-VENTouchLockSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockSampleTests/Pods-VENTouchLockSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		37EB00814E9E4DCF915F1038 /* libPods-VENTouchLockSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENTouchLockSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A30CE2A19A2E7570098AAD1 /* VENTouchLockSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VENTouchLockSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A30CE2E19A2E7570098AAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A30CE2F19A2E7570098AAD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3A30CE3119A2E7570098AAD1 /* SampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleAppDelegate.h; sourceTree = "<group>"; };
+		3A30CE3219A2E7570098AAD1 /* SampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleAppDelegate.m; sourceTree = "<group>"; };
+		3A30CE3419A2E7570098AAD1 /* SampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
+		3A30CE3519A2E7570098AAD1 /* SampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
+		3A30CE3819A2E7570098AAD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A30CE3A19A2E7570098AAD1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3A30CE4019A2E7570098AAD1 /* VENTouchLockSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VENTouchLockSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A30CE4519A2E7570098AAD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A30CE4619A2E7570098AAD1 /* VENTouchLockAutoLockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VENTouchLockAutoLockTests.m; sourceTree = "<group>"; };
+		3A30CE5119A2E8AA0098AAD1 /* VENTouchLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLock.h; path = ../../VENTouchLock/VENTouchLock.h; sourceTree = "<group>"; };
+		3A30CE5219A2E8AA0098AAD1 /* VENTouchLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLock.m; path = ../../VENTouchLock/VENTouchLock.m; sourceTree = "<group>"; };
+		3A32465219BCBBBA00BE6EBC /* SampleLockSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleLockSplashViewController.h; sourceTree = "<group>"; };
+		3A32465319BCBBBA00BE6EBC /* SampleLockSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleLockSplashViewController.m; sourceTree = "<group>"; };
+		3A32465519BCBBC500BE6EBC /* SampleLockSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleLockSplashViewController.xib; sourceTree = "<group>"; };
+		3A5C456019D9A40600E86B7C /* VENTouchLockAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockAppearance.h; path = ../../VENTouchLock/Models/VENTouchLockAppearance.h; sourceTree = "<group>"; };
+		3A5C456119D9A40600E86B7C /* VENTouchLockAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockAppearance.m; path = ../../VENTouchLock/Models/VENTouchLockAppearance.m; sourceTree = "<group>"; };
+		3A709ABB19BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeCharacterView.h; path = ../../VENTouchLock/Views/VENTouchLockPasscodeCharacterView.h; sourceTree = "<group>"; };
+		3A709ABC19BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeCharacterView.m; path = ../../VENTouchLock/Views/VENTouchLockPasscodeCharacterView.m; sourceTree = "<group>"; };
+		3A709ABD19BE79D800AC9238 /* VENTouchLockPasscodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeView.h; path = ../../VENTouchLock/Views/VENTouchLockPasscodeView.h; sourceTree = "<group>"; };
+		3A709ABE19BE79D800AC9238 /* VENTouchLockPasscodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeView.m; path = ../../VENTouchLock/Views/VENTouchLockPasscodeView.m; sourceTree = "<group>"; };
+		3A709ABF19BE79D800AC9238 /* VENTouchLockPasscodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VENTouchLockPasscodeView.xib; path = ../../VENTouchLock/Views/VENTouchLockPasscodeView.xib; sourceTree = "<group>"; };
+		3A709AC519BE79DD00AC9238 /* UIViewController+VENTouchLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+VENTouchLock.h"; path = "../../VENTouchLock/Categories/UIViewController+VENTouchLock.h"; sourceTree = "<group>"; };
+		3A709AC619BE79DD00AC9238 /* UIViewController+VENTouchLock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+VENTouchLock.m"; path = "../../VENTouchLock/Categories/UIViewController+VENTouchLock.m"; sourceTree = "<group>"; };
+		3A709ACC19BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockEnterPasscodeViewController.h; path = ../../VENTouchLock/Controllers/VENTouchLockEnterPasscodeViewController.h; sourceTree = "<group>"; };
+		3A709ACD19BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockEnterPasscodeViewController.m; path = ../../VENTouchLock/Controllers/VENTouchLockEnterPasscodeViewController.m; sourceTree = "<group>"; };
+		3A709ACE19BE79E200AC9238 /* VENTouchLockPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockPasscodeViewController.h; path = ../../VENTouchLock/Controllers/VENTouchLockPasscodeViewController.h; sourceTree = "<group>"; };
+		3A709ACF19BE79E200AC9238 /* VENTouchLockPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockPasscodeViewController.m; path = ../../VENTouchLock/Controllers/VENTouchLockPasscodeViewController.m; sourceTree = "<group>"; };
+		3A709AD019BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockCreatePasscodeViewController.h; path = ../../VENTouchLock/Controllers/VENTouchLockCreatePasscodeViewController.h; sourceTree = "<group>"; };
+		3A709AD119BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockCreatePasscodeViewController.m; path = ../../VENTouchLock/Controllers/VENTouchLockCreatePasscodeViewController.m; sourceTree = "<group>"; };
+		3A709AD219BE79E200AC9238 /* VENTouchLockSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VENTouchLockSplashViewController.h; path = ../../VENTouchLock/Controllers/VENTouchLockSplashViewController.h; sourceTree = "<group>"; };
+		3A709AD319BE79E200AC9238 /* VENTouchLockSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VENTouchLockSplashViewController.m; path = ../../VENTouchLock/Controllers/VENTouchLockSplashViewController.m; sourceTree = "<group>"; };
+		5AB2D7A40A8F78F5A272FB9A /* Pods-VENTouchLockSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockSampleTests/Pods-VENTouchLockSampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		96DC1D3043ACB53303A26DF8 /* Pods-VENTouchLockSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockSample/Pods-VENTouchLockSample.release.xcconfig"; sourceTree = "<group>"; };
+		D9D9E34C566576FDF01DC47B /* Pods-VENTouchLockSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockSample/Pods-VENTouchLockSample.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A30CE2719A2E7570098AAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB39AF26C0641F6B0C50B4E /* libPods-VENTouchLockSample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A30CE3D19A2E7570098AAD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				613DDA9350FEC1D7ABEE88A1 /* libPods-VENTouchLockSampleTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A1DB96319BA4EA6004A17D8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				3A709AC519BE79DD00AC9238 /* UIViewController+VENTouchLock.h */,
+				3A709AC619BE79DD00AC9238 /* UIViewController+VENTouchLock.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		3A30CE2119A2E7570098AAD1 = {
+			isa = PBXGroup;
+			children = (
+				3A30CE2C19A2E7570098AAD1 /* VENTouchLockSample */,
+				3A30CE4319A2E7570098AAD1 /* VENTouchLockSampleTests */,
+				3A30CE2B19A2E7570098AAD1 /* Products */,
+				4C5B3399B50044D79A831474 /* Frameworks */,
+				B343632D77310CAC73707654 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		3A30CE2B19A2E7570098AAD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A30CE2A19A2E7570098AAD1 /* VENTouchLockSample.app */,
+				3A30CE4019A2E7570098AAD1 /* VENTouchLockSampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A30CE2C19A2E7570098AAD1 /* VENTouchLockSample */ = {
+			isa = PBXGroup;
+			children = (
+				3A30CE5019A2E7870098AAD1 /* VENTouchLock */,
+				3A30CE3119A2E7570098AAD1 /* SampleAppDelegate.h */,
+				3A30CE3219A2E7570098AAD1 /* SampleAppDelegate.m */,
+				3A30CE3419A2E7570098AAD1 /* SampleViewController.h */,
+				3A30CE3519A2E7570098AAD1 /* SampleViewController.m */,
+				3A32465219BCBBBA00BE6EBC /* SampleLockSplashViewController.h */,
+				3A32465319BCBBBA00BE6EBC /* SampleLockSplashViewController.m */,
+				3A32465519BCBBC500BE6EBC /* SampleLockSplashViewController.xib */,
+				3A30CE3719A2E7570098AAD1 /* Main.storyboard */,
+				3A30CE3A19A2E7570098AAD1 /* Images.xcassets */,
+				3A30CE2D19A2E7570098AAD1 /* Supporting Files */,
+			);
+			path = VENTouchLockSample;
+			sourceTree = "<group>";
+		};
+		3A30CE2D19A2E7570098AAD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A30CE2E19A2E7570098AAD1 /* Info.plist */,
+				3A30CE2F19A2E7570098AAD1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A30CE4319A2E7570098AAD1 /* VENTouchLockSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A30CE4619A2E7570098AAD1 /* VENTouchLockAutoLockTests.m */,
+				2FB545021A2A6EE900C8840D /* VENTouchLockPasscodeCharacterViewSnapshotTest.m */,
+				3A30CE4419A2E7570098AAD1 /* Supporting Files */,
+			);
+			path = VENTouchLockSampleTests;
+			sourceTree = "<group>";
+		};
+		3A30CE4419A2E7570098AAD1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A30CE4519A2E7570098AAD1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A30CE5019A2E7870098AAD1 /* VENTouchLock */ = {
+			isa = PBXGroup;
+			children = (
+				3A30CE5119A2E8AA0098AAD1 /* VENTouchLock.h */,
+				3A30CE5219A2E8AA0098AAD1 /* VENTouchLock.m */,
+				3A5C456319D9A40C00E86B7C /* Models */,
+				3A1DB96319BA4EA6004A17D8 /* Categories */,
+				3A71E6CA19A4E67B00A09EF3 /* Controllers */,
+				3A71E6CB19A4E69600A09EF3 /* Views */,
+			);
+			name = VENTouchLock;
+			sourceTree = "<group>";
+		};
+		3A5C456319D9A40C00E86B7C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A5C456019D9A40600E86B7C /* VENTouchLockAppearance.h */,
+				3A5C456119D9A40600E86B7C /* VENTouchLockAppearance.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		3A71E6CA19A4E67B00A09EF3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A709ACC19BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.h */,
+				3A709ACD19BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.m */,
+				3A709ACE19BE79E200AC9238 /* VENTouchLockPasscodeViewController.h */,
+				3A709ACF19BE79E200AC9238 /* VENTouchLockPasscodeViewController.m */,
+				3A709AD019BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.h */,
+				3A709AD119BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.m */,
+				3A709AD219BE79E200AC9238 /* VENTouchLockSplashViewController.h */,
+				3A709AD319BE79E200AC9238 /* VENTouchLockSplashViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3A71E6CB19A4E69600A09EF3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A709ABB19BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.h */,
+				3A709ABC19BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.m */,
+				3A709ABD19BE79D800AC9238 /* VENTouchLockPasscodeView.h */,
+				3A709ABE19BE79D800AC9238 /* VENTouchLockPasscodeView.m */,
+				3A709ABF19BE79D800AC9238 /* VENTouchLockPasscodeView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4C5B3399B50044D79A831474 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37EB00814E9E4DCF915F1038 /* libPods-VENTouchLockSample.a */,
+				0B44D972F9524FA1F889F1FF /* libPods-VENTouchLockSampleTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B343632D77310CAC73707654 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9D9E34C566576FDF01DC47B /* Pods-VENTouchLockSample.debug.xcconfig */,
+				96DC1D3043ACB53303A26DF8 /* Pods-VENTouchLockSample.release.xcconfig */,
+				37B79E730DEAACFC173CB6D8 /* Pods-VENTouchLockSampleTests.debug.xcconfig */,
+				5AB2D7A40A8F78F5A272FB9A /* Pods-VENTouchLockSampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A30CE2919A2E7570098AAD1 /* VENTouchLockSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A30CE4A19A2E7570098AAD1 /* Build configuration list for PBXNativeTarget "VENTouchLockSample" */;
+			buildPhases = (
+				F6AE6D92279F4D37A5D56631 /* Check Pods Manifest.lock */,
+				3A30CE2619A2E7570098AAD1 /* Sources */,
+				3A30CE2719A2E7570098AAD1 /* Frameworks */,
+				3A30CE2819A2E7570098AAD1 /* Resources */,
+				CAD8BBBCAE654AF291F98BED /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VENTouchLockSample;
+			productName = VENTouchLockSample;
+			productReference = 3A30CE2A19A2E7570098AAD1 /* VENTouchLockSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A30CE3F19A2E7570098AAD1 /* VENTouchLockSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A30CE4D19A2E7570098AAD1 /* Build configuration list for PBXNativeTarget "VENTouchLockSampleTests" */;
+			buildPhases = (
+				95E80BD87FBE117D0250735B /* Check Pods Manifest.lock */,
+				3A30CE3C19A2E7570098AAD1 /* Sources */,
+				3A30CE3D19A2E7570098AAD1 /* Frameworks */,
+				3A30CE3E19A2E7570098AAD1 /* Resources */,
+				FEC58580E8951BD81F554663 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A30CE4219A2E7570098AAD1 /* PBXTargetDependency */,
+			);
+			name = VENTouchLockSampleTests;
+			productName = VENTouchLockSampleTests;
+			productReference = 3A30CE4019A2E7570098AAD1 /* VENTouchLockSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A30CE2219A2E7570098AAD1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Venmo;
+				TargetAttributes = {
+					3A30CE2919A2E7570098AAD1 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 55377VK7X2;
+					};
+					3A30CE3F19A2E7570098AAD1 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 55377VK7X2;
+						TestTargetID = 3A30CE2919A2E7570098AAD1;
+					};
+				};
+			};
+			buildConfigurationList = 3A30CE2519A2E7570098AAD1 /* Build configuration list for PBXProject "VENTouchLockSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A30CE2119A2E7570098AAD1;
+			productRefGroup = 3A30CE2B19A2E7570098AAD1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A30CE2919A2E7570098AAD1 /* VENTouchLockSample */,
+				3A30CE3F19A2E7570098AAD1 /* VENTouchLockSampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A30CE2819A2E7570098AAD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A32465619BCBBC500BE6EBC /* SampleLockSplashViewController.xib in Resources */,
+				3A30CE3919A2E7570098AAD1 /* Main.storyboard in Resources */,
+				3A30CE3B19A2E7570098AAD1 /* Images.xcassets in Resources */,
+				3A709AC219BE79D800AC9238 /* VENTouchLockPasscodeView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A30CE3E19A2E7570098AAD1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		95E80BD87FBE117D0250735B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CAD8BBBCAE654AF291F98BED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockSample/Pods-VENTouchLockSample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6AE6D92279F4D37A5D56631 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC58580E8951BD81F554663 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockSampleTests/Pods-VENTouchLockSampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A30CE2619A2E7570098AAD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A709AC819BE79DD00AC9238 /* UIViewController+VENTouchLock.m in Sources */,
+				3A709AD619BE79E200AC9238 /* VENTouchLockEnterPasscodeViewController.m in Sources */,
+				3A30CE3619A2E7570098AAD1 /* SampleViewController.m in Sources */,
+				3A30CE3319A2E7570098AAD1 /* SampleAppDelegate.m in Sources */,
+				3A709AC119BE79D800AC9238 /* VENTouchLockPasscodeView.m in Sources */,
+				3A709AD719BE79E200AC9238 /* VENTouchLockPasscodeViewController.m in Sources */,
+				3A30CE5319A2E8AA0098AAD1 /* VENTouchLock.m in Sources */,
+				3A32465419BCBBBA00BE6EBC /* SampleLockSplashViewController.m in Sources */,
+				3A5C456219D9A40600E86B7C /* VENTouchLockAppearance.m in Sources */,
+				3A709AD819BE79E200AC9238 /* VENTouchLockCreatePasscodeViewController.m in Sources */,
+				3A30CE3019A2E7570098AAD1 /* main.m in Sources */,
+				3A709AD919BE79E200AC9238 /* VENTouchLockSplashViewController.m in Sources */,
+				3A709AC019BE79D800AC9238 /* VENTouchLockPasscodeCharacterView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A30CE3C19A2E7570098AAD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A30CE4719A2E7570098AAD1 /* VENTouchLockAutoLockTests.m in Sources */,
+				2FB545031A2A6EE900C8840D /* VENTouchLockPasscodeCharacterViewSnapshotTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A30CE4219A2E7570098AAD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A30CE2919A2E7570098AAD1 /* VENTouchLockSample */;
+			targetProxy = 3A30CE4119A2E7570098AAD1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3A30CE3719A2E7570098AAD1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A30CE3819A2E7570098AAD1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3A30CE4819A2E7570098AAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A30CE4919A2E7570098AAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A30CE4B19A2E7570098AAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9D9E34C566576FDF01DC47B /* Pods-VENTouchLockSample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = VENTouchLockSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3A30CE4C19A2E7570098AAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96DC1D3043ACB53303A26DF8 /* Pods-VENTouchLockSample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = VENTouchLockSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3A30CE4E19A2E7570098AAD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37B79E730DEAACFC173CB6D8 /* Pods-VENTouchLockSampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"FB_REFERENCE_IMAGE_DIR=\"\\\"$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages\\\"\"",
+				);
+				INFOPLIST_FILE = VENTouchLockSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VENTouchLockSample.app/VENTouchLockSample";
+			};
+			name = Debug;
+		};
+		3A30CE4F19A2E7570098AAD1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AB2D7A40A8F78F5A272FB9A /* Pods-VENTouchLockSampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"FB_REFERENCE_IMAGE_DIR=\"\\\"$(SOURCE_ROOT)/$(PROJECT_NAME)Tests/ReferenceImages\\\"\"",
+				);
+				INFOPLIST_FILE = VENTouchLockSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VENTouchLockSample.app/VENTouchLockSample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A30CE2519A2E7570098AAD1 /* Build configuration list for PBXProject "VENTouchLockSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A30CE4819A2E7570098AAD1 /* Debug */,
+				3A30CE4919A2E7570098AAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A30CE4A19A2E7570098AAD1 /* Build configuration list for PBXNativeTarget "VENTouchLockSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A30CE4B19A2E7570098AAD1 /* Debug */,
+				3A30CE4C19A2E7570098AAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A30CE4D19A2E7570098AAD1 /* Build configuration list for PBXNativeTarget "VENTouchLockSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A30CE4E19A2E7570098AAD1 /* Debug */,
+				3A30CE4F19A2E7570098AAD1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3A30CE2219A2E7570098AAD1 /* Project object */;
+}

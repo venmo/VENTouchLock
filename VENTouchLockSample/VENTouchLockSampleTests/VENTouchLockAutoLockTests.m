@@ -10,11 +10,11 @@
 
 @end
 
-@interface VENTouchLockSampleTests : XCTestCase
+@interface VENTouchLockAutoLockTests : XCTestCase
 
 @end
 
-@implementation VENTouchLockSampleTests
+@implementation VENTouchLockAutoLockTests
 
 - (void)testBasicCreatePasswordFlow
 {
