@@ -140,7 +140,6 @@
     }
     [VENTouchLock sharedInstance].backgroundLockVisible = NO;
     [[VENTouchLock sharedInstance] deletePasscode];
-    [VENTouchLock sharedInstance].appearance = [[VENTouchLockAppearance alloc] init];
 }
 
 - (void)simulateAppBackgroundThenForeground
