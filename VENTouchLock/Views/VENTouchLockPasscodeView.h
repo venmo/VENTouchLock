@@ -13,6 +13,16 @@
 @property (strong, nonatomic) NSArray *characters;
 
 /**
+ The color of the title text.
+ */
+@property (strong, nonatomic) UIColor *titleColor;
+
+/**
+ The color of the passcode characters.
+ */
+@property (strong, nonatomic) UIColor *characterColor;
+
+/**
  Creates a passcode view controller with the given title and frame.
  */
 - (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame;

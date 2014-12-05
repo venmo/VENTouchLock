@@ -70,4 +70,18 @@
     self.titleLabel.text = _title;
 }
 
+- (void)setCharacterColor:(UIColor *)characterColor
+{
+    _characterColor = characterColor;
+    for (VENTouchLockPasscodeCharacterView *characterView in self.characters) {
+        characterView.fillColor = characterColor;
+    }
+}
+
+- (void)setTitleColor:(UIColor *)titleColor
+{
+    _titleColor = titleColor;
+    self.titleLabel.textColor = titleColor;
+}
+
 @end
