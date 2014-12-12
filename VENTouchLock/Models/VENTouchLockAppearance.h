@@ -7,6 +7,8 @@
  * @description Passcode View Controller Preferences
  * -----------------------------------------------------------------------------
  */
+@property (strong, nonatomic) UIColor *passcodeViewControllerTitleColor;
+@property (strong, nonatomic) UIColor *passcodeViewControllerCharacterColor;
 @property (strong, nonatomic) UIColor *passcodeViewControllerBackgroundColor;
 @property (strong, nonatomic) NSString *cancelBarButtonItemTitle;
 

@@ -14,7 +14,7 @@
 
 @implementation VENTouchLockPasscodeView
 
-- (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame
+- (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame titleColor:(UIColor *)titleColor characterColor:(UIColor *)characterColor
 {
     NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
                                                       owner:self options:nil];
@@ -24,9 +24,20 @@
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
         _title = title;
         _titleLabel.text = title;
+        _titleColor = titleColor;
+        _titleLabel.textColor = titleColor;
+        _characterColor = characterColor;
         _characters = @[_firstCharacter, _secondCharacter, _thirdCharacter, _fourthCharacter];
+        for (VENTouchLockPasscodeCharacterView *characterView in _characters) {
+            characterView.fillColor = characterColor;
+        }
     }
     return self;
+}
+
+- (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame;
+{
+    return [self initWithTitle:title frame:frame titleColor:[UIColor blackColor] characterColor:[UIColor blackColor]];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -68,6 +79,20 @@
 {
     _title = title;
     self.titleLabel.text = _title;
+}
+
+- (void)setCharacterColor:(UIColor *)characterColor
+{
+    _characterColor = characterColor;
+    for (VENTouchLockPasscodeCharacterView *characterView in self.characters) {
+        characterView.fillColor = characterColor;
+    }
+}
+
+- (void)setTitleColor:(UIColor *)titleColor
+{
+    _titleColor = titleColor;
+    self.titleLabel.textColor = titleColor;
 }
 
 @end
