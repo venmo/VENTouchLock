@@ -45,12 +45,6 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self setLockVisible];
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -143,13 +137,6 @@
 - (void)initialize
 {
     _touchLock = [VENTouchLock sharedInstance];
-}
-
-- (void)setLockVisible
-{
-    if (!self.isSnapshotViewController) {
-        self.touchLock.backgroundLockVisible = YES;
-    }
 }
 
 @end
