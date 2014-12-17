@@ -45,6 +45,15 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    if (!self.view.backgroundColor) {
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
