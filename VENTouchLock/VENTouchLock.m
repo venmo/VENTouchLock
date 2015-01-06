@@ -4,7 +4,6 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+VENTouchLock.h"
 
-#import "FCOverlay.h"
 
 static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
 

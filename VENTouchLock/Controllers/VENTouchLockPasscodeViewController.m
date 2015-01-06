@@ -63,6 +63,16 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     }
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    if (self.isSnapshotViewController) {
+        // FIXME: keyboard height should not be hardcoded
+        [self setPasscodeViewFrameForKeyboardHeight:216];
+    }
+}
+
 - (void)configureInvisiblePasscodeField
 {
     self.invisiblePasscodeField = [[UITextField alloc] init];
@@ -110,8 +120,13 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     CGRect newKeyboardFrame = [(NSValue *)[notification.userInfo objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
-        CGFloat passcodeLockViewHeight = CGRectGetHeight(self.view.frame) - CGRectGetHeight(newKeyboardFrame);
-        CGFloat passcodeLockViewWidth = CGRectGetWidth(self.view.frame);
+    [self setPasscodeViewFrameForKeyboardHeight:CGRectGetHeight(newKeyboardFrame)];
+}
+
+- (void)setPasscodeViewFrameForKeyboardHeight:(CGFloat)keyboardHeight
+{
+    CGFloat passcodeLockViewHeight = CGRectGetHeight(self.view.frame) - keyboardHeight;
+    CGFloat passcodeLockViewWidth = CGRectGetWidth(self.view.frame);
     self.passcodeView.frame = CGRectMake(0, 0, passcodeLockViewWidth, passcodeLockViewHeight);
 }
 
