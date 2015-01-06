@@ -6,6 +6,7 @@
 
 
 static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
+static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLockUserDefaultsKeyLaunchedBefore";
 
 @interface VENTouchLock ()
 
@@ -231,6 +232,13 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![userDefaults boolForKey:VENTouchLockUserDefaultsKeyLaunchedBefore]) {
+        // on first launch delete passcode to make sure we don't persist passcode between installs
+        [self deletePasscode];
+        [userDefaults setBool:YES forKey:VENTouchLockUserDefaultsKeyLaunchedBefore];
+    }
+    
     if ([self isPasscodeSet]) {
         [self lockFromBackground:NO];
     }
