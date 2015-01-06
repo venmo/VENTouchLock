@@ -21,6 +21,7 @@
  */
 @property (nonatomic, strong) VENTouchLock *touchLock;
 
+@property (nonatomic, getter=isSnapshotViewController) BOOL snapshotViewController;
 /**
  Encapsulates the view controller in a navigation controller.
  */

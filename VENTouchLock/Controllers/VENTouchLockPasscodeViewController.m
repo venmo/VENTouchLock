@@ -36,7 +36,11 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     self.view.backgroundColor = [self.touchLock appearance].passcodeViewControllerBackgroundColor;
-    [self configureInvisiblePasscodeField];
+    
+    if (!self.isSnapshotViewController) {
+        [self configureInvisiblePasscodeField];
+    }
+    
     [self configureNavigationItems];
     [self configurePasscodeView];
 }
@@ -44,7 +48,8 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (![self.invisiblePasscodeField isFirstResponder]) {
+    
+    if (!self.isSnapshotViewController && ![self.invisiblePasscodeField isFirstResponder]) {
         [self.invisiblePasscodeField becomeFirstResponder];
     }
 }
@@ -52,7 +57,8 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if ([self.invisiblePasscodeField isFirstResponder]) {
+    
+    if (!self.isSnapshotViewController && [self.invisiblePasscodeField isFirstResponder]) {
         [self.invisiblePasscodeField resignFirstResponder];
     }
 }
