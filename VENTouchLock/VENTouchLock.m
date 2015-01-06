@@ -4,6 +4,8 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+VENTouchLock.h"
 
+#import "FCOverlay.h"
+
 static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
 
 @interface VENTouchLock ()
@@ -12,7 +14,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (copy, nonatomic) NSString *keychainAccount;
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
-@property (assign, nonatomic) Class splashViewControllerClass;
 @property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
 
@@ -52,14 +53,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
       passcodeAttemptLimit:(NSUInteger)attemptLimit
- splashViewControllerClass:(Class)splashViewControllerClass
-
 {
     self.keychainService = service;
     self.keychainAccount = account;
     self.touchIDReason = reason;
     self.passcodeAttemptLimit = attemptLimit;
-    self.splashViewControllerClass = splashViewControllerClass;
 }
 
 
@@ -120,6 +118,24 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)showTouchID
+{
+    UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+    
+    [self requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
+        switch (response) {
+            case VENTouchLockTouchIDResponseSuccess:
+                [rootViewController dismissViewControllerAnimated:YES completion:nil];
+                self.backgroundLockVisible = NO;
+                break;
+            case VENTouchLockTouchIDResponseUsePasscode:
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
 - (void)requestTouchIDWithCompletion:(void (^)(VENTouchLockTouchIDResponse))completionBlock
 {
     [self requestTouchIDWithCompletion:completionBlock reason:self.touchIDReason];
@@ -129,7 +145,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 {
     if ([[self class] canUseTouchID]) {
         LAContext *context = [[LAContext alloc] init];
-        context.localizedFallbackTitle = NSLocalizedString(@"Enter Passcode", nil);
+        context.localizedFallbackTitle = @"Enter Passcode";
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                 localizedReason:reason
                           reply:^(BOOL success, NSError *error) {
@@ -163,46 +179,53 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)lockFromBackground:(BOOL)fromBackground
 {
-    if (self.splashViewControllerClass != NULL) {
-        VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
-        if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-            UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
-            UIViewController *displayController;
-            if (self.appearance.splashShouldEmbedInNavigationController) {
-                displayController = [splashViewController ventouchlock_embeddedInNavigationController];
-            }
-            else {
-                displayController = splashViewController;
-            }
-
-            if (fromBackground) {
-                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-                VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
-                [snapshotSplashViewController setIsSnapshotViewController:YES];
-                UIViewController *snapshotDisplayController;
-                if (self.appearance.splashShouldEmbedInNavigationController) {
-                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
-                }
-                else {
-                    snapshotDisplayController = snapshotSplashViewController;
-                }
-                [snapshotDisplayController loadView];
-                [snapshotDisplayController viewDidLoad];
-                snapshotDisplayController.view.frame = mainWindow.bounds;
-                self.snapshotView = snapshotDisplayController.view;
-                [mainWindow addSubview:self.snapshotView];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [rootViewController presentViewController:displayController animated:NO completion:^{
-                    self.backgroundLockVisible = YES;
-                    [splashViewController showUnlockAnimated:NO];
-                }];
-            });
-        }
+    VENTouchLockEnterPasscodeViewController *splashViewController = [self enterPasscodeVC];
+    UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
+    UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+    UIViewController *displayController;
+    if (self.appearance.splashShouldEmbedInNavigationController) {
+        displayController = [splashViewController ventouchlock_embeddedInNavigationController];
     }
+    else {
+        displayController = splashViewController;
+    }
+    
+    if (fromBackground) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        VENTouchLockEnterPasscodeViewController *snapshotSplashViewController = [[VENTouchLockEnterPasscodeViewController alloc] init];
+        UIViewController *snapshotDisplayController;
+        if (self.appearance.splashShouldEmbedInNavigationController) {
+            snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationController];
+        }
+        else {
+            snapshotDisplayController = snapshotSplashViewController;
+        }
+        [snapshotDisplayController loadView];
+        [snapshotDisplayController viewDidLoad];
+        snapshotDisplayController.view.frame = mainWindow.bounds;
+        self.snapshotView = snapshotDisplayController.view;
+        [mainWindow addSubview:self.snapshotView];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [rootViewController presentViewController:displayController animated:NO completion:^{
+            self.backgroundLockVisible = YES;
+            if ([[self class] shouldUseTouchID]) {
+                [self showTouchID];
+            }
+        }];
+    });
 }
 
+- (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC
+{
+    VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
+    __weak VENTouchLockEnterPasscodeViewController *weakVC = enterPasscodeVC;
+    enterPasscodeVC.willFinishWithResult = ^(BOOL success) {
+        [weakVC dismissViewControllerAnimated:YES completion:nil];
+        self.backgroundLockVisible = NO;
+    };
+    return enterPasscodeVC;
+}
 
 #pragma mark - NSNotifications
 
@@ -216,6 +239,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
     if ([self isPasscodeSet] && !self.backgroundLockVisible) {
+        [[UIApplication sharedApplication] ignoreSnapshotOnNextApplicationLaunch];
         [self lockFromBackground:YES];
     }
 }

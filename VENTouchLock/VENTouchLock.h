@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "VENTouchLockCreatePasscodeViewController.h"
 #import "VENTouchLockEnterPasscodeViewController.h"
-#import "VENTouchLockSplashViewController.h"
 #import "VENTouchLockAppearance.h"
 
 typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
@@ -33,9 +32,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (void)setKeychainService:(NSString *)service
            keychainAccount:(NSString *)account
              touchIDReason:(NSString *)reason
-      passcodeAttemptLimit:(NSUInteger)attemptLimit
- splashViewControllerClass:(Class)splashViewControllerClass;
-
+      passcodeAttemptLimit:(NSUInteger)attemptLimit;
 /**
  Returns YES if a passcode exists, and NO otherwise.
  */
@@ -75,6 +72,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  Sets and persists the user's preference for using TouchID.
  */
 + (void)setShouldUseTouchID:(BOOL)shouldUseTouchID;
+
+/**
+ * Request Touch ID if possible
+ */
+- (void)showTouchID;
 
 /**
  Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing. The displayed string on the touch id prompt will be the default touchIDReason.

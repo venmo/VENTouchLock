@@ -31,6 +31,19 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 {
     [super viewDidLoad];
     self.passcodeView.title = [self.touchLock appearance].enterPasscodeInitialLabelText;
+    
+    if ([VENTouchLock shouldUseTouchID]) {
+        self.passcodeView.hideTouchIDButton = NO;
+        __weak VENTouchLockEnterPasscodeViewController *weakSelf = self;
+        [self.passcodeView setTouchIDButtonPressed:^(UIButton *button) {
+            [weakSelf.touchLock showTouchID];
+        }];
+    }
+}
+
+- (void)configureNavigationItems
+{
+    // no navigation items
 }
 
 - (void)enteredPasscode:(NSString *)passcode
@@ -44,9 +57,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
         [self.passcodeView shakeAndVibrateCompletion:^{
             self.passcodeView.title = [self.touchLock appearance].enterPasscodeIncorrectLabelText;
             [self clearPasscode];
-            if ([self parentSplashViewController]) {
-                [self recordIncorrectPasscodeAttempt];
-            }
+            [self recordIncorrectPasscodeAttempt];
         }];
 
     }
@@ -66,25 +77,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 
 - (void)callExceededLimitActionBlock
 {
-    [[self parentSplashViewController] dismissWithUnlockSuccess:NO
-                                                     unlockType:VENTouchLockSplashViewControllerUnlockTypeNone
-                                                       animated:NO];
-}
-
-- (VENTouchLockSplashViewController *)parentSplashViewController
-{
-    VENTouchLockSplashViewController *splashViewController = nil;
-    UIViewController *presentingViewController = self.presentingViewController;
-    if (self.touchLock.appearance.splashShouldEmbedInNavigationController) {
-        UIViewController *rootViewController = ([presentingViewController isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)presentingViewController).viewControllers firstObject] : nil;
-        if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            splashViewController = (VENTouchLockSplashViewController *)rootViewController;
-        }
-    }
-    else if ([presentingViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-        splashViewController = (VENTouchLockSplashViewController *)presentingViewController;
-    }
-    return splashViewController;
+   // TODO: come up with solution for this
 }
 
 @end

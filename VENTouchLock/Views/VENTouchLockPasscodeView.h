@@ -23,6 +23,17 @@
 @property (strong, nonatomic) UIColor *characterColor;
 
 /**
+ * Default is YES
+ */
+@property (nonatomic) BOOL hideTouchIDButton;
+
+/**
+ * Callback when Touch ID button is pressed
+ */
+@property (nonatomic, copy) void (^touchIDButtonPressed)(UIButton *button);
+- (void)setTouchIDButtonPressed:(void (^)(UIButton *button))touchIDButtonPressed;
+
+/**
  Creates a passcode view controller with the given title and frame.
  */
 - (instancetype)initWithTitle:(NSString *)title frame:(CGRect)frame;

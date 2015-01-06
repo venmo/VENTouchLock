@@ -10,6 +10,8 @@
 @property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *thirdCharacter;
 @property (weak, nonatomic) IBOutlet VENTouchLockPasscodeCharacterView *fourthCharacter;
 
+@property (nonatomic, strong) IBOutlet UIButton *touchIDButton;
+
 @end
 
 @implementation VENTouchLockPasscodeView
@@ -31,6 +33,8 @@
         for (VENTouchLockPasscodeCharacterView *characterView in _characters) {
             characterView.fillColor = characterColor;
         }
+        
+        self.hideTouchIDButton = YES;
     }
     return self;
 }
@@ -93,6 +97,21 @@
 {
     _titleColor = titleColor;
     self.titleLabel.textColor = titleColor;
+}
+
+- (void)setHideTouchIDButton:(BOOL)hideTouchIDButton
+{
+    _hideTouchIDButton = hideTouchIDButton;
+    self.touchIDButton.hidden = hideTouchIDButton;
+}
+
+#pragma mark - Button actions
+
+- (IBAction)touchIDButtonPressed:(id)sender
+{
+    if (self.touchIDButtonPressed) {
+        _touchIDButtonPressed(sender);
+    }
 }
 
 @end
