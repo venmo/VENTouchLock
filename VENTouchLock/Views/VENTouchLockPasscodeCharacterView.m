@@ -89,5 +89,14 @@
         [self redraw];
     }
 }
+- (void)setFillColor:(UIColor *)fillColor
+{
+    _fillColor = fillColor;
+    CGColorRef cgColor = fillColor.CGColor;
+    self.hyphen.fillColor = cgColor;
+    self.hyphen.strokeColor = cgColor;
+    self.circle.fillColor = cgColor;
+    self.circle.strokeColor = cgColor;
+}
 
 @end

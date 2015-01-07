@@ -48,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     if (!self.isSnapshotViewController) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self showUnlockAnimated:NO];

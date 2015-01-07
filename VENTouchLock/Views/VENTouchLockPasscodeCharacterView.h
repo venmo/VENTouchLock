@@ -7,4 +7,9 @@
  */
 @property (assign, nonatomic) BOOL isEmpty;
 
+/**
+ * The fill color of the passcode character.
+ */
+@property (strong, nonatomic) UIColor *fillColor;
+
 @end

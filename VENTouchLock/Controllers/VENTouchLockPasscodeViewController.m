@@ -41,6 +41,22 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     [self configurePasscodeView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (![self.invisiblePasscodeField isFirstResponder]) {
+        [self.invisiblePasscodeField becomeFirstResponder];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if ([self.invisiblePasscodeField isFirstResponder]) {
+        [self.invisiblePasscodeField resignFirstResponder];
+    }
+}
+
 - (void)configureInvisiblePasscodeField
 {
     self.invisiblePasscodeField = [[UITextField alloc] init];
@@ -49,7 +65,6 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     self.invisiblePasscodeField.delegate = self;
     [self.invisiblePasscodeField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:self.invisiblePasscodeField];
-    [self.invisiblePasscodeField becomeFirstResponder];
 }
 
 - (void)configureNavigationItems
@@ -60,6 +75,8 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)configurePasscodeView
 {
     VENTouchLockPasscodeView *passcodeView = [[VENTouchLockPasscodeView alloc] init];
+    passcodeView.titleColor = self.touchLock.appearance.passcodeViewControllerTitleColor;
+    passcodeView.characterColor = self.touchLock.appearance.passcodeViewControllerCharacterColor;
     [self.view addSubview:passcodeView];
     self.passcodeView = passcodeView;
 }
