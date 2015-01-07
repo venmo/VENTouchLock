@@ -45,6 +45,16 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    if (!self.isSnapshotViewController) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showUnlockAnimated:NO];
+        });
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

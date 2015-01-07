@@ -196,7 +196,6 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
             dispatch_async(dispatch_get_main_queue(), ^{
                 [rootViewController presentViewController:displayController animated:NO completion:^{
                     self.backgroundLockVisible = YES;
-                    [splashViewController showUnlockAnimated:NO];
                 }];
             });
         }
