@@ -237,6 +237,7 @@ static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLoc
         // on first launch delete passcode to make sure we don't persist passcode between installs
         [self deletePasscode];
         [userDefaults setBool:YES forKey:VENTouchLockUserDefaultsKeyLaunchedBefore];
+        [userDefaults synchronize];
     }
     
     if ([self isPasscodeSet]) {
