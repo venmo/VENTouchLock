@@ -127,12 +127,15 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)requestTouchIDWithCompletion:(void (^)(VENTouchLockTouchIDResponse))completionBlock reason:(NSString *)reason
 {
-    if ([[self class] canUseTouchID]) {
+    static BOOL isTouchIDPresented = NO;
+    if ([[self class] canUseTouchID] && !isTouchIDPresented) {
+        isTouchIDPresented = YES;
         LAContext *context = [[LAContext alloc] init];
         context.localizedFallbackTitle = NSLocalizedString(@"Enter Passcode", nil);
         [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
                 localizedReason:reason
                           reply:^(BOOL success, NSError *error) {
+                              isTouchIDPresented = NO;
                               dispatch_async(dispatch_get_main_queue(), ^{
                                   if (success) {
                                       if (completionBlock) {
