@@ -83,7 +83,7 @@
 
 - (void)showTouchID
 {
-    __weak VENTouchLockSplashViewController *weakSelf = self;
+    __weak __typeof__(self) weakSelf = self;
     [self.touchLock requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
         switch (response) {
             case VENTouchLockTouchIDResponseSuccess:
@@ -108,7 +108,7 @@
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC
 {
     VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-    __weak VENTouchLockSplashViewController *weakSelf = self;
+    __weak __typeof__(self) weakSelf = self;
     enterPasscodeVC.willFinishWithResult = ^(BOOL success) {
         if (success) {
             [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypePasscode];
