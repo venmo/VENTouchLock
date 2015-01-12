@@ -9,6 +9,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
     VENTouchLockTouchIDResponseSuccess,
     VENTouchLockTouchIDResponseUsePasscode,
     VENTouchLockTouchIDResponseCanceled,
+    VENTouchLockTouchIDResponsePromptAlreadyPresent,
 };
 
 @interface VENTouchLock : NSObject
