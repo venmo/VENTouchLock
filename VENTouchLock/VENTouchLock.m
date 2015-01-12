@@ -194,9 +194,8 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 [mainWindow addSubview:self.snapshotView];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                [rootViewController presentViewController:displayController animated:NO completion:^{
-                    self.backgroundLockVisible = YES;
-                }];
+                self.backgroundLockVisible = YES;
+                [rootViewController presentViewController:displayController animated:NO completion:nil];
             });
         }
     }
