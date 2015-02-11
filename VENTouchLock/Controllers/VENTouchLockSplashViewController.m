@@ -100,8 +100,8 @@
 
 - (void)showPasscodeAnimated:(BOOL)animated
 {
-    VENTouchLockEnterPasscodeViewController *enterPassCodeViewController;
-    if (self.touchLock.appearance.splashShouldEmbedInNavigationController) {
+    UIViewController *enterPassCodeViewController;
+    if (self.touchLock.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
         enterPassCodeViewController = [[self enterPasscodeVC] embeddedInNavigationController];
     } else {
         enterPassCodeViewController = [self enterPasscodeVC];
