@@ -100,9 +100,14 @@
 
 - (void)showPasscodeAnimated:(BOOL)animated
 {
-    [self presentViewController:[[self enterPasscodeVC] embeddedInNavigationController]
-                                            animated:animated
-                                          completion:nil];
+    UIViewController *enterPassCodeViewController;
+    if (self.touchLock.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
+        enterPassCodeViewController = [[self enterPasscodeVC] embeddedInNavigationController];
+    } else {
+        enterPassCodeViewController = [self enterPasscodeVC];
+    }
+
+    [self presentViewController:enterPassCodeViewController animated:animated completion:nil];
 }
 
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC

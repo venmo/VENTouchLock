@@ -10,6 +10,7 @@
 @property (strong, nonatomic) UIColor *passcodeViewControllerTitleColor;
 @property (strong, nonatomic) UIColor *passcodeViewControllerCharacterColor;
 @property (strong, nonatomic) UIColor *passcodeViewControllerBackgroundColor;
+@property (assign, nonatomic) BOOL passcodeViewControllerShouldEmbedInNavigationController;
 @property (strong, nonatomic) NSString *cancelBarButtonItemTitle;
 
 /**-----------------------------------------------------------------------------
@@ -20,7 +21,6 @@
 @property (strong, nonatomic) NSString *createPasscodeConfirmLabelText;
 @property (strong, nonatomic) NSString *createPasscodeMismatchedLabelText;
 @property (strong, nonatomic) NSString *createPasscodeViewControllerTitle;
-
 
 /**-----------------------------------------------------------------------------
  * @description Enter Passcode View Controller Preferences
