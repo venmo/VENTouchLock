@@ -37,4 +37,11 @@
  */
 @property (assign, nonatomic) BOOL splashShouldEmbedInNavigationController;
 
+/**-----------------------------------------------------------------------------
+ * @description Touch ID Prompt Preferences
+ * -----------------------------------------------------------------------------
+ */
+
+@property (assign, nonatomic) BOOL touchIDCancelPresentsPasscodeViewController;
+
 @end

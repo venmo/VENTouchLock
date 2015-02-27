@@ -19,6 +19,7 @@
         _enterPasscodeIncorrectLabelText = NSLocalizedString(@"Incorrect passcode. Try again.", nil);
         _enterPasscodeViewControllerTitle = NSLocalizedString(@"Enter Passcode", nil);
         _splashShouldEmbedInNavigationController = NO;
+        _touchIDCancelPresentsPasscodeViewController = NO;
     }
     return self;
 }
