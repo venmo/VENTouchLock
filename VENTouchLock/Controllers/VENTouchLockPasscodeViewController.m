@@ -83,6 +83,9 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)userTappedCancel
 {
+    if (self.willFinishWithResult) {
+        self.willFinishWithResult(NO);
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
