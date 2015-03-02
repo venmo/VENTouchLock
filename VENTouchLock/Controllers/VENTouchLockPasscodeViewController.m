@@ -105,12 +105,17 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)finishWithResult:(BOOL)success animated:(BOOL)animated
 {
     [self.invisiblePasscodeField resignFirstResponder];
-    if (self.willFinishWithResult) {
-        self.willFinishWithResult(success);
-    } else {
-        [self dismissViewControllerAnimated:animated completion:nil];
-    }
+    
+    __block BOOL blockSuccess = success;
+    __block void (^completionBlock)(BOOL) = self.willFinishWithResult;
+
+    [self dismissViewControllerAnimated:animated completion:^{
+        if (completionBlock) {
+            completionBlock(blockSuccess);
+        }
+    }];
 }
+// ^ SYMPLE: Customized
 
 - (UINavigationController *)embeddedInNavigationController
 {
@@ -181,6 +186,23 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
         textField.text = @"";
         [self performSelector:@selector(enteredPasscode:) withObject:newString afterDelay:0.3];
     }
+}
+
+# pragma mark Symple rotation behavior
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
 }
 
 @end
