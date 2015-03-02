@@ -99,4 +99,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  */
 - (VENTouchLockAppearance *)appearance;
 
+/**
+ This block is called directly before the passcode view controller has completed its intended operation. If the operation was completed successfully, the returned BOOL will return YES, and NO otherwise.
+ If this block is defined, it will be invoked with the appropriate result when the controller has been dismissed.
+ */
+@property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);
+// ^ SYMPLE: VENTouchLockPasscodeViewController completion block exposed via Client API
+
 @end
