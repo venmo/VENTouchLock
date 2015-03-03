@@ -220,13 +220,15 @@ static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLoc
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC
 {
     VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-    __weak VENTouchLockEnterPasscodeViewController *weakVC = enterPasscodeVC;
     enterPasscodeVC.willFinishWithResult = ^(BOOL success) {
-        [weakVC dismissViewControllerAnimated:YES completion:nil];
         self.backgroundLockVisible = NO;
+        if (self.willFinishWithResult) {
+            self.willFinishWithResult(success);
+        }
     };
     return enterPasscodeVC;
 }
+// ^ SYMPLE: Customized to use completion block specified by client code
 
 #pragma mark - NSNotifications
 

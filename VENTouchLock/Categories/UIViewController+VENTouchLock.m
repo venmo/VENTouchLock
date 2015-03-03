@@ -1,10 +1,11 @@
 #import "UIViewController+VENTouchLock.h"
+#import "VENNavigationController.h"
 
 @implementation UIViewController (VENTouchLock)
 
 - (UINavigationController *)ventouchlock_embeddedInNavigationController
 {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+    VENNavigationController *navigationController = [[VENNavigationController alloc] initWithRootViewController:self];
     navigationController.navigationBar.translucent = NO;
     return navigationController;
 }

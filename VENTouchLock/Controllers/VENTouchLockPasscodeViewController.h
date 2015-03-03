@@ -10,11 +10,10 @@
 @property (strong, nonatomic) VENTouchLockPasscodeView *passcodeView;
 
 /**
- This block is called directly before the passcode view controller has completed its intended operation. If the operation was completed successfully, the returned BOOL will return YES, and NO otherwise.
- If this block is defined, it is responsible for dismissing the passcode view controller.
- If this block is nil, the payment view controller will dismiss itself.
+ If this block is defined, it is called within the completion block of the passcode view controller when it is dismissed. If the operation was completed successfully, the returned BOOL will return YES, and NO otherwise.
  */
 @property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);
+// ^ SYMPLE: usage customized and comment updated to reflect Symple usage
 
 /**
  The VENTouchLock framework this class interacts with. This property should not be set outside of VENTouchLock framework's automated tests.  By default, it is set to the [VENTouchLock sharedInstance] singleton on initialization.
