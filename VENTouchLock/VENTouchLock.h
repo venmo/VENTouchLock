@@ -49,9 +49,9 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (BOOL)isPasscodeValid:(NSString *)passcode;
 
 /**
- Sets the given string to be the current passcode.
+ Sets the given string to be the current passcode. Returns NO if the keychain write fails.
  */
-- (void)setPasscode:(NSString *)passcode;
+- (BOOL)setPasscode:(NSString *)passcode;
 
 /**
  Deletes the current passcode if one exists.
