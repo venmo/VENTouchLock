@@ -30,8 +30,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
     [super enteredPasscode:passcode];
     if (self.firstPasscode) {
         if ([passcode isEqualToString:self.firstPasscode]) {
-            [self.touchLock setPasscode:passcode];
-            [self finishWithResult:YES animated:YES];
+            [self finishWithResult:[self.touchLock setPasscode:passcode] animated:YES];
         }
         else {
             [self.passcodeView shakeAndVibrateCompletion:^{

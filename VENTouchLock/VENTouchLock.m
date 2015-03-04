@@ -6,7 +6,6 @@
 
 
 static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
-static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLockUserDefaultsKeyLaunchedBefore";
 
 @interface VENTouchLock ()
 
@@ -80,11 +79,18 @@ static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLoc
     return [passcode isEqualToString:[self currentPasscode]];
 }
 
-- (void)setPasscode:(NSString *)passcode
+- (BOOL)setPasscode:(NSString *)passcode
 {
     NSString *service = self.keychainService;
     NSString *account = self.keychainAccount;
-    [SSKeychain setPassword:passcode forService:service account:account];
+    
+    NSError *saveError = nil;
+    
+    if (![SSKeychain setPassword:passcode forService:service account:account error:&saveError]) {
+        NSLog(@"%s [Line %d] saveError: %@", __PRETTY_FUNCTION__, __LINE__, saveError);
+    }
+    
+    return (!saveError);
 }
 
 - (void)deletePasscode
@@ -124,10 +130,18 @@ static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLoc
     
     [self requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
         switch (response) {
-            case VENTouchLockTouchIDResponseSuccess:
-                [rootViewController dismissViewControllerAnimated:YES completion:nil];
+            case VENTouchLockTouchIDResponseSuccess: {
                 self.backgroundLockVisible = NO;
+
+                __block void (^completionBlock)(BOOL) = self.willFinishWithResult;
+                
+                [rootViewController dismissViewControllerAnimated:YES completion:^{
+                    if (completionBlock) {
+                        completionBlock(YES);
+                    }
+                }];
                 break;
+            }
             case VENTouchLockTouchIDResponseUsePasscode:
                 break;
             default:
@@ -234,14 +248,6 @@ static NSString *const VENTouchLockUserDefaultsKeyLaunchedBefore = @"VENTouchLoc
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if (![userDefaults boolForKey:VENTouchLockUserDefaultsKeyLaunchedBefore]) {
-        // on first launch delete passcode to make sure we don't persist passcode between installs
-        [self deletePasscode];
-        [userDefaults setBool:YES forKey:VENTouchLockUserDefaultsKeyLaunchedBefore];
-        [userDefaults synchronize];
-    }
-    
     if ([self isPasscodeSet]) {
         [self lockFromBackground:NO];
     }
