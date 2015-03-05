@@ -132,12 +132,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         switch (response) {
             case VENTouchLockTouchIDResponseSuccess: {
                 self.backgroundLockVisible = NO;
-
-                __block void (^completionBlock)(BOOL) = self.willFinishWithResult;
                 
                 [rootViewController dismissViewControllerAnimated:YES completion:^{
-                    if (completionBlock) {
-                        completionBlock(YES);
+                    if (self.didFinishWithResult) {
+                        self.didFinishWithResult(YES);
                     }
                 }];
                 break;
@@ -234,10 +232,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC
 {
     VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-    enterPasscodeVC.willFinishWithResult = ^(BOOL success) {
+    enterPasscodeVC.didFinishWithResult = ^(BOOL success) {
         self.backgroundLockVisible = NO;
-        if (self.willFinishWithResult) {
-            self.willFinishWithResult(success);
+        if (self.didFinishWithResult) {
+            self.didFinishWithResult(success);
         }
     };
     return enterPasscodeVC;

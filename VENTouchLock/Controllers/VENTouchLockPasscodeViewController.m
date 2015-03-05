@@ -105,13 +105,10 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)finishWithResult:(BOOL)success animated:(BOOL)animated
 {
     [self.invisiblePasscodeField resignFirstResponder];
-    
-    __block BOOL blockSuccess = success;
-    __block void (^completionBlock)(BOOL) = self.willFinishWithResult;
 
     [self dismissViewControllerAnimated:animated completion:^{
-        if (completionBlock) {
-            completionBlock(blockSuccess);
+        if (self.didFinishWithResult) {
+            self.didFinishWithResult(success);
         }
     }];
 }
