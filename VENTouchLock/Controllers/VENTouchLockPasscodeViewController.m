@@ -79,6 +79,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     passcodeView.characterColor = self.touchLock.appearance.passcodeViewControllerCharacterColor;
     [self.view addSubview:passcodeView];
     self.passcodeView = passcodeView;
+    self.passcodeView.center = self.view.center;
 }
 
 - (void)userTappedCancel
