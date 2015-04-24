@@ -98,4 +98,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  */
 - (VENTouchLockAppearance *)appearance;
 
+- (void)lockFromBackground:(BOOL)fromBackground;
+
 @end
