@@ -34,6 +34,8 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(focusOnPasscodeField) name:UIApplicationDidBecomeActiveNotification object:nil];
 
     self.view.backgroundColor = [self.touchLock appearance].passcodeViewControllerBackgroundColor;
     [self configureInvisiblePasscodeField];
@@ -44,9 +46,8 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (![self.invisiblePasscodeField isFirstResponder]) {
-        [self.invisiblePasscodeField becomeFirstResponder];
-    }
+
+    [self focusOnPasscodeField];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -121,6 +122,12 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     textField.text = @"";
     for (VENTouchLockPasscodeCharacterView *characterView in self.passcodeView.characters) {
         characterView.isEmpty = YES;
+    }
+}
+
+- (void)focusOnPasscodeField{
+    if (![self.invisiblePasscodeField isFirstResponder]) {
+        [self.invisiblePasscodeField becomeFirstResponder];
     }
 }
 
