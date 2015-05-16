@@ -18,5 +18,4 @@ DerivedData
 *.xccheckout
 
 #CocoaPods
-Pods
 VENTouchLockSample/Pods/*
