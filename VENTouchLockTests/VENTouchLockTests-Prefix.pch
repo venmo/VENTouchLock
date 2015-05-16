@@ -1,13 +1,8 @@
-#ifndef SignupFormTests_Prefix_pch
-#define SignupFormTests_Prefix_pch
+@import UIKit;
 
-#import <XCTest/XCTest.h>
-
-#import <OCMock/OCMock.h>
+@import XCTest;
+@import OCMock;
 
 #define EXP_SHORTHAND
-#import <Expecta/Expecta.h>
-
-#import <Specta/Specta.h>
-
-#endif
+@import Specta;
+@import Expecta;

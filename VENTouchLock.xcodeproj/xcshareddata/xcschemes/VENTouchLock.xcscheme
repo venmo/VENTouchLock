@@ -20,6 +20,20 @@
                ReferencedContainer = "container:VENTouchLock.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3A709A7A19BE67D800AC9238"
+               BuildableName = "VENTouchLockTests.xctest"
+               BlueprintName = "VENTouchLockTests"
+               ReferencedContainer = "container:VENTouchLock.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,7 +42,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3A709A7A19BE67D800AC9238"
+               BuildableName = "VENTouchLockTests.xctest"
+               BlueprintName = "VENTouchLockTests"
+               ReferencedContainer = "container:VENTouchLock.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3A709A6F19BE67D800AC9238"
+            BuildableName = "VENTouchLock.framework"
+            BlueprintName = "VENTouchLock"
+            ReferencedContainer = "container:VENTouchLock.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"

@@ -1,0 +1,6 @@
+language: objective-c
+osx_image: xcode611
+
+script:
+  - rake clean
+  - Tests/Support/objc-build-scripts/cibuild

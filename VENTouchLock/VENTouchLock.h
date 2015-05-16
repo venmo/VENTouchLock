@@ -3,6 +3,7 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLockSplashViewController.h"
 #import "VENTouchLockAppearance.h"
+#import "UIViewController+VENTouchLock.h"
 
 typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
     VENTouchLockTouchIDResponseUndefined,

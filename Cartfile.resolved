@@ -1,1 +1,4 @@
 github "soffes/SSKeychain" "v1.2.3"
+git "file:///Users/markadams/Development/iOS/Specta" "b28d3b848088193b2dd2ccdd0232968e3615eed6"
+github "specta/expecta" "v1.0.0"
+git "file:///Users/markadams/Development/iOS/ocmock" "2bf335ef5cec8604db8030797818c7cb66b82a00"
