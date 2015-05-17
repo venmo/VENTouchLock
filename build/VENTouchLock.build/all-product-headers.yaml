@@ -1,0 +1,73 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/build/Release-iphoneos/VENTouchLock.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "UIViewController+VENTouchLock.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Categories/UIViewController+VENTouchLock.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLock-Swift.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/build/Release-iphoneos/VENTouchLock.framework/Headers/VENTouchLock-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLock.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/VENTouchLock.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockAppearance.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Models/VENTouchLockAppearance.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockCreatePasscodeViewController.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Controllers/VENTouchLockCreatePasscodeViewController.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockEnterPasscodeViewController.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Controllers/VENTouchLockEnterPasscodeViewController.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockPasscodeCharacterView.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Views/VENTouchLockPasscodeCharacterView.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockPasscodeView.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Views/VENTouchLockPasscodeView.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockPasscodeViewController.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Controllers/VENTouchLockPasscodeViewController.h"
+        },
+        {
+          'type': 'file',
+          'name': "VENTouchLockSplashViewController.h",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/VENTouchLock/Controllers/VENTouchLockSplashViewController.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/build/Release-iphoneos/VENTouchLock.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/markadams/Development/Venmo/OSS/VENTouchLock/build/VENTouchLock.build/Release-iphoneos/VENTouchLock.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

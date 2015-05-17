@@ -1,0 +1,6 @@
+framework module VENTouchLock {
+  umbrella header "VENTouchLock.h"
+
+  export *
+  module * { export * }
+}

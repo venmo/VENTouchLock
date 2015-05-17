@@ -1,0 +1,1 @@
+ const unsigned char VENTouchLockVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:VENTouchLock  PROJECT:VENTouchLock-1" "\n"; const double VENTouchLockVersionNumber __attribute__ ((used)) = (double)1.;
