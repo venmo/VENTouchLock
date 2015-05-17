@@ -1,3 +1,3 @@
-git "file:///Users/markadams/Development/iOS/Specta" "fix-carthage"
+github "hyperspacemark/specta" "fix-carthage"
 github "specta/expecta"
-git "file:///Users/markadams/Development/iOS/ocmock" "add_ios_project"
+github "hyperspacemark/ocmock" "add_ios_project"
