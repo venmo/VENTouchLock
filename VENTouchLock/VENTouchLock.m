@@ -191,7 +191,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                 displayController = splashViewController;
             }
 
-            BOOL fromBackground = [UIApplication sharedApplication].applicationState != UIApplicationStateBackground;
+            BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
             if (fromBackground) {
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
