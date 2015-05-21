@@ -5,6 +5,6 @@ target "VENTouchLockSample" do
 end
 
 target "VENTouchLockSampleTests" do
-  pod 'KIF', '~> 3.0.8'
+  pod 'KIF', '~> 3.0'
   pod 'FBSnapshotTestCase', '1.4'
 end

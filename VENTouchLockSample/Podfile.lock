@@ -1,18 +1,18 @@
 PODS:
   - FBSnapshotTestCase (1.4)
-  - KIF (3.0.8):
-    - KIF/XCTest (= 3.0.8)
-  - KIF/XCTest (3.0.8)
+  - KIF (3.2.2):
+    - KIF/XCTest (= 3.2.2)
+  - KIF/XCTest (3.2.2)
   - SSKeychain (1.2.2)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (= 1.4)
-  - KIF (~> 3.0.8)
+  - KIF (~> 3.0)
   - SSKeychain (~> 1.2.2)
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: f9f225b5ba11c8d8c09075590490df16314e4d62
-  KIF: 2db5e8cf59136dd1267d49cca0d55883389b09d3
-  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
+  FBSnapshotTestCase: 892508495a69e8703bab36c9da7674ff740d41db
+  KIF: b0bd762b0c7890b04920cf618021d6d4fd5127bd
+  SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.4
