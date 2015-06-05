@@ -8,8 +8,9 @@
 + (UIViewController*)ventouchlock_topMostController;
 
 /**
+ * @param navigationBarClass The navigation bar class that should be used to initialize the navigation controller. Defaults to UINavigationBar.
  * @return A navigation controller that contains the reciever as its root view controller.
  */
-- (UINavigationController *)ventouchlock_embeddedInNavigationController;
+- (UINavigationController *)ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:(Class)navigationBarClass;
 
 @end
