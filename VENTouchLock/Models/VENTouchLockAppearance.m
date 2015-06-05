@@ -20,6 +20,7 @@
         _enterPasscodeViewControllerTitle = NSLocalizedString(@"Enter Passcode", nil);
         _splashShouldEmbedInNavigationController = NO;
         _touchIDCancelPresentsPasscodeViewController = NO;
+        _navigationBarClass = [UINavigationBar class];
     }
     return self;
 }

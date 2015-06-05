@@ -44,4 +44,6 @@
 
 @property (assign, nonatomic) BOOL touchIDCancelPresentsPasscodeViewController;
 
+@property (strong, nonatomic) Class navigationBarClass;
+
 @end

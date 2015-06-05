@@ -2,10 +2,10 @@
 
 @implementation UIViewController (VENTouchLock)
 
-- (UINavigationController *)ventouchlock_embeddedInNavigationController
+- (UINavigationController *)ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:(Class)navigationBarClass
 {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-    navigationController.navigationBar.translucent = NO;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:navigationBarClass toolbarClass:nil];
+    [navigationController pushViewController:self animated:NO];
     return navigationController;
 }
 
