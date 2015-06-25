@@ -20,9 +20,16 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 @property (assign, nonatomic) BOOL backgroundLockVisible;
 
 /**
- @return A singleton VENTouchLock instance.
+ @return A singleton TouchLock instance.
  */
 + (instancetype)sharedInstance;
+
+/**
+ Returns a singleton TouchLock instance with a unique identifier.
+ @param identifer This identifer must be unique per TouchLock instance. If nil, the identifer will default to "VENTouchLockDefaultUniqueIdentifier"
+ @return A singleton TouchLock instance with the given unique identifier.
+ */
++ (instancetype)sharedInstanceWithTouchLockIdentfier:(NSString *)identifier;
 
 /**
  Set the defaults. This method should be called at launch.

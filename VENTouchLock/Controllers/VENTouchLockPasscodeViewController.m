@@ -22,9 +22,14 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (instancetype)init
 {
+    return [self initWithTouchLockIdentifier:nil];
+}
+
+- (instancetype)initWithTouchLockIdentifier:(NSString *)identifier
+{
     self = [super init];
     if (self) {
-        _touchLock = [VENTouchLock sharedInstance];
+        _touchLock = [VENTouchLock sharedInstanceWithTouchLockIdentfier:identifier];
     }
     return self;
 }

@@ -5,6 +5,16 @@
 @interface VENTouchLockPasscodeViewController : UIViewController
 
 /**
+ @return A TouchLockPasscodeViewController instance
+*/
+- (instancetype)init;
+
+/**
+ @return A TouchLockPasscodeViewController instance that reads or writes properties to the TouchLock instance with the given unique identifer
+ */
+- (instancetype)initWithTouchLockIdentifier:(NSString *)identifier;
+
+/**
  The initial passcode view attached to this view controller.
  */
 @property (strong, nonatomic) VENTouchLockPasscodeView *passcodeView;
