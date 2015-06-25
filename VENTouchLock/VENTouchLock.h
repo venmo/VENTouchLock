@@ -12,11 +12,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
     VENTouchLockTouchIDResponsePromptAlreadyPresent,
 };
 
-/**
- The default unique identifier.
- */
-extern NSString *const VENTouchLockDefaultUniqueIdentifier;
-
 @interface VENTouchLock : NSObject
 
 /**
@@ -25,14 +20,16 @@ extern NSString *const VENTouchLockDefaultUniqueIdentifier;
 @property (assign, nonatomic) BOOL backgroundLockVisible;
 
 /**
- @return A singleton VENTouchLock instance.
+ @return A singleton TouchLock instance.
  */
 + (instancetype)sharedInstance;
 
 /**
- @return A singleton VENTouchLock instance with the given unique identifier.
+ Returns a singleton TouchLock instance with a unique identifier.
+ @param identifer This identifer must be unique per TouchLock instance. If nil, the identifer will default to "VENTouchLockDefaultUniqueIdentifier"
+ @return A singleton TouchLock instance with the given unique identifier.
  */
-+ (instancetype)sharedInstanceWithIdentfier:(NSString *)identifier;
++ (instancetype)sharedInstanceWithTouchLockIdentfier:(NSString *)identifier;
 
 /**
  Set the defaults. This method should be called at launch.

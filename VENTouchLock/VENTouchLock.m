@@ -4,7 +4,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+VENTouchLock.h"
 
-NSString *const VENTouchLockDefaultUniqueIdentifier = @"VENTouchLockDefaultUniqueIdentifier";
+static NSString *const VENTouchLockDefaultUniqueIdentifier = @"VENTouchLockDefaultUniqueIdentifier";
 static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
 
 @interface VENTouchLock ()
@@ -23,10 +23,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 + (instancetype)sharedInstance
 {
-    return [self sharedInstanceWithIdentfier:nil];
+    return [self sharedInstanceWithTouchLockIdentfier:nil];
 }
 
-+ (instancetype)sharedInstanceWithIdentfier:(NSString *)identifier
++ (instancetype)sharedInstanceWithTouchLockIdentfier:(NSString *)identifier
 {
     static NSMutableDictionary *sharedDictionary = nil;
     static dispatch_once_t onceToken;

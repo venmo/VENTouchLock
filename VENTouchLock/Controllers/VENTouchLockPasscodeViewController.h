@@ -4,6 +4,10 @@
 
 @interface VENTouchLockPasscodeViewController : UIViewController
 
+- (instancetype)init;
+
+- (instancetype)initWithTouchLockIdentifier:(NSString *)identifier;
+
 /**
  The initial passcode view attached to this view controller.
  */
