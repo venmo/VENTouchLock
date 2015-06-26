@@ -108,6 +108,22 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (void)lock;
 
 /**
+ Increments the incorrect passcode attempt count;
+ */
+- (NSUInteger)numberOfIncorrectPasscodeAttempts;
+
+/**
+ Increments the incorrect password attempt count;
+ */
+- (void)incrementIncorrectPasswordAttemptCount;
+
+/**
+ Resets the incorrect password attempt count;
+ */
+- (void)resetIncorrectPasswordAttemptCount;
+
+
+/**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
  */
 - (VENTouchLockAppearance *)appearance;

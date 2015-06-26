@@ -54,12 +54,9 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 
 - (void)recordIncorrectPasscodeAttempt
 {
-    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-    NSUInteger numberOfAttemptsSoFar = [standardDefaults integerForKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
-    numberOfAttemptsSoFar ++;
-    [standardDefaults setInteger:numberOfAttemptsSoFar forKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
-    [standardDefaults synchronize];
-    if (numberOfAttemptsSoFar >= [self.touchLock passcodeAttemptLimit]) {
+    [self.touchLock incrementIncorrectPasswordAttemptCount];
+
+    if ([self.touchLock numberOfIncorrectPasscodeAttempts] >= [self.touchLock passcodeAttemptLimit]) {
         [self callExceededLimitActionBlock];
     }
 }

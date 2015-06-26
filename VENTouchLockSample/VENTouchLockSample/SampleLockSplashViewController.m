@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.touchIDButton.hidden = ![VENTouchLock shouldUseTouchID];
+    self.touchIDButton.hidden = ![[VENTouchLock sharedInstance] shouldUseTouchID];
 }
 
 - (IBAction)userTappedShowTouchID:(id)sender
