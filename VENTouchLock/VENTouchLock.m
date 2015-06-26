@@ -5,12 +5,14 @@
 #import "UIViewController+VENTouchLock.h"
 
 static NSString *const VENTouchLockDefaultUniqueIdentifier = @"VENTouchLockDefaultUniqueIdentifier";
-static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
+static NSString *const VENTouchLockTouchIDOn = @"On";
+static NSString *const VENTouchLockTouchIDOff = @"Off";
 
 @interface VENTouchLock ()
 
 @property (copy, nonatomic) NSString *keychainService;
-@property (copy, nonatomic) NSString *keychainAccount;
+@property (copy, nonatomic) NSString *keychainPasscodeAccount;
+@property (copy, nonatomic) NSString *keychainTouchIDAccount;
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (assign, nonatomic) Class splashViewControllerClass;
@@ -65,14 +67,15 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 }
 
 - (void)setKeychainService:(NSString *)service
-           keychainAccount:(NSString *)account
+   keychainPasscodeAccount:(NSString *)passcodeAccount
+    keychainTouchIDAccount:(NSString *)touchIDAccount
              touchIDReason:(NSString *)reason
       passcodeAttemptLimit:(NSUInteger)attemptLimit
  splashViewControllerClass:(Class)splashViewControllerClass
-
 {
     self.keychainService = service;
-    self.keychainAccount = account;
+    self.keychainPasscodeAccount = passcodeAccount;
+    self.keychainTouchIDAccount = touchIDAccount;
     self.touchIDReason = reason;
     self.passcodeAttemptLimit = attemptLimit;
     self.splashViewControllerClass = splashViewControllerClass;
@@ -125,12 +128,12 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                                                  error:nil];
 }
 
-+ (BOOL)shouldUseTouchID
+- (BOOL)shouldUseTouchID
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey:VENTouchLockUserDefaultsKeyTouchIDActivated] && [self canUseTouchID];
 }
 
-+ (void)setShouldUseTouchID:(BOOL)shouldUseTouchID
+- (void)setShouldUseTouchID:(BOOL)shouldUseTouchID
 {
     [[NSUserDefaults standardUserDefaults] setBool:shouldUseTouchID forKey:VENTouchLockUserDefaultsKeyTouchIDActivated];
     [[NSUserDefaults standardUserDefaults] synchronize];
