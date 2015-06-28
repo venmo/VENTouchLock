@@ -115,12 +115,12 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 /**
  Increments the incorrect password attempt count;
  */
-- (void)incrementIncorrectPasswordAttemptCount;
+- (void)incrementIncorrectPasscodeAttemptCount;
 
 /**
  Resets the incorrect password attempt count;
  */
-- (void)resetIncorrectPasswordAttemptCount;
+- (void)resetIncorrectPasscodeAttemptCount;
 
 
 /**

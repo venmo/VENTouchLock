@@ -106,6 +106,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     NSString *service = self.keychainService;
     NSString *account = self.keychainPasscodeAccount;
     [SSKeychain setPassword:passcode forService:service account:account];
+    [self resetIncorrectPasscodeAttemptCount];
 }
 
 - (void)deletePasscode
@@ -255,7 +256,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     return [countString integerValue];
 }
 
-- (void)incrementIncorrectPasswordAttemptCount
+- (void)incrementIncorrectPasscodeAttemptCount
 {
     NSUInteger count = [self numberOfIncorrectPasscodeAttempts];
     count++;
@@ -265,7 +266,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     [SSKeychain setPassword:[@(count) stringValue] forService:service account:account];
 }
 
-- (void)resetIncorrectPasswordAttemptCount
+- (void)resetIncorrectPasscodeAttemptCount
 {
     NSString *service = self.keychainService;
     NSString *account = [self keychainPasscodeAttemptAccountName];

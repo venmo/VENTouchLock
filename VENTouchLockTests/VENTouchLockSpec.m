@@ -4,7 +4,8 @@ SpecBegin(VENTouchLock)
 
 beforeAll(^{
     [[VENTouchLock sharedInstance] setKeychainService:@"keychainService"
-                                      keychainAccount:@"keychainAccount"
+                              keychainPasscodeAccount:@"keychainAccount"
+                               keychainTouchIDAccount:@"keychainAccount"
                                         touchIDReason:@"touchIDReason"
                                  passcodeAttemptLimit:0
                             splashViewControllerClass:NULL];
@@ -25,6 +26,15 @@ describe(@"setPasscode:", ^{
 
         expect([touchLock isPasscodeSet]).to.equal(YES);
         expect([touchLock currentPasscode]).to.equal(@"testPasscode");
+    });
+
+    it(@"setting a passcode should reset all prior passcode attempt history", ^{
+        VENTouchLock *touchLock = [VENTouchLock sharedInstance];
+
+        [touchLock incrementIncorrectPasscodeAttemptCount];
+        [touchLock setPasscode:@"testPasscode"];
+
+        expect([touchLock passcodeAttemptLimit]).to.equal(0);
     });
 
 });
@@ -60,41 +70,56 @@ describe(@"deletePasscode", ^{
 describe(@"shouldUseTouchID", ^{
 
     it(@"should return YES if the device supports touch ID and the user has setShouldUseTouchID to YES", ^{
-        [VENTouchLock setShouldUseTouchID:YES];
+        [[VENTouchLock sharedInstance] setShouldUseTouchID:YES];
         OCMockObject *mockClass = [OCMockObject niceMockForClass:[VENTouchLock class]];
         [[[mockClass stub] andReturnValue:@YES] canUseTouchID];
         [[[mockClass expect] andForwardToRealObject] shouldUseTouchID];
-        BOOL shouldUseTouchID =  [VENTouchLock shouldUseTouchID];
+        BOOL shouldUseTouchID =  [[VENTouchLock sharedInstance] shouldUseTouchID];
         expect(shouldUseTouchID).to.equal(YES);
     });
 
     it(@"should return NO if the device does not support touch ID and the user has setShouldUseTouchID to YES", ^{
-        [VENTouchLock setShouldUseTouchID:YES];
+        [[VENTouchLock sharedInstance] setShouldUseTouchID:YES];
         OCMockObject *mockClass = [OCMockObject niceMockForClass:[VENTouchLock class]];
         [[[mockClass stub] andReturnValue:@NO] canUseTouchID];
         [[[mockClass expect] andForwardToRealObject] shouldUseTouchID];
-        BOOL shouldUseTouchID =  [VENTouchLock shouldUseTouchID];
+        BOOL shouldUseTouchID =  [[VENTouchLock sharedInstance] shouldUseTouchID];
         expect(shouldUseTouchID).to.equal(NO);
     });
 
     it(@"should return NO if the device supports touch ID and the user has setShouldUseTouchID to NO", ^{
-        [VENTouchLock setShouldUseTouchID:NO];
+        [[VENTouchLock sharedInstance] setShouldUseTouchID:NO];
         OCMockObject *mockClass = [OCMockObject niceMockForClass:[VENTouchLock class]];
         [[[mockClass stub] andReturnValue:@YES] canUseTouchID];
         [[[mockClass expect] andForwardToRealObject] shouldUseTouchID];
-        BOOL shouldUseTouchID =  [VENTouchLock shouldUseTouchID];
+        BOOL shouldUseTouchID =  [[VENTouchLock sharedInstance] shouldUseTouchID];
         expect(shouldUseTouchID).to.equal(NO);
     });
 
     it(@"should return NO if the device does not support touch ID and the user has setShouldUseTouchID to NO", ^{
-        [VENTouchLock setShouldUseTouchID:NO];
+        [[VENTouchLock sharedInstance] setShouldUseTouchID:NO];
         OCMockObject *mockClass = [OCMockObject niceMockForClass:[VENTouchLock class]];
         [[[mockClass stub] andReturnValue:@NO] canUseTouchID];
         [[[mockClass expect] andForwardToRealObject] shouldUseTouchID];
-        BOOL shouldUseTouchID =  [VENTouchLock shouldUseTouchID];
+        BOOL shouldUseTouchID =  [[VENTouchLock sharedInstance] shouldUseTouchID];
         expect(shouldUseTouchID).to.equal(NO);
     });
 
+});
+
+describe(@"passcodeAttemptCount methods", ^{
+    it(@"should increment, reset and read methods correctly", ^{
+        VENTouchLock *touchLock = [VENTouchLock sharedInstance];
+
+        [touchLock resetIncorrectPasscodeAttemptCount];
+        expect([touchLock numberOfIncorrectPasscodeAttempts]).to.equal(0);
+        [touchLock incrementIncorrectPasscodeAttemptCount];
+        expect([touchLock numberOfIncorrectPasscodeAttempts]).to.equal(1);
+        [touchLock incrementIncorrectPasscodeAttemptCount];
+        expect([touchLock numberOfIncorrectPasscodeAttempts]).to.equal(2);
+        [touchLock resetIncorrectPasscodeAttemptCount];
+        expect([touchLock numberOfIncorrectPasscodeAttempts]).to.equal(0);
+    });
 });
 
 SpecEnd

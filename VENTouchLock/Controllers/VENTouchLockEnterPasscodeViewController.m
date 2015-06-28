@@ -2,19 +2,7 @@
 #import "VENTouchLockPasscodeView.h"
 #import "VENTouchLock.h"
 
-NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts = @"VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts";
-
 @implementation VENTouchLockEnterPasscodeViewController
-
-#pragma mark - Class Methods
-
-+ (void)resetPasscodeAttemptHistory
-{
-    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-    [standardDefaults removeObjectForKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
-    [standardDefaults synchronize];
-}
-
 
 #pragma mark - Instance Methods
 
@@ -37,7 +25,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 {
     [super enteredPasscode:passcode];
     if ([self.touchLock isPasscodeValid:passcode]) {
-        [[self class] resetPasscodeAttemptHistory];
+        [self.touchLock resetIncorrectPasscodeAttemptCount];
         [self finishWithResult:YES animated:YES];
     }
     else {
@@ -54,7 +42,7 @@ NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePassc
 
 - (void)recordIncorrectPasscodeAttempt
 {
-    [self.touchLock incrementIncorrectPasswordAttemptCount];
+    [self.touchLock incrementIncorrectPasscodeAttemptCount];
 
     if ([self.touchLock numberOfIncorrectPasscodeAttempts] >= [self.touchLock passcodeAttemptLimit]) {
         [self callExceededLimitActionBlock];
