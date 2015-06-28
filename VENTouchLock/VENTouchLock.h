@@ -20,6 +20,16 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 @property (assign, nonatomic) BOOL backgroundLockVisible;
 
 /**
+ The class of the VENTouchLockAppSwitchView subclass.
+ When the app is in the background and the TouchLock is locked, an instance of this view
+ will be added to the top of the view hieararchy and will be displayed when a user is on
+ the a multi-tasking app switch screen.
+ By default, this is NULL and there is no app switch view covering the app when the
+ TouchLock is locked.
+ */
+@property (assign, nonatomic) Class appSwitchView;
+
+/**
  The class of the VENTouchLockSplashViewController subclass.
  This view controller will be underneath the Touch ID prompt or passcode view controller.
  By default, this is NULL and there is no splash view controller when the TouchLock is locked.
