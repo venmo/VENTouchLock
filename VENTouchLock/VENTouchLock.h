@@ -20,6 +20,14 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 @property (assign, nonatomic) BOOL backgroundLockVisible;
 
 /**
+ The class of the VENTouchLockSplashViewController subclass.
+ This view controller will be underneath the Touch ID prompt or passcode view controller.
+ By default, this is NULL and there is no splash view controller when the TouchLock is locked.
+ */
+@property (assign, nonatomic) Class splashViewControllerClass;
+
+
+/**
  @return A singleton TouchLock instance.
  */
 + (instancetype)sharedInstance;
@@ -42,8 +50,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
    keychainPasscodeAccount:(NSString *)passcodeAccount
     keychainTouchIDAccount:(NSString *)touchIDAccount
              touchIDReason:(NSString *)reason
-      passcodeAttemptLimit:(NSUInteger)attemptLimit
- splashViewControllerClass:(Class)splashViewControllerClass;
+      passcodeAttemptLimit:(NSUInteger)attemptLimit;
 
 /**
  Returns YES if a passcode exists, and NO otherwise.
