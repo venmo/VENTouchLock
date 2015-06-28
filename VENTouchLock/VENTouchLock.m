@@ -5,12 +5,14 @@
 #import "UIViewController+VENTouchLock.h"
 
 static NSString *const VENTouchLockDefaultUniqueIdentifier = @"VENTouchLockDefaultUniqueIdentifier";
-static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchLockUserDefaultsKeyTouchIDActivated";
+static NSString *const VENTouchLockTouchIDOn = @"On";
+static NSString *const VENTouchLockTouchIDOff = @"Off";
 
 @interface VENTouchLock ()
 
 @property (copy, nonatomic) NSString *keychainService;
-@property (copy, nonatomic) NSString *keychainAccount;
+@property (copy, nonatomic) NSString *keychainPasscodeAccount;
+@property (copy, nonatomic) NSString *keychainTouchIDAccount;
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (assign, nonatomic) Class splashViewControllerClass;
@@ -65,14 +67,15 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 }
 
 - (void)setKeychainService:(NSString *)service
-           keychainAccount:(NSString *)account
+   keychainPasscodeAccount:(NSString *)passcodeAccount
+    keychainTouchIDAccount:(NSString *)touchIDAccount
              touchIDReason:(NSString *)reason
       passcodeAttemptLimit:(NSUInteger)attemptLimit
  splashViewControllerClass:(Class)splashViewControllerClass
-
 {
     self.keychainService = service;
-    self.keychainAccount = account;
+    self.keychainPasscodeAccount = passcodeAccount;
+    self.keychainTouchIDAccount = touchIDAccount;
     self.touchIDReason = reason;
     self.passcodeAttemptLimit = attemptLimit;
     self.splashViewControllerClass = splashViewControllerClass;
@@ -89,7 +92,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (NSString *)currentPasscode
 {
     NSString *service = self.keychainService;
-    NSString *account = self.keychainAccount;
+    NSString *account = self.keychainPasscodeAccount;
     return [SSKeychain passwordForService:service account:account];
 }
 
@@ -101,19 +104,20 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 - (void)setPasscode:(NSString *)passcode
 {
     NSString *service = self.keychainService;
-    NSString *account = self.keychainAccount;
+    NSString *account = self.keychainPasscodeAccount;
     [SSKeychain setPassword:passcode forService:service account:account];
+    [self resetIncorrectPasscodeAttemptCount];
 }
 
 - (void)deletePasscode
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:VENTouchLockUserDefaultsKeyTouchIDActivated];
-    [VENTouchLockEnterPasscodeViewController resetPasscodeAttemptHistory];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
     NSString *service = self.keychainService;
-    NSString *account = self.keychainAccount;
-    [SSKeychain deletePasswordForService:service account:account];
+    NSString *passcodeAccount = self.keychainPasscodeAccount;
+    NSString *touchIDAccount = self.keychainPasscodeAccount;
+    NSString *passcodeAttemptCountAccount = [self keychainPasscodeAttemptAccountName];
+    [SSKeychain deletePasswordForService:service account:passcodeAccount];
+    [SSKeychain deletePasswordForService:service account:touchIDAccount];
+    [SSKeychain deletePasswordForService:service account:passcodeAttemptCountAccount];
 }
 
 
@@ -125,15 +129,23 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
                                                  error:nil];
 }
 
-+ (BOOL)shouldUseTouchID
+- (BOOL)shouldUseTouchID
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VENTouchLockUserDefaultsKeyTouchIDActivated] && [self canUseTouchID];
+    if (![[self class] canUseTouchID]) {
+        return NO;
+    }
+
+    NSString *service = self.keychainService;
+    NSString *account = self.keychainTouchIDAccount;
+    return [[SSKeychain passwordForService:service account:account] isEqualToString:VENTouchLockTouchIDOn];
 }
 
-+ (void)setShouldUseTouchID:(BOOL)shouldUseTouchID
+- (void)setShouldUseTouchID:(BOOL)shouldUseTouchID
 {
-    [[NSUserDefaults standardUserDefaults] setBool:shouldUseTouchID forKey:VENTouchLockUserDefaultsKeyTouchIDActivated];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSString *password = shouldUseTouchID ? VENTouchLockTouchIDOn : VENTouchLockTouchIDOff;
+    NSString *service = self.keychainService;
+    NSString *account = self.keychainTouchIDAccount;
+    [SSKeychain setPassword:password forService:service account:account];
 }
 
 - (void)requestTouchIDWithCompletion:(void (^)(VENTouchLockTouchIDResponse))completionBlock
@@ -234,6 +246,34 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 }
 
 
+#pragma mark - Incorrect Passcode Attempts
+
+- (NSUInteger)numberOfIncorrectPasscodeAttempts
+{
+    NSString *service = self.keychainService;
+    NSString *account = [self keychainPasscodeAttemptAccountName];
+    NSString *countString = [SSKeychain passwordForService:service account:account];
+    return [countString integerValue];
+}
+
+- (void)incrementIncorrectPasscodeAttemptCount
+{
+    NSUInteger count = [self numberOfIncorrectPasscodeAttempts];
+    count++;
+
+    NSString *service = self.keychainService;
+    NSString *account = [self keychainPasscodeAttemptAccountName];
+    [SSKeychain setPassword:[@(count) stringValue] forService:service account:account];
+}
+
+- (void)resetIncorrectPasscodeAttemptCount
+{
+    NSString *service = self.keychainService;
+    NSString *account = [self keychainPasscodeAttemptAccountName];
+    [SSKeychain setPassword:[@(0) stringValue] forService:service account:account];
+}
+
+
 #pragma mark - NSNotifications
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
@@ -255,6 +295,14 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         self.snapshotView = nil;
     });
 
+}
+
+
+#pragma mark - Internal
+
+- (NSString *)keychainPasscodeAttemptAccountName
+{
+    return [self.keychainPasscodeAccount stringByAppendingString:@"_AttemptName"];
 }
 
 @end

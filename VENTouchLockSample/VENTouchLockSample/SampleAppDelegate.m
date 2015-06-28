@@ -11,7 +11,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[VENTouchLock sharedInstance] setKeychainService:@"testService"
-                                      keychainAccount:@"testAccount"
+                              keychainPasscodeAccount:@"testPasscodeAccount"
+                              keychainTouchIDAccount:@"testTouchIDAccount"
                                         touchIDReason:@"Scan your fingerprint to use the app."
                                  passcodeAttemptLimit:5
                             splashViewControllerClass:[SampleLockSplashViewController class]];

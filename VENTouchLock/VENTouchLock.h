@@ -39,7 +39,8 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  @param reason The default message displayed on the TouchID prompt
  */
 - (void)setKeychainService:(NSString *)service
-           keychainAccount:(NSString *)account
+   keychainPasscodeAccount:(NSString *)passcodeAccount
+    keychainTouchIDAccount:(NSString *)touchIDAccount
              touchIDReason:(NSString *)reason
       passcodeAttemptLimit:(NSUInteger)attemptLimit
  splashViewControllerClass:(Class)splashViewControllerClass;
@@ -77,12 +78,12 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 /**
  Returns YES if the user activated touchID in app passcode settings, and NO otherwise.
  */
-+ (BOOL)shouldUseTouchID;
+- (BOOL)shouldUseTouchID;
 
 /**
  Sets and persists the user's preference for using TouchID.
  */
-+ (void)setShouldUseTouchID:(BOOL)shouldUseTouchID;
+- (void)setShouldUseTouchID:(BOOL)shouldUseTouchID;
 
 /**
  Requests a TouchID if possible. If canUseTouchID returns NO, this method does nothing. The displayed string on the touch id prompt will be the default touchIDReason.
@@ -105,6 +106,22 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  @note The app is automatically locked when on launch and on entering background. Use this method only if necessary in other circumstances.
  */
 - (void)lock;
+
+/**
+ Increments the incorrect passcode attempt count;
+ */
+- (NSUInteger)numberOfIncorrectPasscodeAttempts;
+
+/**
+ Increments the incorrect password attempt count;
+ */
+- (void)incrementIncorrectPasscodeAttemptCount;
+
+/**
+ Resets the incorrect password attempt count;
+ */
+- (void)resetIncorrectPasscodeAttemptCount;
+
 
 /**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.

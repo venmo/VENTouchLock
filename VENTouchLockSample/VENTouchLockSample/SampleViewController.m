@@ -16,7 +16,7 @@
 - (void)configureTouchIDToggle
 {
     self.touchIDSwitch.enabled = [[VENTouchLock sharedInstance] isPasscodeSet] && [VENTouchLock canUseTouchID];
-    self.touchIDSwitch.on = [VENTouchLock shouldUseTouchID];
+    self.touchIDSwitch.on = [[VENTouchLock sharedInstance] shouldUseTouchID];
 }
             
 - (IBAction)userTappedSetPasscode:(id)sender
@@ -54,7 +54,7 @@
 
 - (IBAction)userTappedSwitch:(UISwitch *)toggle
 {
-    [VENTouchLock setShouldUseTouchID:toggle.on];
+    [[VENTouchLock sharedInstance] setShouldUseTouchID:toggle.on];
 }
 
 @end

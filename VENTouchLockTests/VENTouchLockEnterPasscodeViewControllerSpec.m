@@ -13,44 +13,33 @@ extern NSString *const VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecuti
 
 SpecBegin(VENTouchLockEnterPasscode)
 
-describe(@"resetPasscodeAttemptHistory:", ^{
-
-    afterEach(^{
-        NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-        for (NSString *key in [defaultsDictionary allKeys]) {
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-        }
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    });
-
-    it(@"should set passcode attempt history to 0", ^{
-        [[NSUserDefaults standardUserDefaults] setInteger:5 forKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
-        [VENTouchLockEnterPasscodeViewController resetPasscodeAttemptHistory];
-        NSUInteger afterAttemptHistory = [[NSUserDefaults standardUserDefaults] integerForKey:VENTouchLockEnterPasscodeUserDefaultsKeyNumberOfConsecutivePasscodeAttempts];
-        expect(afterAttemptHistory).to.equal(0);
-    });
-
-});
 
 describe(@"recordIncorrectPasscodeAttempt", ^{
 
     __block id mockEnterPasscodeVC;
-    __block id mockTouchLock;
+    __block VENTouchLock *touchLock;
 
     beforeEach(^{
-        mockTouchLock = [OCMockObject mockForClass:[VENTouchLock class]];
-        [[[mockTouchLock stub] andReturnValue:OCMOCK_VALUE((NSUInteger){3})] passcodeAttemptLimit];
+        touchLock = [[VENTouchLock alloc] init];
+        [touchLock setKeychainService:@"testService"
+              keychainPasscodeAccount:@"testPasscodeAccount"
+               keychainTouchIDAccount:@"testTouchIDAccount"
+                        touchIDReason:@"testReason"
+                 passcodeAttemptLimit:3
+            splashViewControllerClass:[VENTouchLockSplashViewController class]];
+
         VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-        enterPasscodeVC.touchLock = mockTouchLock;
+        enterPasscodeVC.touchLock = touchLock;
         mockEnterPasscodeVC = [OCMockObject partialMockForObject:enterPasscodeVC];
+        [touchLock resetIncorrectPasscodeAttemptCount];
     });
 
     afterEach(^{
-        mockTouchLock = nil;
+        touchLock = nil;
     });
 
     it(@"should not call callExceededLimitActionBlock when incorrectPasscodeAttempt < passcodeAttemptLimit", ^{
-               [[mockEnterPasscodeVC reject] callExceededLimitActionBlock];
+        [[mockEnterPasscodeVC reject] callExceededLimitActionBlock];
         [mockEnterPasscodeVC recordIncorrectPasscodeAttempt];
         [mockEnterPasscodeVC recordIncorrectPasscodeAttempt];
         [mockEnterPasscodeVC verify];

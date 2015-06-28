@@ -73,7 +73,7 @@
 
 - (void)showUnlockAnimated:(BOOL)animated
 {
-    if ([VENTouchLock shouldUseTouchID]) {
+    if ([[VENTouchLock sharedInstance] shouldUseTouchID]) {
         [self showTouchID];
     }
     else {
