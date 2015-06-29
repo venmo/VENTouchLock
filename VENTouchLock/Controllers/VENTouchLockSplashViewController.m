@@ -3,10 +3,7 @@
 #import "VENTouchLock.h"
 
 @interface VENTouchLockSplashViewController ()
-
 @property (nonatomic, weak) VENTouchLock *touchLock;
-@property (nonatomic, assign) BOOL isSnapshotViewController;
-
 @end
 
 @implementation VENTouchLockSplashViewController
@@ -49,11 +46,6 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    if (!self.isSnapshotViewController) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self showUnlockAnimated:NO];
-        });
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
