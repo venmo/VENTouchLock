@@ -4,8 +4,8 @@
 
 @interface VENTouchLockSplashViewController ()
 
-@property (nonatomic, assign) BOOL isSnapshotViewController;
 @property (nonatomic, strong) VENTouchLock *touchLock;
+@property (nonatomic, assign) BOOL isSnapshotViewController;
 
 @end
 
@@ -21,9 +21,21 @@
     }
 }
 
+- (instancetype)init
+{
+    return [self initWithTouchLock:nil];
+}
+
 - (instancetype)initWithTouchLock:(VENTouchLock *)touchLock
 {
-    self = [super initWithNibName:nil bundle:nil];
+    return [self initWithTouchLock:touchLock nibName:nil bundle:nil];
+}
+
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock
+                          nibName:(NSString *)nibNameOrNil
+                           bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _touchLock = touchLock ?: [VENTouchLock sharedInstance];
     }
