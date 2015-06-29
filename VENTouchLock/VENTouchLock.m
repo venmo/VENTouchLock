@@ -191,16 +191,16 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
     UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
     UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+    UIViewController *displayViewController;
 
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            UIViewController *displayController;
             if (self.appearance.splashShouldEmbedInNavigationController) {
-                displayController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
+                displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
             }
             else {
-                displayController = splashViewController;
+                displayViewController = splashViewController;
             }
 
             if (fromBackground) {
@@ -220,14 +220,20 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                 self.snapshotView = snapshotDisplayController.view;
                 [mainWindow addSubview:self.snapshotView];
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.backgroundLockVisible = YES;
-                [rootViewController presentViewController:displayController animated:NO completion:nil];
-            });
         }
     } else {
-
+        VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [[VENTouchLockEnterPasscodeViewController alloc] initWithTouchLock:self];
+        if (self.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
+            displayViewController = [[UINavigationController alloc] initWithRootViewController:enterPasscodeViewController];
+        } else {
+            displayViewController = enterPasscodeViewController;
+        }
     }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.backgroundLockVisible = YES;
+        [rootViewController presentViewController:displayViewController animated:NO completion:nil];
+    });
 }
 
 

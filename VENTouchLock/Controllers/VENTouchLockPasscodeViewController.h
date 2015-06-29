@@ -16,6 +16,8 @@
  */
 @property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);
 
+@property (nonatomic, strong, readonly) VENTouchLock *touchLock;
+
 /**
  @return A TouchLockPasscodeViewController instance.
  */

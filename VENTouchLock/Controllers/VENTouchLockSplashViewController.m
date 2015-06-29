@@ -11,6 +11,7 @@
 
 @implementation VENTouchLockSplashViewController
 
+
 #pragma mark - Creation and Lifecycle
 
 - (void)dealloc
