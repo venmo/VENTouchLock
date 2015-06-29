@@ -6,7 +6,6 @@
 @interface VENTouchLock (Internal)
 
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
-@property (strong, nonatomic) VENTouchLockOptions *appearance;
 @property (assign, nonatomic, readwrite) BOOL locked;
 
 @end
@@ -20,7 +19,7 @@
 - (void)testBasicCreatePasswordFlow
 {
     [self dismissAndResetLock];
-    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentOptions = [VENTouchLock sharedInstance].options;
     [tester tapViewWithAccessibilityLabel:@"Set Passcode"];
     [tester waitForSoftwareKeyboard];
     [tester waitForTimeInterval:0.5];
@@ -28,7 +27,7 @@
     [tester enterTextIntoCurrentFirstResponder:@"2"];
     [tester enterTextIntoCurrentFirstResponder:@"3"];
     [tester enterTextIntoCurrentFirstResponder:@"4"];
-    [tester waitForViewWithAccessibilityLabel:currentAppearance.createPasscodeConfirmLabelText];
+    [tester waitForViewWithAccessibilityLabel:currentOptions.createPasscodeConfirmLabelText];
     [tester waitForTimeInterval:0.5];
     [tester enterTextIntoCurrentFirstResponder:@"1"];
     [tester enterTextIntoCurrentFirstResponder:@"2"];
@@ -54,7 +53,7 @@
 - (void)testAdvancedCreatePasscodeFlow
 {
     [self dismissAndResetLock];
-    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentOptions = [VENTouchLock sharedInstance].options;
     [tester tapViewWithAccessibilityLabel:@"Set Passcode"];
     [tester waitForSoftwareKeyboard];
     [tester waitForTimeInterval:0.5];
@@ -62,19 +61,19 @@
     [tester enterTextIntoCurrentFirstResponder:@"2"];
     [tester enterTextIntoCurrentFirstResponder:@"3"];
     [tester enterTextIntoCurrentFirstResponder:@"4"];
-    [tester waitForViewWithAccessibilityLabel:currentAppearance.createPasscodeConfirmLabelText];
+    [tester waitForViewWithAccessibilityLabel:currentOptions.createPasscodeConfirmLabelText];
     [tester waitForTimeInterval:0.5];
     [tester enterTextIntoCurrentFirstResponder:@"1"];
     [tester enterTextIntoCurrentFirstResponder:@"2"];
     [tester enterTextIntoCurrentFirstResponder:@"3"];
     [tester enterTextIntoCurrentFirstResponder:@"1"];
-    [tester waitForViewWithAccessibilityLabel:currentAppearance.createPasscodeMismatchedLabelText];
+    [tester waitForViewWithAccessibilityLabel:currentOptions.createPasscodeMismatchedLabelText];
     [tester waitForTimeInterval:0.5];
     [tester enterTextIntoCurrentFirstResponder:@"1"];
     [tester enterTextIntoCurrentFirstResponder:@"2"];
     [tester enterTextIntoCurrentFirstResponder:@"3"];
     [tester enterTextIntoCurrentFirstResponder:@"4"];
-    [tester waitForViewWithAccessibilityLabel:currentAppearance.createPasscodeConfirmLabelText];
+    [tester waitForViewWithAccessibilityLabel:currentOptions.createPasscodeConfirmLabelText];
     [tester waitForTimeInterval:0.5];
     [tester enterTextIntoCurrentFirstResponder:@"1"];
     [tester enterTextIntoCurrentFirstResponder:@"2"];
@@ -86,7 +85,7 @@
 - (void)testAdvancedEnterPasscodeFlow
 {
     [self dismissAndResetLock];
-    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentOptions = [VENTouchLock sharedInstance].options;
     [[VENTouchLock sharedInstance] setPasscode:@"7890"];
     [tester tapViewWithAccessibilityLabel:@"Show Passcode"];
     [tester waitForSoftwareKeyboard];
@@ -95,7 +94,7 @@
     [tester enterTextIntoCurrentFirstResponder:@"8"];
     [tester enterTextIntoCurrentFirstResponder:@"9"];
     [tester enterTextIntoCurrentFirstResponder:@"9"];
-    [tester waitForViewWithAccessibilityLabel:currentAppearance.enterPasscodeIncorrectLabelText];
+    [tester waitForViewWithAccessibilityLabel:currentOptions.enterPasscodeIncorrectLabelText];
     [tester waitForTimeInterval:0.5];
     [tester enterTextIntoCurrentFirstResponder:@"7"];
     [tester enterTextIntoCurrentFirstResponder:@"8"];
@@ -113,16 +112,16 @@
 - (void)performPasscodeAttemptLimitTestWithSplashInNavVC:(BOOL)splashEmbeddedInNavigationController
 {
     [self dismissAndResetLock];
-    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentOptions = [VENTouchLock sharedInstance].options;
     [[VENTouchLock sharedInstance] setPasscode:@"4567"];
     [self simulateAppBackgroundThenForeground];
     [tester waitForSoftwareKeyboard];
     for (NSUInteger i = 0 ; i < [VENTouchLock sharedInstance].passcodeAttemptLimit; i++) {
         if (i == 0) {
-            [tester waitForViewWithAccessibilityLabel:currentAppearance.enterPasscodeInitialLabelText];
+            [tester waitForViewWithAccessibilityLabel:currentOptions.enterPasscodeInitialLabelText];
         }
         else {
-            [tester waitForViewWithAccessibilityLabel:currentAppearance.enterPasscodeIncorrectLabelText];
+            [tester waitForViewWithAccessibilityLabel:currentOptions.enterPasscodeIncorrectLabelText];
         }
         [tester waitForTimeInterval:0.5];
         [tester enterTextIntoCurrentFirstResponder:@"5"];
