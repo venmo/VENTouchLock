@@ -17,13 +17,13 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 /**
  YES if the app is locked after having entered the background, and NO otherwise.
  */
-@property (assign, nonatomic) BOOL backgroundLockVisible;
+@property (assign, nonatomic, readonly) BOOL locked;
 
 /**
- The class of the VENTouchLockAppSwitchView subclass.
- When the app is in the background and the TouchLock is locked, an instance of this view
- will be added to the top of the view hieararchy and will be displayed when a user is on
- the a multi-tasking app switch screen.
+ The class of a UIView subclass.
+ When the app is in the background and the TouchLock is locked, an instance of this view, that is
+ the same size of the device's screen will be added to the top of the view hieararchy and
+ will be displayed when a user is on the a multi-tasking app switch screen.
  By default, this is NULL and there is no app switch view covering the app when the
  TouchLock is locked.
  */
@@ -35,6 +35,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  By default, this is NULL and there is no splash view controller when the TouchLock is locked.
  */
 @property (assign, nonatomic) Class splashViewControllerClass;
+
+/**
+ The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
+ */
+@property (strong, nonatomic, readonly) VENTouchLockAppearance *appearance;
 
 
 /**
@@ -131,11 +136,5 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  Resets the incorrect password attempt count;
  */
 - (void)resetIncorrectPasscodeAttemptCount;
-
-
-/**
- @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
- */
-- (VENTouchLockAppearance *)appearance;
 
 @end

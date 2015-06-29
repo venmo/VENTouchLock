@@ -11,7 +11,7 @@
 
 /**
  This block is called directly before the passcode view controller has completed its intended operation. If the operation was completed successfully, the returned BOOL will return YES, and NO otherwise.
- If this block is defined, it is responsible for dismissing the passcode view controller.
+ If this block is defined, it is responsible for dismissing the passcode view controller and calling the dismissWithResult.
  If this block is nil, the payment view controller will dismiss itself.
  */
 @property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);

@@ -17,9 +17,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (!self.isSnapshotViewController) {
-        self.touchLock.backgroundLockVisible = NO;
-    }
 }
 
 - (instancetype)init
@@ -147,8 +144,8 @@
                         animated:(BOOL)animated
 {
     [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-        if (self.didFinishWithSuccess) {
-            self.didFinishWithSuccess(success, unlockType);
+        if (self.didFinishWithResult) {
+            self.didFinishWithResult(success, unlockType);
         }
     }];
 }

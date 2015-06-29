@@ -7,6 +7,7 @@
 
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (assign, nonatomic, readwrite) BOOL locked;
 
 @end
 
@@ -148,7 +149,7 @@
             [splashViewController dismissWithUnlockSuccess:YES unlockType:VENTouchLockSplashViewControllerUnlockTypePasscode animated:NO];
         }
     }
-    [VENTouchLock sharedInstance].backgroundLockVisible = NO;
+    [VENTouchLock sharedInstance].locked = NO;
     [[VENTouchLock sharedInstance] deletePasscode];
 }
 

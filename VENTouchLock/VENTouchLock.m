@@ -17,6 +17,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (assign, nonatomic) BOOL locked;
 
 @end
 
@@ -188,6 +189,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         return;
     }
 
+    __weak typeof(self) weakSelf = self;
     BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
     UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
     UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
@@ -195,6 +197,17 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
+
+        void (^didFinishWithResult)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) = splashViewController.didFinishWithResult;
+
+        splashViewController.didFinishWithResult = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
+            __strong typeof(self) strongSelf = weakSelf;
+            strongSelf.locked = NO;
+            if (didFinishWithResult) {
+                didFinishWithResult(success, unlockType);
+            }
+        };
+
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
             if (self.appearance.splashShouldEmbedInNavigationController) {
                 displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
@@ -223,6 +236,10 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         }
     } else {
         VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [[VENTouchLockEnterPasscodeViewController alloc] initWithTouchLock:self];
+        enterPasscodeViewController.didFinishWithResult = ^(BOOL success) {
+            __strong typeof(self) strongSelf = weakSelf;
+            strongSelf.locked = NO;
+        };
         if (self.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
             displayViewController = [[UINavigationController alloc] initWithRootViewController:enterPasscodeViewController];
         } else {
@@ -231,7 +248,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.backgroundLockVisible = YES;
+        self.locked = YES;
         [rootViewController presentViewController:displayViewController animated:NO completion:nil];
     });
 }
@@ -269,12 +286,14 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [self lock];
+    if (!self.locked) {
+        [self lock];
+    }
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
-    if (!self.backgroundLockVisible) {
+    if (!self.locked) {
         [self lock];
     }
 }

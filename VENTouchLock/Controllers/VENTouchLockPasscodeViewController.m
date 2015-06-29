@@ -90,10 +90,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)userTappedCancel
 {
-    if (self.willFinishWithResult) {
-        self.willFinishWithResult(NO);
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self finishWithResult:NO animated:YES];
 }
 
 - (void)finishWithResult:(BOOL)success animated:(BOOL)animated
@@ -102,7 +99,11 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     if (self.willFinishWithResult) {
         self.willFinishWithResult(success);
     } else {
-        [self dismissViewControllerAnimated:animated completion:nil];
+        [self dismissViewControllerAnimated:animated completion:^{
+            if (self.didFinishWithResult) {
+                self.didFinishWithResult(success);
+            }
+        }];
     }
 }
 
