@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  By default, this is NULL and there is no app switch view covering the app when the
  TouchLock is locked.
  */
-@property (assign, nonatomic) Class appSwitchView;
+@property (assign, nonatomic) Class appSwitchViewClass;
 
 /**
  The class of the VENTouchLockSplashViewController subclass.
