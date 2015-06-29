@@ -16,7 +16,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (strong, nonatomic) UIView *snapshotView;
-@property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (strong, nonatomic) VENTouchLockOptions *options;
 @property (assign, nonatomic) BOOL locked;
 
 @end
@@ -29,7 +29,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self class] alloc] init];
-        sharedInstance.appearance = [[VENTouchLockAppearance alloc] init];
+        sharedInstance.options = [[VENTouchLockOptions alloc] init];
     });
     return sharedInstance;
 }
@@ -162,7 +162,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                                                   break;
                                               case LAErrorAuthenticationFailed: // when TouchID max retry is reached, fallbacks to passcode
                                               case LAErrorUserCancel:
-                                                  response = (self.appearance.touchIDCancelPresentsPasscodeViewController) ? VENTouchLockTouchIDResponseUsePasscode : VENTouchLockTouchIDResponseCanceled;
+                                                  response = (self.options.touchIDCancelPresentsPasscodeViewController) ? VENTouchLockTouchIDResponseUsePasscode : VENTouchLockTouchIDResponseCanceled;
                                                   break;
                                               default:
                                                   response = VENTouchLockTouchIDResponseUndefined;
@@ -210,8 +210,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         };
 
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            if (self.appearance.splashShouldEmbedInNavigationController) {
-                displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
+            if (self.options.splashShouldEmbedInNavigationController) {
+                displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
             }
             else {
                 displayViewController = splashViewController;
@@ -220,8 +220,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
             if (fromBackground) {
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
                 UIViewController *snapshotDisplayController;
-                if (self.appearance.splashShouldEmbedInNavigationController) {
-                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
+                if (self.options.splashShouldEmbedInNavigationController) {
+                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
                 }
                 else {
                     snapshotDisplayController = snapshotSplashViewController;
@@ -239,8 +239,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                 strongSelf.locked = NO;
             });
         };
-        if (self.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
-            displayViewController = [[UINavigationController alloc] initWithRootViewController:enterPasscodeViewController];
+        if (self.options.passcodeViewControllerShouldEmbedInNavigationController) {
+            displayViewController = [enterPasscodeViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
         } else {
             displayViewController = enterPasscodeViewController;
         }

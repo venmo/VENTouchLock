@@ -41,7 +41,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
-    self.view.backgroundColor = [self.touchLock appearance].passcodeViewControllerBackgroundColor;
+    self.view.backgroundColor = [self.touchLock options].passcodeViewControllerBackgroundColor;
     [self configureInvisiblePasscodeField];
     [self configureNavigationItems];
     [self configurePasscodeView];
@@ -75,14 +75,14 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)configureNavigationItems
 {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[self.touchLock appearance].cancelBarButtonItemTitle style:UIBarButtonItemStylePlain target:self action:@selector(userTappedCancel)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[self.touchLock options].cancelBarButtonItemTitle style:UIBarButtonItemStylePlain target:self action:@selector(userTappedCancel)];
 }
 
 - (void)configurePasscodeView
 {
     VENTouchLockPasscodeView *passcodeView = [[VENTouchLockPasscodeView alloc] init];
-    passcodeView.titleColor = self.touchLock.appearance.passcodeViewControllerTitleColor;
-    passcodeView.characterColor = self.touchLock.appearance.passcodeViewControllerCharacterColor;
+    passcodeView.titleColor = self.touchLock.options.passcodeViewControllerTitleColor;
+    passcodeView.characterColor = self.touchLock.options.passcodeViewControllerCharacterColor;
     [self.view addSubview:passcodeView];
     self.passcodeView = passcodeView;
     self.passcodeView.frame = self.view.bounds;
@@ -109,7 +109,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (UINavigationController *)embeddedInNavigationController
 {
-    return [super ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.touchLock.appearance.navigationBarClass];
+    return [super ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.touchLock.options.navigationBarClass];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification

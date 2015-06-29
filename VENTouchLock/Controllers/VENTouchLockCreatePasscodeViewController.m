@@ -14,7 +14,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 {
     self = [super init];
     if (self) {
-        self.title = [self.touchLock appearance].enterPasscodeViewControllerTitle;
+        self.title = [self.touchLock options].enterPasscodeViewControllerTitle;
     }
     return self;
 }
@@ -22,7 +22,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.passcodeView.title = [self.touchLock appearance].createPasscodeInitialLabelText;
+    self.passcodeView.title = [self.touchLock options].createPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode;
@@ -59,13 +59,13 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
                                       CGRectGetMinY(firstPasscodeView.frame),
                                       passcodeViewWidth,
                                       CGRectGetHeight(firstPasscodeView.frame));
-    VENTouchLockAppearance *appearance = [self.touchLock appearance];
-    NSString *confirmPasscodeTitle = appearance.createPasscodeConfirmLabelText;
+    VENTouchLockOptions *options = self.touchLock.options;
+    NSString *confirmPasscodeTitle = options.createPasscodeConfirmLabelText;
     VENTouchLockPasscodeView *confirmPasscodeView = [[VENTouchLockPasscodeView alloc]
                                                      initWithTitle:confirmPasscodeTitle
                                                      frame:confirmInitialFrame
-                                                     titleColor:appearance.passcodeViewControllerTitleColor
-                                                     characterColor:appearance.passcodeViewControllerCharacterColor];
+                                                     titleColor:options.passcodeViewControllerTitleColor
+                                                     characterColor:options.passcodeViewControllerCharacterColor];
     [self.view addSubview:confirmPasscodeView];
     [UIView animateWithDuration: VENTouchLockCreatePasscodeViewControllerAnimationDuration
                           delay: 0.0
@@ -93,12 +93,12 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
                                         CGRectGetMinY(confirmPasscodeView.frame),
                                         passcodeViewWidth,
                                         CGRectGetHeight(confirmPasscodeView.frame));
-    VENTouchLockAppearance *appearance = [self.touchLock appearance];
-    NSString *firstPasscodeTitle = appearance.createPasscodeMismatchedLabelText;
+    VENTouchLockOptions *options = self.touchLock.options;
+    NSString *firstPasscodeTitle = options.createPasscodeMismatchedLabelText;
     VENTouchLockPasscodeView *firstPasscodeView = [[VENTouchLockPasscodeView alloc] initWithTitle:firstPasscodeTitle
                                                                                             frame:firstInitialFrame
-                                                                                       titleColor:appearance.passcodeViewControllerTitleColor
-                                                                                   characterColor:appearance.passcodeViewControllerCharacterColor];
+                                                                                       titleColor:options.passcodeViewControllerTitleColor
+                                                                                   characterColor:options.passcodeViewControllerCharacterColor];
     [self.view addSubview:firstPasscodeView];
     [UIView animateWithDuration: VENTouchLockCreatePasscodeViewControllerAnimationDuration
                           delay: 0.0

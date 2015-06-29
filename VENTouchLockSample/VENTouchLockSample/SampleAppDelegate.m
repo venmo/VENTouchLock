@@ -16,6 +16,7 @@
                                         touchIDReason:@"Scan your fingerprint to use the app."
                                  passcodeAttemptLimit:5];
     [VENTouchLock sharedInstance].splashViewControllerClass = [SampleLockSplashViewController class];
+    [VENTouchLock sharedInstance].options.shouldAutoLockOnAppLifeCycleNotifications = YES;
     return YES;
 }
 

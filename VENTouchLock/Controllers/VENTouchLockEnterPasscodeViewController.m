@@ -10,7 +10,7 @@
 {
     self = [super init];
     if (self) {
-        self.title = [self.touchLock appearance].enterPasscodeViewControllerTitle;
+        self.title = [self.touchLock options].enterPasscodeViewControllerTitle;
     }
     return self;
 }
@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.passcodeView.title = [self.touchLock appearance].enterPasscodeInitialLabelText;
+    self.passcodeView.title = [self.touchLock options].enterPasscodeInitialLabelText;
 }
 
 - (void)enteredPasscode:(NSString *)passcode
@@ -30,7 +30,7 @@
     }
     else {
         [self.passcodeView shakeAndVibrateCompletion:^{
-            self.passcodeView.title = [self.touchLock appearance].enterPasscodeIncorrectLabelText;
+            self.passcodeView.title = [self.touchLock options].enterPasscodeIncorrectLabelText;
             [self clearPasscode];
             if ([self parentSplashViewController]) {
                 [self recordIncorrectPasscodeAttempt];
@@ -60,7 +60,7 @@
 {
     VENTouchLockSplashViewController *splashViewController = nil;
     UIViewController *presentingViewController = self.presentingViewController;
-    if (self.touchLock.appearance.splashShouldEmbedInNavigationController) {
+    if (self.touchLock.options.splashShouldEmbedInNavigationController) {
         UIViewController *rootViewController = ([presentingViewController isKindOfClass:[UINavigationController class]]) ? [((UINavigationController *)presentingViewController).viewControllers firstObject] : nil;
         if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
             splashViewController = (VENTouchLockSplashViewController *)rootViewController;

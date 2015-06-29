@@ -6,7 +6,7 @@
 @interface VENTouchLock (Internal)
 
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
-@property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (strong, nonatomic) VENTouchLockOptions *appearance;
 @property (assign, nonatomic, readwrite) BOOL locked;
 
 @end
@@ -20,7 +20,7 @@
 - (void)testBasicCreatePasswordFlow
 {
     [self dismissAndResetLock];
-    VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [tester tapViewWithAccessibilityLabel:@"Set Passcode"];
     [tester waitForSoftwareKeyboard];
     [tester waitForTimeInterval:0.5];
@@ -54,7 +54,7 @@
 - (void)testAdvancedCreatePasscodeFlow
 {
     [self dismissAndResetLock];
-    VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [tester tapViewWithAccessibilityLabel:@"Set Passcode"];
     [tester waitForSoftwareKeyboard];
     [tester waitForTimeInterval:0.5];
@@ -86,7 +86,7 @@
 - (void)testAdvancedEnterPasscodeFlow
 {
     [self dismissAndResetLock];
-    VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [[VENTouchLock sharedInstance] setPasscode:@"7890"];
     [tester tapViewWithAccessibilityLabel:@"Show Passcode"];
     [tester waitForSoftwareKeyboard];
@@ -113,7 +113,7 @@
 - (void)performPasscodeAttemptLimitTestWithSplashInNavVC:(BOOL)splashEmbeddedInNavigationController
 {
     [self dismissAndResetLock];
-    VENTouchLockAppearance *currentAppearance = [VENTouchLock sharedInstance].appearance;
+    VENTouchLockOptions *currentAppearance = [VENTouchLock sharedInstance].appearance;
     [[VENTouchLock sharedInstance] setPasscode:@"4567"];
     [self simulateAppBackgroundThenForeground];
     [tester waitForSoftwareKeyboard];
