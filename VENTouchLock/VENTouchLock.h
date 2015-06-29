@@ -24,8 +24,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  When the app is in the background and the TouchLock is locked, an instance of this view, that is
  the same size of the device's screen will be added to the top of the view hieararchy and
  will be displayed when a user is on the a multi-tasking app switch screen.
- By default, this is NULL and there is no app switch view covering the app when the
- TouchLock is locked.
+ By default, this is NULL and there is no app switch view covering the app when the TouchLock is locked.
  */
 @property (assign, nonatomic) Class appSwitchViewClass;
 
