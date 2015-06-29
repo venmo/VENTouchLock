@@ -201,10 +201,12 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 
         splashViewController.didFinishWithResult = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
             __strong typeof(self) strongSelf = weakSelf;
-            strongSelf.locked = NO;
-            if (didFinishWithResult) {
-                didFinishWithResult(success, unlockType);
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.locked = NO;
+                if (didFinishWithResult) {
+                    didFinishWithResult(success, unlockType);
+                }
+            });
         };
 
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
@@ -233,7 +235,9 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [[VENTouchLockEnterPasscodeViewController alloc] initWithTouchLock:self];
         enterPasscodeViewController.didFinishWithResult = ^(BOOL success) {
             __strong typeof(self) strongSelf = weakSelf;
-            strongSelf.locked = NO;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.locked = NO;
+            });
         };
         if (self.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
             displayViewController = [[UINavigationController alloc] initWithRootViewController:enterPasscodeViewController];
