@@ -37,16 +37,15 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self forKeyPath:[self keypathOfAutolockOptions]];
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        [notificationCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        [notificationCenter addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-        [notificationCenter addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+
+        [self addObserver:self forKeyPath:[self keypathOfAutolockOptions] options:NSKeyValueObservingOptionInitial context:nil];
     }
     return self;
 }
@@ -193,6 +192,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
     UIViewController *displayViewController;
     UIView *snapshotView;
+    void (^displayPresentationCompletionBlock)();
 
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
@@ -207,6 +207,10 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                     didFinishWithResult(success, unlockType);
                 }
             });
+        };
+
+        displayPresentationCompletionBlock = ^{
+            [splashViewController showUnlockAnimated:NO];
         };
 
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
@@ -251,9 +255,9 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     }
 
     if (fromBackground && snapshotView) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
         snapshotView.frame = mainWindow.bounds;
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         [mainWindow addSubview:snapshotView];
         self.snapshotView = snapshotView;
     }
@@ -261,7 +265,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     dispatch_async(dispatch_get_main_queue(), ^{
         self.locked = YES;
         UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
-        [rootViewController presentViewController:displayViewController animated:NO completion:nil];
+        [rootViewController presentViewController:displayViewController animated:NO completion:displayPresentationCompletionBlock];
     });
 }
 
@@ -325,6 +329,29 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 - (NSString *)keychainPasscodeAttemptAccountName
 {
     return [self.keychainPasscodeAccount stringByAppendingString:@"_AttemptName"];
+}
+
+- (NSString *)keypathOfAutolockOptions
+{
+    return [NSString stringWithFormat:@"%@.%@", NSStringFromSelector(@selector(options)), NSStringFromSelector(@selector(shouldAutoLockOnAppLifeCycleNotifications))];
+}
+
+
+#pragma mark - NSObject
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:[self keypathOfAutolockOptions]]) {
+        BOOL shouldAutolock = ((VENTouchLock *)object).options.shouldAutoLockOnAppLifeCycleNotifications;
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        if (shouldAutolock) {
+            [notificationCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+            [notificationCenter addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+            [notificationCenter addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+        } else {
+            [notificationCenter removeObserver:self];
+        }
+    }
 }
 
 @end
