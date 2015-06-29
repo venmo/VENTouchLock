@@ -43,6 +43,11 @@
     return self;
 }
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    return [self initWithTouchLock:nil nibName:nibNameOrNil bundle:nibBundleOrNil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
