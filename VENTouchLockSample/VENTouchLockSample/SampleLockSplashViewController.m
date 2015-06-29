@@ -13,7 +13,7 @@
 {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
-        self.didFinishWithSuccess = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
+        self.didFinishWithResult = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
             if (success) {
                 NSString *logString = @"Sample App Unlocked";
                 switch (unlockType) {

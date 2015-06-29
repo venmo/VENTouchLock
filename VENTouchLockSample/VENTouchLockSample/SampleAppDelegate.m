@@ -14,8 +14,8 @@
                               keychainPasscodeAccount:@"testPasscodeAccount"
                               keychainTouchIDAccount:@"testTouchIDAccount"
                                         touchIDReason:@"Scan your fingerprint to use the app."
-                                 passcodeAttemptLimit:5
-                            splashViewControllerClass:[SampleLockSplashViewController class]];
+                                 passcodeAttemptLimit:5];
+    [VENTouchLock sharedInstance].splashViewControllerClass = [SampleLockSplashViewController class];
     return YES;
 }
 

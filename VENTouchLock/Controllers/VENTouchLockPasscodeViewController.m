@@ -8,6 +8,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 @interface VENTouchLockPasscodeViewController () <UITextFieldDelegate>
 
+@property (nonatomic, weak) VENTouchLock *touchLock;
 @property (strong, nonatomic) UITextField *invisiblePasscodeField;
 @property (assign, nonatomic) BOOL shouldIgnoreTextFieldDelegateCalls;
 
@@ -22,14 +23,14 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (instancetype)init
 {
-    return [self initWithTouchLockIdentifier:nil];
+    return [self initWithTouchLock:[VENTouchLock sharedInstance]];
 }
 
-- (instancetype)initWithTouchLockIdentifier:(NSString *)identifier
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock
 {
     self = [super init];
     if (self) {
-        _touchLock = [VENTouchLock sharedInstanceWithTouchLockIdentfier:identifier];
+        _touchLock = touchLock;
     }
     return self;
 }
@@ -89,10 +90,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (void)userTappedCancel
 {
-    if (self.willFinishWithResult) {
-        self.willFinishWithResult(NO);
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self finishWithResult:NO animated:YES];
 }
 
 - (void)finishWithResult:(BOOL)success animated:(BOOL)animated
@@ -101,7 +99,11 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     if (self.willFinishWithResult) {
         self.willFinishWithResult(success);
     } else {
-        [self dismissViewControllerAnimated:animated completion:nil];
+        [self dismissViewControllerAnimated:animated completion:^{
+            if (self.didFinishWithResult) {
+                self.didFinishWithResult(success);
+            }
+        }];
     }
 }
 

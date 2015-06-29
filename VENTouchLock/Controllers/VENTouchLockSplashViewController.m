@@ -3,46 +3,46 @@
 #import "VENTouchLock.h"
 
 @interface VENTouchLockSplashViewController ()
+
+@property (nonatomic, weak) VENTouchLock *touchLock;
 @property (nonatomic, assign) BOOL isSnapshotViewController;
+
 @end
 
 @implementation VENTouchLockSplashViewController
+
 
 #pragma mark - Creation and Lifecycle
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (!self.isSnapshotViewController) {
-        self.touchLock.backgroundLockVisible = NO;
-    }
 }
 
 - (instancetype)init
 {
-    self = [super init];
-    if (self) {
-        [self initialize];
-    }
-    return self;
+    return [self initWithTouchLock:nil];
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock
 {
-    self = [super initWithCoder:aDecoder];
+    return [self initWithTouchLock:touchLock nibName:nil bundle:nil];
+}
+
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock
+                          nibName:(NSString *)nibNameOrNil
+                           bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self initialize];
+        _touchLock = touchLock ?: [VENTouchLock sharedInstance];
     }
     return self;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [self initialize];
-    }
-    return self;
+    return [self initWithTouchLock:nil nibName:nibNameOrNil bundle:nibBundleOrNil];
 }
 
 - (void)viewDidLoad
@@ -144,15 +144,10 @@
                         animated:(BOOL)animated
 {
     [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-        if (self.didFinishWithSuccess) {
-            self.didFinishWithSuccess(success, unlockType);
+        if (self.didFinishWithResult) {
+            self.didFinishWithResult(success, unlockType);
         }
     }];
-}
-
-- (void)initialize
-{
-    _touchLock = [VENTouchLock sharedInstance];
 }
 
 @end

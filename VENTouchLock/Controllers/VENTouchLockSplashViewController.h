@@ -16,12 +16,14 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
  @param unlockType The type of unlock method used when unlock is successful.
  @note A secure use-case of this block is to log out of your app when success is NO.
  */
-@property (nonatomic, copy) void (^didFinishWithSuccess)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType);
+@property (nonatomic, copy) void (^didFinishWithResult)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType);
 
 /**
- The VENTouchLock framework this class interacts with. This property should not be set outside of VENTouchLock framework's automated tests.  By default, it is set to the [VENTouchLock sharedInstance] singleton on initialization.
+ @return A VENTouchLockSplashViewController that corresponds to the passed TouchLock.
+ @note When you subclass VENTouchLockSplashViewController, you must call the super
+ implementation of this method.
  */
-@property (nonatomic, strong) VENTouchLock *touchLock;
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock;
 
 /**
  Displays a Touch ID prompt if the device can support it.

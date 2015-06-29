@@ -5,31 +5,34 @@
 @interface VENTouchLockPasscodeViewController : UIViewController
 
 /**
- @return A TouchLockPasscodeViewController instance
-*/
-- (instancetype)init;
-
-/**
- @return A TouchLockPasscodeViewController instance that reads or writes properties to the TouchLock instance with the given unique identifer
- */
-- (instancetype)initWithTouchLockIdentifier:(NSString *)identifier;
-
-/**
  The initial passcode view attached to this view controller.
  */
 @property (strong, nonatomic) VENTouchLockPasscodeView *passcodeView;
 
 /**
- This block is called directly before the passcode view controller has completed its intended operation. If the operation was completed successfully, the returned BOOL will return YES, and NO otherwise.
- If this block is defined, it is responsible for dismissing the passcode view controller.
+ This block is called directly before the passcode view controller has completed its intended operation. If the operation was
+ completed successfully, the returned BOOL will return YES, and NO otherwise.
+ If this block is defined, it is responsible for dismissing the passcode view controller and calling the dismissWithResult block.
  If this block is nil, the payment view controller will dismiss itself.
  */
 @property (nonatomic, copy) void (^willFinishWithResult)(BOOL success);
 
+@property (nonatomic, copy) void (^didFinishWithResult)(BOOL success);
+
 /**
- The VENTouchLock framework this class interacts with. This property should not be set outside of VENTouchLock framework's automated tests.  By default, it is set to the [VENTouchLock sharedInstance] singleton on initialization.
+ The TouchLock instance that corresponds to this view controller.
  */
-@property (nonatomic, strong) VENTouchLock *touchLock;
+@property (nonatomic, weak, readonly) VENTouchLock *touchLock;
+
+/**
+ @return A TouchLockPasscodeViewController instance.
+ */
+- (instancetype)init;
+
+/**
+ @return A TouchLockPasscodeViewController instance that corresponds with the the passed TouchLock.
+ */
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock;
 
 /**
  Encapsulates the view controller in a navigation controller.

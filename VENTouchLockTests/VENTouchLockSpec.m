@@ -11,8 +11,7 @@ beforeAll(^{
           keychainPasscodeAccount:@"keychainAccount"
            keychainTouchIDAccount:@"keychainAccount"
                     touchIDReason:@"touchIDReason"
-             passcodeAttemptLimit:0
-        splashViewControllerClass:NULL];
+             passcodeAttemptLimit:0];
 });
 
 beforeEach(^{
