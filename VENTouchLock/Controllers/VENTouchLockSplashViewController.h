@@ -19,9 +19,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockSplashViewControllerUnlockType) {
 @property (nonatomic, copy) void (^didFinishWithSuccess)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType);
 
 /**
- The VENTouchLock framework this class interacts with. This property should not be set outside of VENTouchLock framework's automated tests.  By default, it is set to the [VENTouchLock sharedInstance] singleton on initialization.
+ @return A VENTouchLockSplashViewController that corresponds to the passed TouchLock.
+ @note When you subclass VENTouchLockSplashViewController, you must call the super
+ implementation of this method.
  */
-@property (nonatomic, strong) VENTouchLock *touchLock;
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock;
 
 /**
  Displays a Touch ID prompt if the device can support it.

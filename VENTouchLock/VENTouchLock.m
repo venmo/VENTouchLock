@@ -24,27 +24,12 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 
 + (instancetype)sharedInstance
 {
-    return [self sharedInstanceWithTouchLockIdentfier:nil];
-}
-
-+ (instancetype)sharedInstanceWithTouchLockIdentfier:(NSString *)identifier
-{
-    static NSMutableDictionary *sharedDictionary = nil;
+    static VENTouchLock *sharedInstance = nil;
     static dispatch_once_t onceToken;
-
     dispatch_once(&onceToken, ^{
-        sharedDictionary = [[NSMutableDictionary alloc] init];
-    });
-
-    identifier = identifier ?: VENTouchLockDefaultUniqueIdentifier;
-    VENTouchLock *sharedInstance = sharedDictionary[identifier];
-
-    if (!sharedInstance) {
-        sharedInstance = [[self alloc] init];
+        sharedInstance = [[[self class] alloc] init];
         sharedInstance.appearance = [[VENTouchLockAppearance alloc] init];
-        sharedDictionary[identifier] = sharedInstance;
-    }
-
+    });
     return sharedInstance;
 }
 
@@ -203,11 +188,13 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         return;
     }
 
+    BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
+    UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
+    UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-            UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
             UIViewController *displayController;
             if (self.appearance.splashShouldEmbedInNavigationController) {
                 displayController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
@@ -216,7 +203,6 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                 displayController = splashViewController;
             }
 
-            BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
             if (fromBackground) {
                 [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
@@ -239,6 +225,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                 [rootViewController presentViewController:displayController animated:NO completion:nil];
             });
         }
+    } else {
+
     }
 }
 

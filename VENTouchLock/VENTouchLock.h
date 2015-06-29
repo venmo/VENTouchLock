@@ -43,13 +43,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 + (instancetype)sharedInstance;
 
 /**
- Returns a singleton TouchLock instance with a unique identifier.
- @param identifer This identifer must be unique per TouchLock instance. If nil, the identifer will default to "VENTouchLockDefaultUniqueIdentifier"
- @return A singleton TouchLock instance with the given unique identifier.
- */
-+ (instancetype)sharedInstanceWithTouchLockIdentfier:(NSString *)identifier;
-
-/**
  Set the defaults. This method should be called at launch.
  @param service The keychain service for which to set and return a passcode
  @param account The keychain account for which to set and return a passcode

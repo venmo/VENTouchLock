@@ -27,8 +27,7 @@ describe(@"recordIncorrectPasscodeAttempt", ^{
                         touchIDReason:@"testReason"
                  passcodeAttemptLimit:3];
 
-        VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-        enterPasscodeVC.touchLock = touchLock;
+        VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] initWithTouchLock:touchLock];
         mockEnterPasscodeVC = [OCMockObject partialMockForObject:enterPasscodeVC];
         [touchLock resetIncorrectPasscodeAttemptCount];
     });

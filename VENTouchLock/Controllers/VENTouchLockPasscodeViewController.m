@@ -8,6 +8,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 @interface VENTouchLockPasscodeViewController () <UITextFieldDelegate>
 
+@property (nonatomic, strong) VENTouchLock *touchLock;
 @property (strong, nonatomic) UITextField *invisiblePasscodeField;
 @property (assign, nonatomic) BOOL shouldIgnoreTextFieldDelegateCalls;
 
@@ -22,14 +23,14 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 
 - (instancetype)init
 {
-    return [self initWithTouchLockIdentifier:nil];
+    return [self initWithTouchLock:[VENTouchLock sharedInstance]];
 }
 
-- (instancetype)initWithTouchLockIdentifier:(NSString *)identifier
+- (instancetype)initWithTouchLock:(VENTouchLock *)touchLock
 {
     self = [super init];
     if (self) {
-        _touchLock = [VENTouchLock sharedInstanceWithTouchLockIdentfier:identifier];
+        _touchLock = touchLock;
     }
     return self;
 }
