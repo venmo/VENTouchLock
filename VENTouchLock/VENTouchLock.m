@@ -192,86 +192,52 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         return;
     }
 
-    __weak typeof(self) weakSelf = self;
     BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
-    UIViewController *displayViewController;
-    UIView *snapshotView;
-    void (^displayPresentationCompletionBlock)();
-
-    if (self.splashViewControllerClass != NULL) {
-        VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
-
-        void (^didFinishWithResult)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) = splashViewController.didFinishWithResult;
-
-        splashViewController.didFinishWithResult = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
-            __strong typeof(self) strongSelf = weakSelf;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.locked = NO;
-                if (didFinishWithResult) {
-                    didFinishWithResult(success, unlockType);
-                }
-            });
-        };
-
-        displayPresentationCompletionBlock = ^{
-            [splashViewController showUnlockAnimated:NO];
-        };
-
-        if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            if (self.options.splashShouldEmbedInNavigationController) {
-                displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
-            }
-            else {
-                displayViewController = splashViewController;
-            }
-
-            if (fromBackground) {
-                VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
-                UIViewController *snapshotDisplayController;
-                if (self.options.splashShouldEmbedInNavigationController) {
-                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
-                }
-                else {
-                    snapshotDisplayController = snapshotSplashViewController;
-                }
-                [snapshotDisplayController loadView];
-                [snapshotDisplayController viewDidLoad];
-                snapshotView = snapshotDisplayController.view;
-            }
-        }
-    } else {
-        VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [[VENTouchLockEnterPasscodeViewController alloc] initWithTouchLock:self];
-        enterPasscodeViewController.didFinishWithResult = ^(BOOL success) {
-            __strong typeof(self) strongSelf = weakSelf;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.locked = NO;
-            });
-        };
-        if (self.options.passcodeViewControllerShouldEmbedInNavigationController) {
-            displayViewController = [enterPasscodeViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
-        } else {
-            displayViewController = enterPasscodeViewController;
-        }
-
-        if (fromBackground && self.appSwitchViewClass != NULL) {
-             snapshotView = [[self.appSwitchViewClass alloc] initWithFrame:CGRectZero];
-        }
-    }
+    BOOL shouldUseSplash = ((self.splashViewControllerClass != NULL)
+                            && ([self.splashViewControllerClass isSubclassOfClass:[VENTouchLockSplashViewController class]]));
 
     self.locked = YES;
 
-    if (fromBackground && snapshotView) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-        UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-        snapshotView.frame = mainWindow.bounds;
-        [mainWindow addSubview:snapshotView];
-        self.snapshotView = snapshotView;
-    }
+    if (shouldUseSplash) {
+        VENTouchLockSplashViewController *splashViewController = [self splashViewController];
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
-        [rootViewController presentViewController:displayViewController animated:NO completion:displayPresentationCompletionBlock];
-    });
+        BOOL shouldEmbedInNavigationController = self.options.splashShouldEmbedInNavigationController;
+        UIViewController *displayViewController;
+        displayViewController = [self transformViewController:splashViewController byEmbedding:shouldEmbedInNavigationController];
+
+        if (fromBackground) {
+            VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
+            UIViewController *snapshotDisplayController = [self transformViewController:snapshotSplashViewController byEmbedding:shouldEmbedInNavigationController];
+            [snapshotDisplayController loadView];
+            [snapshotDisplayController viewDidLoad];
+            [self showSnapshotView:snapshotSplashViewController.view];
+        }
+
+        [self presentViewControllerOnTop:displayViewController completion:^{
+            [splashViewController showUnlockAnimated:NO];
+        }];
+
+    } else {
+        if (self.shouldUseTouchID) {
+            if (!fromBackground) {
+                [self showTouchID];
+            }
+        }
+        else {
+            VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [self enterPasscodeViewController];
+
+            BOOL shouldEmbedInNavigationController = self.options.passcodeViewControllerShouldEmbedInNavigationController;
+
+            UIViewController *displayViewController = [self transformViewController:enterPasscodeViewController
+                                                                        byEmbedding:shouldEmbedInNavigationController];
+
+            if (fromBackground && self.appSwitchViewClass != NULL) {
+                UIView *snapshotView = [[self.appSwitchViewClass alloc] init];
+                [self showSnapshotView:snapshotView];
+            }
+            [self presentViewControllerOnTop:displayViewController completion:nil];
+        }
+    }
 }
 
 
@@ -324,21 +290,10 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.snapshotView removeFromSuperview];
         self.snapshotView = nil;
+        if (self.locked && self.splashViewControllerClass == NULL && [self shouldUseTouchID]) {
+            [self showTouchID];
+        }
     });
-
-}
-
-
-#pragma mark - Internal
-
-- (NSString *)keychainPasscodeAttemptAccountName
-{
-    return [self.keychainPasscodeAccount stringByAppendingString:@"_AttemptName"];
-}
-
-- (NSString *)keypathOfAutolockOptions
-{
-    return [NSString stringWithFormat:@"%@.%@", NSStringFromSelector(@selector(options)), NSStringFromSelector(@selector(shouldAutoLockOnAppLifeCycleNotifications))];
 }
 
 
@@ -358,7 +313,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         }
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(locked))]) {
         BOOL locked = ((VENTouchLock *)object).locked;
-        if (locked && self.options.shouldBlurWhenLocked) {
+        if (locked && self.options.shouldBlurWhenLocked && !self.obscureView) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
             UIView *topMostView = [UIViewController ventouchlock_topMostController].view;
             VENTouchLockBlurView *obscureView = [[VENTouchLockBlurView alloc] initWithFrame:topMostView.bounds blurEffectStyle:self.options.blurEffectStyle];
@@ -373,8 +328,145 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                     self.obscureView = nil;
                 }];
             }
+        }
     }
 }
+
+
+#pragma mark - Internal Helper Methods
+
+- (void)showTouchID
+{
+    [self requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
+        switch (response) {
+            case VENTouchLockTouchIDResponseSuccess: {
+                self.locked = NO;
+                if (self.lockCompletion) {
+                    self.lockCompletion(VENTouchLockCompletionTypePasscodeUnlock);
+                }
+                break;
+            }
+            case VENTouchLockTouchIDResponseCanceled: {
+                self.locked = NO;
+                if (self.lockCompletion) {
+                    self.lockCompletion(VENTouchLockCompletionTypeCancel);
+                }
+                break;
+            }
+            case VENTouchLockTouchIDResponseUsePasscode: {
+                VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [self enterPasscodeViewController];
+                BOOL shouldEmbedInNavigationController = self.options.passcodeViewControllerShouldEmbedInNavigationController;
+
+                UIViewController *displayViewController = [self transformViewController:enterPasscodeViewController
+                                                                            byEmbedding:shouldEmbedInNavigationController];
+                [self presentViewControllerOnTop:displayViewController completion:nil];
+                break;
+            }
+
+            default:
+                break;
+        }
+    }];
+}
+
+- (void)showSnapshotView:(UIView *)snapshotView
+{
+    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+    UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
+    snapshotView.frame = mainWindow.bounds;
+    [mainWindow addSubview:snapshotView];
+    self.snapshotView = snapshotView;
+}
+
+- (void)presentViewControllerOnTop:(UIViewController *)viewController completion:(void (^)())completion
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+        [rootViewController presentViewController:viewController animated:NO completion:completion];
+    });
+}
+
+- (NSString *)keychainPasscodeAttemptAccountName
+{
+    return [self.keychainPasscodeAccount stringByAppendingString:@"_AttemptName"];
+}
+
+- (NSString *)keypathOfAutolockOptions
+{
+    return [NSString stringWithFormat:@"%@.%@", NSStringFromSelector(@selector(options)), NSStringFromSelector(@selector(shouldAutoLockOnAppLifeCycleNotifications))];
+}
+
+- (VENTouchLockSplashViewController *)splashViewController
+{
+    VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
+
+    void (^didFinishWithResult)(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) = splashViewController.didFinishWithResult;
+
+    __weak typeof(self) weakSelf = self;
+    splashViewController.didFinishWithResult = ^(BOOL success, VENTouchLockSplashViewControllerUnlockType unlockType) {
+        __strong typeof(self) strongSelf = weakSelf;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            strongSelf.locked = NO;
+            if (didFinishWithResult) {
+                didFinishWithResult(success, unlockType);
+            }
+
+            VENTouchLockCompletionType lockCompletion;
+            if (success) {
+                switch (unlockType) {
+                    case VENTouchLockSplashViewControllerUnlockTypeTouchID: {
+                        lockCompletion = VENTouchLockCompletionTypeTouchIDUnlock;
+                        break;
+                    }
+                    case VENTouchLockSplashViewControllerUnlockTypePasscode: {
+                        lockCompletion = VENTouchLockCompletionTypePasscodeUnlock;
+                        break;
+                    }
+                    default: {
+                        lockCompletion = VENTouchLockCompletionTypeUndefined;
+                        break;
+                    }
+                }
+            } else {
+                lockCompletion = VENTouchLockCompletionTypePasscodeLimitReached;
+            }
+            if (strongSelf.lockCompletion) {
+                self.lockCompletion(lockCompletion);
+            }
+        });
+    };
+
+    return splashViewController;
+}
+
+- (VENTouchLockEnterPasscodeViewController *)enterPasscodeViewController
+{
+    VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [[VENTouchLockEnterPasscodeViewController alloc] initWithTouchLock:self];
+
+    __weak typeof(self) weakSelf = self;
+    enterPasscodeViewController.didFinishWithResult = ^(BOOL success) {
+        __strong typeof(self) strongSelf = weakSelf;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            strongSelf.locked = NO;
+            VENTouchLockCompletionType lockCompletion = success ? VENTouchLockCompletionTypePasscodeUnlock : VENTouchLockCompletionTypeCancel;
+            if (strongSelf.lockCompletion) {
+                self.lockCompletion(lockCompletion);
+            }
+        });
+    };
+    return enterPasscodeViewController;
+}
+
+- (UIViewController *)transformViewController:(UIViewController *)vc byEmbedding:(BOOL)shouldEmbed
+{
+    UIViewController *viewController;
+    if (shouldEmbed) {
+        viewController = [vc ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
+    }
+    else {
+        viewController = vc;
+    }
+    return viewController;
 }
 
 @end
