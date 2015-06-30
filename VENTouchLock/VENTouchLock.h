@@ -6,7 +6,7 @@
 
 typedef NS_ENUM(NSUInteger, VENTouchLockCompletion) {
     VENTouchLockCompletionUndefined,
-    VENTouchLockCompletionFingerprintUnlock,
+    VENTouchLockCompletionTouchIDUnlock,
     VENTouchLockCompletionPasscodeUnlock,
     VENTouchLockCompletionPasscodeLimitReached,
     VENTouchLockCompletionCancel

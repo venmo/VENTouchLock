@@ -376,7 +376,6 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     self.snapshotView = snapshotView;
 }
 
-
 - (void)presentViewControllerOnTop:(UIViewController *)viewController completion:(void (^)())completion
 {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -414,7 +413,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
             if (success) {
                 switch (unlockType) {
                     case VENTouchLockSplashViewControllerUnlockTypeTouchID: {
-                        lockCompletion = VENTouchLockCompletionFingerprintUnlock;
+                        lockCompletion = VENTouchLockCompletionTouchIDUnlock;
                         break;
                     }
                     case VENTouchLockSplashViewControllerUnlockTypePasscode: {
