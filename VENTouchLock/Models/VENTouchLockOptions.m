@@ -22,6 +22,7 @@
         _splashShouldEmbedInNavigationController = NO;
         _touchIDCancelPresentsPasscodeViewController = NO;
         _navigationBarClass = [UINavigationBar class];
+        _shouldBlurWhenLocked = YES;
     }
     return self;
 }

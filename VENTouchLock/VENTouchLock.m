@@ -3,6 +3,7 @@
 #import <SSKeychain/SSKeychain.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+VENTouchLock.h"
+#import "VENTouchLockBlurView.h"
 
 static NSString *const VENTouchLockDefaultUniqueIdentifier = @"VENTouchLockDefaultUniqueIdentifier";
 static NSString *const VENTouchLockTouchIDOn = @"On";
@@ -15,9 +16,11 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 @property (copy, nonatomic) NSString *keychainTouchIDAccount;
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
-@property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockOptions *options;
 @property (assign, nonatomic) BOOL locked;
+
+@property (strong, nonatomic) UIView *snapshotView;
+@property (strong, nonatomic) VENTouchLockBlurView *obscureView;
 
 @end
 
@@ -38,14 +41,15 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeObserver:self forKeyPath:[self keypathOfAutolockOptions]];
+    [self removeObserver:self forKeyPath:NSStringFromSelector(@selector(locked))];
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-
         [self addObserver:self forKeyPath:[self keypathOfAutolockOptions] options:NSKeyValueObservingOptionInitial context:nil];
+        [self addObserver:self forKeyPath:NSStringFromSelector(@selector(locked)) options:NSKeyValueObservingOptionInitial context:nil];
     }
     return self;
 }
@@ -254,6 +258,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         }
     }
 
+    self.locked = YES;
+
     if (fromBackground && snapshotView) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
@@ -263,7 +269,6 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.locked = YES;
         UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
         [rootViewController presentViewController:displayViewController animated:NO completion:displayPresentationCompletionBlock];
     });
@@ -351,7 +356,25 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         } else {
             [notificationCenter removeObserver:self];
         }
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(locked))]) {
+        BOOL locked = ((VENTouchLock *)object).locked;
+        if (locked) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+            UIView *topMostView = [UIViewController ventouchlock_topMostController].view;
+            UIView *obscureView = [[VENTouchLockBlurView alloc] initWithFrame:topMostView.bounds];
+            [topMostView addSubview:obscureView];
+            self.obscureView = obscureView;
+        } else {
+            if (self.obscureView) {
+                [UIView animateWithDuration:0.15 animations:^{
+                    self.obscureView.alpha = 0;
+                } completion:^(BOOL finished) {
+                    [self.obscureView removeFromSuperview];
+                    self.obscureView = nil;
+                }];
+            }
     }
+}
 }
 
 @end

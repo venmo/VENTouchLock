@@ -4,6 +4,18 @@
 @interface VENTouchLockOptions : NSObject
 
 /**-----------------------------------------------------------------------------
+ * @description Lock Preferences
+ * -----------------------------------------------------------------------------
+ */
+
+@property (strong, nonatomic) Class navigationBarClass;
+@property (assign, nonatomic) BOOL shouldBlurWhenLocked;
+@property (assign, nonatomic) BOOL shouldAutoLockOnAppLifeCycleNotifications;
+@property (assign, nonatomic) BOOL splashShouldEmbedInNavigationController;
+@property (assign, nonatomic) BOOL passcodeViewControllerShouldEmbedInNavigationController;
+@property (assign, nonatomic) BOOL touchIDCancelPresentsPasscodeViewController;
+
+/**-----------------------------------------------------------------------------
  * @description Passcode View Controller Appearance
  * -----------------------------------------------------------------------------
  */
@@ -28,18 +40,5 @@
 @property (strong, nonatomic) NSString *enterPasscodeInitialLabelText;
 @property (strong, nonatomic) NSString *enterPasscodeIncorrectLabelText;
 @property (strong, nonatomic) NSString *enterPasscodeViewControllerTitle;
-
-
-/**-----------------------------------------------------------------------------
- * @description Lock Preferences
- * -----------------------------------------------------------------------------
- */
-
-@property (strong, nonatomic) Class navigationBarClass;
-@property (assign, nonatomic) BOOL shouldAutoLockOnAppLifeCycleNotifications;
-@property (assign, nonatomic) BOOL splashShouldEmbedInNavigationController;
-@property (assign, nonatomic) BOOL passcodeViewControllerShouldEmbedInNavigationController;
-@property (assign, nonatomic) BOOL touchIDCancelPresentsPasscodeViewController;
-
 
 @end
