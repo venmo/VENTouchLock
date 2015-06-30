@@ -3,6 +3,7 @@
 #import <SSKeychain/SSKeychain.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "UIViewController+VENTouchLock.h"
+#import "VENTouchLockBlurView.h"
 
 static NSString *const VENTouchLockDefaultUniqueIdentifier = @"VENTouchLockDefaultUniqueIdentifier";
 static NSString *const VENTouchLockTouchIDOn = @"On";
@@ -15,9 +16,11 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 @property (copy, nonatomic) NSString *keychainTouchIDAccount;
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
-@property (strong, nonatomic) UIView *snapshotView;
-@property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (strong, nonatomic) VENTouchLockOptions *options;
 @property (assign, nonatomic) BOOL locked;
+
+@property (strong, nonatomic) UIView *snapshotView;
+@property (strong, nonatomic) UIView *obscureView;
 
 @end
 
@@ -29,7 +32,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self class] alloc] init];
-        sharedInstance.appearance = [[VENTouchLockAppearance alloc] init];
+        sharedInstance.options = [[VENTouchLockOptions alloc] init];
     });
     return sharedInstance;
 }
@@ -37,16 +40,16 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self forKeyPath:[self keypathOfAutolockOptions]];
+    [self removeObserver:self forKeyPath:NSStringFromSelector(@selector(locked))];
 }
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        [notificationCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        [notificationCenter addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-        [notificationCenter addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+        [self addObserver:self forKeyPath:[self keypathOfAutolockOptions] options:NSKeyValueObservingOptionInitial context:nil];
+        [self addObserver:self forKeyPath:NSStringFromSelector(@selector(locked)) options:NSKeyValueObservingOptionInitial context:nil];
     }
     return self;
 }
@@ -162,7 +165,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                                                   break;
                                               case LAErrorAuthenticationFailed: // when TouchID max retry is reached, fallbacks to passcode
                                               case LAErrorUserCancel:
-                                                  response = (self.appearance.touchIDCancelPresentsPasscodeViewController) ? VENTouchLockTouchIDResponseUsePasscode : VENTouchLockTouchIDResponseCanceled;
+                                                  response = (self.options.touchIDCancelPresentsPasscodeViewController) ? VENTouchLockTouchIDResponseUsePasscode : VENTouchLockTouchIDResponseCanceled;
                                                   break;
                                               default:
                                                   response = VENTouchLockTouchIDResponseUndefined;
@@ -193,6 +196,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
     UIViewController *displayViewController;
     UIView *snapshotView;
+    void (^displayPresentationCompletionBlock)();
 
     if (self.splashViewControllerClass != NULL) {
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
@@ -209,9 +213,13 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
             });
         };
 
+        displayPresentationCompletionBlock = ^{
+            [splashViewController showUnlockAnimated:NO];
+        };
+
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            if (self.appearance.splashShouldEmbedInNavigationController) {
-                displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
+            if (self.options.splashShouldEmbedInNavigationController) {
+                displayViewController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
             }
             else {
                 displayViewController = splashViewController;
@@ -220,8 +228,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
             if (fromBackground) {
                 VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
                 UIViewController *snapshotDisplayController;
-                if (self.appearance.splashShouldEmbedInNavigationController) {
-                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
+                if (self.options.splashShouldEmbedInNavigationController) {
+                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
                 }
                 else {
                     snapshotDisplayController = snapshotSplashViewController;
@@ -239,8 +247,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                 strongSelf.locked = NO;
             });
         };
-        if (self.appearance.passcodeViewControllerShouldEmbedInNavigationController) {
-            displayViewController = [[UINavigationController alloc] initWithRootViewController:enterPasscodeViewController];
+        if (self.options.passcodeViewControllerShouldEmbedInNavigationController) {
+            displayViewController = [enterPasscodeViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.options.navigationBarClass];
         } else {
             displayViewController = enterPasscodeViewController;
         }
@@ -250,18 +258,19 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         }
     }
 
+    self.locked = YES;
+
     if (fromBackground && snapshotView) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
         snapshotView.frame = mainWindow.bounds;
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         [mainWindow addSubview:snapshotView];
         self.snapshotView = snapshotView;
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.locked = YES;
         UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
-        [rootViewController presentViewController:displayViewController animated:NO completion:nil];
+        [rootViewController presentViewController:displayViewController animated:NO completion:displayPresentationCompletionBlock];
     });
 }
 
@@ -325,6 +334,47 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 - (NSString *)keychainPasscodeAttemptAccountName
 {
     return [self.keychainPasscodeAccount stringByAppendingString:@"_AttemptName"];
+}
+
+- (NSString *)keypathOfAutolockOptions
+{
+    return [NSString stringWithFormat:@"%@.%@", NSStringFromSelector(@selector(options)), NSStringFromSelector(@selector(shouldAutoLockOnAppLifeCycleNotifications))];
+}
+
+
+#pragma mark - NSObject
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:[self keypathOfAutolockOptions]]) {
+        BOOL shouldAutolock = ((VENTouchLock *)object).options.shouldAutoLockOnAppLifeCycleNotifications;
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        if (shouldAutolock) {
+            [notificationCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+            [notificationCenter addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+            [notificationCenter addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+        } else {
+            [notificationCenter removeObserver:self];
+        }
+    } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(locked))]) {
+        BOOL locked = ((VENTouchLock *)object).locked;
+        if (locked && self.options.shouldBlurWhenLocked) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+            UIView *topMostView = [UIViewController ventouchlock_topMostController].view;
+            VENTouchLockBlurView *obscureView = [[VENTouchLockBlurView alloc] initWithFrame:topMostView.bounds blurEffectStyle:self.options.blurEffectStyle];
+            [topMostView addSubview:obscureView];
+            self.obscureView = obscureView;
+        } else {
+            if (self.obscureView) {
+                [UIView animateWithDuration:self.options.blurDissolveAnimationDuration animations:^{
+                    self.obscureView.alpha = 0;
+                } completion:^(BOOL finished) {
+                    [self.obscureView removeFromSuperview];
+                    self.obscureView = nil;
+                }];
+            }
+    }
+}
 }
 
 @end

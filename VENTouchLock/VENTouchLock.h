@@ -2,7 +2,7 @@
 #import "VENTouchLockCreatePasscodeViewController.h"
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLockSplashViewController.h"
-#import "VENTouchLockAppearance.h"
+#import "VENTouchLockOptions.h"
 
 typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
     VENTouchLockTouchIDResponseUndefined,
@@ -36,9 +36,9 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 @property (assign, nonatomic) Class splashViewControllerClass;
 
 /**
- The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
+ Preferences may optionally be set by editing the returned instance's properties.
  */
-@property (strong, nonatomic, readonly) VENTouchLockAppearance *appearance;
+@property (strong, nonatomic, readonly) VENTouchLockOptions *options;
 
 
 /**

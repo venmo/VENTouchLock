@@ -1,6 +1,6 @@
-#import "VENTouchLockAppearance.h"
+#import "VENTouchLockOptions.h"
 
-@implementation VENTouchLockAppearance
+@implementation VENTouchLockOptions
 
 - (instancetype)init
 {
@@ -18,9 +18,13 @@
         _enterPasscodeInitialLabelText = NSLocalizedString(@"Enter your passcode", nil);
         _enterPasscodeIncorrectLabelText = NSLocalizedString(@"Incorrect passcode. Try again.", nil);
         _enterPasscodeViewControllerTitle = NSLocalizedString(@"Enter Passcode", nil);
+        _shouldAutoLockOnAppLifeCycleNotifications = NO;
         _splashShouldEmbedInNavigationController = NO;
         _touchIDCancelPresentsPasscodeViewController = NO;
         _navigationBarClass = [UINavigationBar class];
+        _shouldBlurWhenLocked = YES;
+        _blurEffectStyle = UIBlurEffectStyleLight;
+        _blurDissolveAnimationDuration = 0.15;
     }
     return self;
 }
