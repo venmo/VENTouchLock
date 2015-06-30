@@ -205,8 +205,6 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         UIViewController *displayViewController;
         displayViewController = [self transformViewController:splashViewController byEmbedding:shouldEmbedInNavigationController];
 
-        self.locked = YES;
-
         if (fromBackground) {
             VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
             UIViewController *snapshotDisplayController = [self transformViewController:snapshotSplashViewController byEmbedding:shouldEmbedInNavigationController];
@@ -221,7 +219,9 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 
     } else {
         if (self.shouldUseTouchID) {
-            [self showTouchID];
+            if (!fromBackground) {
+                [self showTouchID];
+            }
         }
         else {
             VENTouchLockEnterPasscodeViewController *enterPasscodeViewController = [self enterPasscodeViewController];
@@ -230,8 +230,6 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 
             UIViewController *displayViewController = [self transformViewController:enterPasscodeViewController
                                                                         byEmbedding:shouldEmbedInNavigationController];
-
-            self.locked = YES;
 
             if (fromBackground && self.appSwitchViewClass != NULL) {
                 UIView *snapshotView = [[self.appSwitchViewClass alloc] init];
@@ -292,8 +290,10 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.snapshotView removeFromSuperview];
         self.snapshotView = nil;
+        if (self.locked && self.splashViewControllerClass == NULL && [self shouldUseTouchID]) {
+            [self showTouchID];
+        }
     });
-
 }
 
 
@@ -313,7 +313,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         }
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(locked))]) {
         BOOL locked = ((VENTouchLock *)object).locked;
-        if (locked && self.options.shouldBlurWhenLocked) {
+        if (locked && self.options.shouldBlurWhenLocked && !self.obscureView) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
             UIView *topMostView = [UIViewController ventouchlock_topMostController].view;
             VENTouchLockBlurView *obscureView = [[VENTouchLockBlurView alloc] initWithFrame:topMostView.bounds blurEffectStyle:self.options.blurEffectStyle];
