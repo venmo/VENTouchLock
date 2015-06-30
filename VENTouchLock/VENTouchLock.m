@@ -20,7 +20,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
 @property (assign, nonatomic) BOOL locked;
 
 @property (strong, nonatomic) UIView *snapshotView;
-@property (strong, nonatomic) VENTouchLockBlurView *obscureView;
+@property (strong, nonatomic) UIView *obscureView;
 
 @end
 
@@ -358,15 +358,15 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         }
     } else if ([keyPath isEqualToString:NSStringFromSelector(@selector(locked))]) {
         BOOL locked = ((VENTouchLock *)object).locked;
-        if (locked) {
+        if (locked && self.options.shouldBlurWhenLocked) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
             UIView *topMostView = [UIViewController ventouchlock_topMostController].view;
-            UIView *obscureView = [[VENTouchLockBlurView alloc] initWithFrame:topMostView.bounds];
+            VENTouchLockBlurView *obscureView = [[VENTouchLockBlurView alloc] initWithFrame:topMostView.bounds blurEffectStyle:self.options.blurEffectStyle];
             [topMostView addSubview:obscureView];
             self.obscureView = obscureView;
         } else {
             if (self.obscureView) {
-                [UIView animateWithDuration:0.15 animations:^{
+                [UIView animateWithDuration:self.options.blurDissolveAnimationDuration animations:^{
                     self.obscureView.alpha = 0;
                 } completion:^(BOOL finished) {
                     [self.obscureView removeFromSuperview];

@@ -23,6 +23,8 @@
         _touchIDCancelPresentsPasscodeViewController = NO;
         _navigationBarClass = [UINavigationBar class];
         _shouldBlurWhenLocked = YES;
+        _blurEffectStyle = UIBlurEffectStyleLight;
+        _blurDissolveAnimationDuration = 0.15;
     }
     return self;
 }

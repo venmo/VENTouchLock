@@ -16,6 +16,14 @@
 @property (assign, nonatomic) BOOL touchIDCancelPresentsPasscodeViewController;
 
 /**-----------------------------------------------------------------------------
+ * @description Blur Appearance
+ * -----------------------------------------------------------------------------
+ */
+@property (assign, nonatomic) UIBlurEffectStyle blurEffectStyle;
+@property (assign, nonatomic) CGFloat blurDissolveAnimationDuration;
+
+
+/**-----------------------------------------------------------------------------
  * @description Passcode View Controller Appearance
  * -----------------------------------------------------------------------------
  */

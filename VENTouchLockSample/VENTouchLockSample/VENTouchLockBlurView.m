@@ -2,7 +2,7 @@
 
 @implementation VENTouchLockBlurView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame blurEffectStyle:(UIBlurEffectStyle)blurEffectStyle
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -13,8 +13,8 @@
             visualEffectView.frame = frame;
             [self addSubview:visualEffectView];
         } else {
-            UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:frame];
-            [self addSubview:bgToolbar];
+            UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:frame];
+            [self addSubview:toolbar];
         }
     }
     return self;
