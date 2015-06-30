@@ -4,12 +4,12 @@
 #import "VENTouchLockSplashViewController.h"
 #import "VENTouchLockOptions.h"
 
-typedef NS_ENUM(NSUInteger, VENTouchLockCompletion) {
-    VENTouchLockCompletionUndefined,
-    VENTouchLockCompletionTouchIDUnlock,
-    VENTouchLockCompletionPasscodeUnlock,
-    VENTouchLockCompletionPasscodeLimitReached,
-    VENTouchLockCompletionCancel
+typedef NS_ENUM(NSUInteger, VENTouchLockCompletionType) {
+    VENTouchLockCompletionTypeUndefined,
+    VENTouchLockCompletionTypeTouchIDUnlock,
+    VENTouchLockCompletionTypePasscodeUnlock,
+    VENTouchLockCompletionTypePasscodeLimitReached,
+    VENTouchLockCompletionTypeCancel
 };
 
 typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 /**
  This block is called each time the TouchLock is unlocked or dismissed.
  */
-@property (nonatomic, copy) void (^lockCompletion)(VENTouchLockCompletion);
+@property (nonatomic, copy) void (^lockCompletion)(VENTouchLockCompletionType);
 
 /**
  The class of a UIView subclass.

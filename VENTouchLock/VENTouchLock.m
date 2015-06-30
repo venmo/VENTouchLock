@@ -196,6 +196,8 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
     BOOL shouldUseSplash = ((self.splashViewControllerClass != NULL)
                             && ([self.splashViewControllerClass isSubclassOfClass:[VENTouchLockSplashViewController class]]));
 
+    self.locked = YES;
+
     if (shouldUseSplash) {
         VENTouchLockSplashViewController *splashViewController = [self splashViewController];
 
@@ -340,14 +342,14 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
             case VENTouchLockTouchIDResponseSuccess: {
                 self.locked = NO;
                 if (self.lockCompletion) {
-                    self.lockCompletion(VENTouchLockCompletionPasscodeUnlock);
+                    self.lockCompletion(VENTouchLockCompletionTypePasscodeUnlock);
                 }
                 break;
             }
             case VENTouchLockTouchIDResponseCanceled: {
                 self.locked = NO;
                 if (self.lockCompletion) {
-                    self.lockCompletion(VENTouchLockCompletionCancel);
+                    self.lockCompletion(VENTouchLockCompletionTypeCancel);
                 }
                 break;
             }
@@ -409,24 +411,24 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
                 didFinishWithResult(success, unlockType);
             }
 
-            VENTouchLockCompletion lockCompletion;
+            VENTouchLockCompletionType lockCompletion;
             if (success) {
                 switch (unlockType) {
                     case VENTouchLockSplashViewControllerUnlockTypeTouchID: {
-                        lockCompletion = VENTouchLockCompletionTouchIDUnlock;
+                        lockCompletion = VENTouchLockCompletionTypeTouchIDUnlock;
                         break;
                     }
                     case VENTouchLockSplashViewControllerUnlockTypePasscode: {
-                        lockCompletion = VENTouchLockCompletionPasscodeUnlock;
+                        lockCompletion = VENTouchLockCompletionTypePasscodeUnlock;
                         break;
                     }
                     default: {
-                        lockCompletion = VENTouchLockCompletionUndefined;
+                        lockCompletion = VENTouchLockCompletionTypeUndefined;
                         break;
                     }
                 }
             } else {
-                lockCompletion = VENTouchLockCompletionPasscodeLimitReached;
+                lockCompletion = VENTouchLockCompletionTypePasscodeLimitReached;
             }
             if (strongSelf.lockCompletion) {
                 self.lockCompletion(lockCompletion);
@@ -446,7 +448,7 @@ static NSString *const VENTouchLockTouchIDOff = @"Off";
         __strong typeof(self) strongSelf = weakSelf;
         dispatch_async(dispatch_get_main_queue(), ^{
             strongSelf.locked = NO;
-            VENTouchLockCompletion lockCompletion = success ? VENTouchLockCompletionPasscodeUnlock : VENTouchLockCompletionCancel;
+            VENTouchLockCompletionType lockCompletion = success ? VENTouchLockCompletionTypePasscodeUnlock : VENTouchLockCompletionTypeCancel;
             if (strongSelf.lockCompletion) {
                 self.lockCompletion(lockCompletion);
             }
