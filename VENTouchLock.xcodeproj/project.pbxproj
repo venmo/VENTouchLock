@@ -22,6 +22,7 @@
 		3A03EADB19C5E41A0095708C /* VENTouchLockSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A03EADA19C5E41A0095708C /* VENTouchLockSpec.m */; };
 		3A467EEA1B42F7FD001863A4 /* VENTouchLockBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A467EE81B42F7FD001863A4 /* VENTouchLockBlurView.h */; };
 		3A467EEB1B42F7FD001863A4 /* VENTouchLockBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A467EE91B42F7FD001863A4 /* VENTouchLockBlurView.m */; };
+		3A467EEF1B42F977001863A4 /* VENTouchLockBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A467EE91B42F7FD001863A4 /* VENTouchLockBlurView.m */; };
 		3A5C456719D9C16B00E86B7C /* VENTouchLockOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A5C456519D9C16B00E86B7C /* VENTouchLockOptions.h */; };
 		3A5C456819D9C16B00E86B7C /* VENTouchLockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C456619D9C16B00E86B7C /* VENTouchLockOptions.m */; };
 		3A5C456919D9C1A500E86B7C /* VENTouchLockOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C456619D9C16B00E86B7C /* VENTouchLockOptions.m */; };
@@ -433,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A467EEF1B42F977001863A4 /* VENTouchLockBlurView.m in Sources */,
 				3A5C456919D9C1A500E86B7C /* VENTouchLockOptions.m in Sources */,
 				3A03EACF19C4FF990095708C /* VENTouchLock.m in Sources */,
 				3A03EAD019C4FF990095708C /* VENTouchLockPasscodeViewController.m in Sources */,
