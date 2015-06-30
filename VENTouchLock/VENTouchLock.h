@@ -4,6 +4,14 @@
 #import "VENTouchLockSplashViewController.h"
 #import "VENTouchLockOptions.h"
 
+typedef NS_ENUM(NSUInteger, VENTouchLockCompletion) {
+    VENTouchLockCompletionUndefined,
+    VENTouchLockCompletionFingerprintUnlock,
+    VENTouchLockCompletionPasscodeUnlock,
+    VENTouchLockCompletionPasscodeLimitReached,
+    VENTouchLockCompletionCancel
+};
+
 typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
     VENTouchLockTouchIDResponseUndefined,
     VENTouchLockTouchIDResponseSuccess,
@@ -18,6 +26,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  YES if the app is locked after having entered the background, and NO otherwise.
  */
 @property (assign, nonatomic, readonly) BOOL locked;
+
+/**
+ This block is called each time the TouchLock is unlocked or dismissed.
+ */
+@property (nonatomic, copy) void (^lockCompletion)(VENTouchLockCompletion);
 
 /**
  The class of a UIView subclass.
