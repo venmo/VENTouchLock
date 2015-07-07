@@ -13,7 +13,7 @@
         _cancelBarButtonItemTitle = NSLocalizedString(@"Cancel", nil);
         _createPasscodeInitialLabelText = NSLocalizedString(@"Enter a new passcode", nil);
         _createPasscodeConfirmLabelText = NSLocalizedString(@"Please re-enter your passcode", nil);
-        _createPasscodeMismatchedLabelText = NSLocalizedString(@"Passwords did not match. Try again", nil);
+        _createPasscodeMismatchedLabelText = NSLocalizedString(@"Passcodes did not match. Try again", nil);
         _createPasscodeViewControllerTitle = NSLocalizedString(@"Set Passcode", nil);
         _enterPasscodeInitialLabelText = NSLocalizedString(@"Enter your passcode", nil);
         _enterPasscodeIncorrectLabelText = NSLocalizedString(@"Incorrect passcode. Try again.", nil);
