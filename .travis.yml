@@ -7,7 +7,7 @@ script:
 before_install:
 - gem i cocoapods --no-ri --no-rdoc
 - brew uninstall xctool; brew install xctool --HEAD;
-- brew install carthage
+- brew update && brew install carthage
 - carthage bootstrap --verbose
 install:
 - pod install
