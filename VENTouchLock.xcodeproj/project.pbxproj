@@ -27,7 +27,7 @@
 		3A709A9219BE688000AC9238 /* UIViewController+VENTouchLock.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A8E19BE688000AC9238 /* UIViewController+VENTouchLock.h */; };
 		3A709A9319BE688000AC9238 /* UIViewController+VENTouchLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A8F19BE688000AC9238 /* UIViewController+VENTouchLock.m */; };
 		3A709AA419BE68A300AC9238 /* VENTouchLockEnterPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A9919BE68A300AC9238 /* VENTouchLockEnterPasscodeViewController.m */; };
-		3A709AA519BE68A300AC9238 /* VENTouchLockPasscodeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A9A19BE68A300AC9238 /* VENTouchLockPasscodeViewController.h */; };
+		3A709AA519BE68A300AC9238 /* VENTouchLockPasscodeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A9A19BE68A300AC9238 /* VENTouchLockPasscodeViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A709AA619BE68A300AC9238 /* VENTouchLockPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A9B19BE68A300AC9238 /* VENTouchLockPasscodeViewController.m */; };
 		3A709AA719BE68A300AC9238 /* VENTouchLockCreatePasscodeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A709A9C19BE68A300AC9238 /* VENTouchLockCreatePasscodeViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A709AA819BE68A300AC9238 /* VENTouchLockCreatePasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A709A9D19BE68A300AC9238 /* VENTouchLockCreatePasscodeViewController.m */; };
@@ -249,6 +249,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A709AA519BE68A300AC9238 /* VENTouchLockPasscodeViewController.h in Headers */,
 				3A709A9219BE688000AC9238 /* UIViewController+VENTouchLock.h in Headers */,
 				3A709AA719BE68A300AC9238 /* VENTouchLockCreatePasscodeViewController.h in Headers */,
 				3A709AA919BE68A300AC9238 /* VENTouchLockSplashViewController.h in Headers */,
@@ -257,7 +258,6 @@
 				3A03EACC19C4FF1D0095708C /* VENTouchLockEnterPasscodeViewController.h in Headers */,
 				3A709AB319BE68BF00AC9238 /* VENTouchLockPasscodeView.h in Headers */,
 				3A709AB119BE68BF00AC9238 /* VENTouchLockPasscodeCharacterView.h in Headers */,
-				3A709AA519BE68A300AC9238 /* VENTouchLockPasscodeViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
