@@ -13,8 +13,14 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (assign, nonatomic) Class splashViewControllerClass;
-@property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
+
+@property (strong, nonatomic) VENTouchLockSplashViewController *splashViewController;
+@property (strong, nonatomic) UIViewController *displayController;
+@property (weak, nonatomic) UIWindow *mainWindow;
+@property (strong, nonatomic) UIWindow *lockWindow;
+
+@property (assign, nonatomic) BOOL didLaunch;
 
 @end
 
@@ -41,9 +47,14 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     self = [super init];
     if (self) {
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        [notificationCenter addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-        [notificationCenter addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+
         [notificationCenter addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [notificationCenter addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+            [notificationCenter addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+        });
+        self.mainWindow = [[UIApplication sharedApplication].windows firstObject];
     }
     return self;
 }
@@ -174,47 +185,46 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)lock
 {
-    if (![self isPasscodeSet]) {
+    if (![self isPasscodeSet] || self.lockWindow.keyWindow) {
         return;
     }
 
     if (self.splashViewControllerClass != NULL) {
-        VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
-        if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-            UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+        self.splashViewController = [[self.splashViewControllerClass alloc] init];
+        if ([self.splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
+            self.lockWindow = [[UIWindow alloc] initWithFrame:self.mainWindow.frame];
+
             UIViewController *displayController;
             if (self.appearance.splashShouldEmbedInNavigationController) {
-                displayController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
+                self.displayController = [self.splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
             }
             else {
-                displayController = splashViewController;
+                self.displayController = self.splashViewController;
             }
+            self.lockWindow.rootViewController = displayController;
+            [self.lockWindow addSubview:displayController.view];
 
-            BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
-            if (fromBackground) {
-                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-                VENTouchLockSplashViewController *snapshotSplashViewController = [[self.splashViewControllerClass alloc] init];
-                [snapshotSplashViewController setIsSnapshotViewController:YES];
-                UIViewController *snapshotDisplayController;
-                if (self.appearance.splashShouldEmbedInNavigationController) {
-                snapshotDisplayController = [snapshotSplashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
-                }
-                else {
-                    snapshotDisplayController = snapshotSplashViewController;
-                }
-                [snapshotDisplayController loadView];
-                [snapshotDisplayController viewDidLoad];
-                snapshotDisplayController.view.frame = mainWindow.bounds;
-                self.snapshotView = snapshotDisplayController.view;
-                [mainWindow addSubview:self.snapshotView];
-            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.backgroundLockVisible = YES;
-                [rootViewController presentViewController:displayController animated:NO completion:nil];
+                [self.lockWindow makeKeyAndVisible];
             });
         }
     }
+}
+
+- (void)unlockAnimated:(BOOL)animated
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (animated) {
+            [UIView animateWithDuration:0.2 animations:^{
+                self.lockWindow.alpha = 0;
+            } completion:^(BOOL finished) {
+                [self.mainWindow makeKeyAndVisible];
+            }];
+        } else {
+            [self.mainWindow makeKeyAndVisible];
+        }
+    });
 }
 
 
@@ -222,23 +232,20 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [self lock];
+    self.didLaunch = YES;
 }
 
-- (void)applicationDidEnterBackground:(NSNotification *)notification
+- (void)applicationDidBecomeActive:(NSNotification *)notification
 {
-    if (!self.backgroundLockVisible) {
+    if (self.didLaunch) {
         [self lock];
+        self.didLaunch = NO;
     }
 }
 
-- (void)applicationWillEnterForeground:(NSNotification *)notification
+- (void)applicationWillResignActive:(NSNotification *)notification
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.snapshotView removeFromSuperview];
-        self.snapshotView = nil;
-    });
-
+    [self lock];
 }
 
 @end

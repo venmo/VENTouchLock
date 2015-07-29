@@ -56,12 +56,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
-}
-
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -113,23 +107,15 @@
 - (VENTouchLockEnterPasscodeViewController *)enterPasscodeVC
 {
     VENTouchLockEnterPasscodeViewController *enterPasscodeVC = [[VENTouchLockEnterPasscodeViewController alloc] init];
-    __weak __typeof__(self) weakSelf = self;
     enterPasscodeVC.willFinishWithResult = ^(BOOL success) {
         if (success) {
-            [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypePasscode];
+            [self unlockWithType:VENTouchLockSplashViewControllerUnlockTypePasscode];
         }
         else {
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     };
     return enterPasscodeVC;
-}
-
-- (void)appWillEnterForeground
-{
-    if (!self.presentedViewController) {
-        [self showUnlockAnimated:NO];
-    }
 }
 
 - (void)unlockWithType:(VENTouchLockSplashViewControllerUnlockType)unlockType
@@ -143,11 +129,10 @@
                       unlockType:(VENTouchLockSplashViewControllerUnlockType)unlockType
                         animated:(BOOL)animated
 {
-    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-        if (self.didFinishWithSuccess) {
-            self.didFinishWithSuccess(success, unlockType);
-        }
-    }];
+    [self.touchLock unlockAnimated:animated];
+    if (self.didFinishWithSuccess) {
+        self.didFinishWithSuccess(success, unlockType);
+    }
 }
 
 - (void)initialize

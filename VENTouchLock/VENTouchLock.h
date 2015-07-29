@@ -99,6 +99,8 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  */
 - (void)lock;
 
+- (void)unlockAnimated:(BOOL)animated;
+
 /**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
  */
