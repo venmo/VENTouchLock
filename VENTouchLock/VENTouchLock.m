@@ -10,6 +10,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 @property (copy, nonatomic) NSString *keychainService;
 @property (copy, nonatomic) NSString *keychainAccount;
+@property (copy, nonatomic) NSString *keychainAccessGroup; 
 @property (copy, nonatomic) NSString *touchIDReason;
 @property (assign, nonatomic) NSUInteger passcodeAttemptLimit;
 @property (assign, nonatomic) Class splashViewControllerClass;
@@ -62,6 +63,20 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     self.splashViewControllerClass = splashViewControllerClass;
 }
 
+- (void)setKeychainService:(NSString *)service
+           keychainAccount:(NSString *)account
+       keychainAccessGroup:(NSString *)accessGroup
+             touchIDReason:(NSString *)reason
+      passcodeAttemptLimit:(NSUInteger)attemptLimit
+ splashViewControllerClass:(Class)splashViewControllerClass {
+    
+    [self setKeychainService:service
+             keychainAccount:account
+               touchIDReason:reason
+        passcodeAttemptLimit:attemptLimit
+   splashViewControllerClass:splashViewControllerClass];
+    self.keychainAccessGroup = accessGroup;
+}
 
 #pragma mark - Keychain Methods
 
@@ -70,11 +85,13 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     return !![self currentPasscode];
 }
 
-- (NSString *)currentPasscode
-{
-    NSString *service = self.keychainService;
-    NSString *account = self.keychainAccount;
-    return [SSKeychain passwordForService:service account:account];
+- (NSString *)currentPasscode {
+    
+    SSKeychainQuery *query = [[SSKeychainQuery alloc] init];
+    query.service =  self.keychainService;
+    query.account =  self.keychainAccount;
+    query.accessGroup = self.keychainAccessGroup;
+    return query.password;
 }
 
 - (BOOL)isPasscodeValid:(NSString *)passcode
@@ -84,9 +101,12 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)setPasscode:(NSString *)passcode
 {
-    NSString *service = self.keychainService;
-    NSString *account = self.keychainAccount;
-    [SSKeychain setPassword:passcode forService:service account:account];
+    SSKeychainQuery *query = [[SSKeychainQuery alloc] init];
+    query.service =  self.keychainService;
+    query.account =  self.keychainAccount;
+    query.accessGroup = self.keychainAccessGroup;
+    query.password = passcode;
+    [query save:nil];
 }
 
 - (void)deletePasscode
@@ -95,9 +115,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     [VENTouchLockEnterPasscodeViewController resetPasscodeAttemptHistory];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
-    NSString *service = self.keychainService;
-    NSString *account = self.keychainAccount;
-    [SSKeychain deletePasswordForService:service account:account];
+    SSKeychainQuery *query = [[SSKeychainQuery alloc] init];
+    query.service =  self.keychainService;
+    query.account =  self.keychainAccount;
+    query.accessGroup = self.keychainAccessGroup;
+    [query deleteItem:nil];
 }
 
 
