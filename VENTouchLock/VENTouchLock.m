@@ -91,6 +91,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     query.service =  self.keychainService;
     query.account =  self.keychainAccount;
     query.accessGroup = self.keychainAccessGroup;
+    [query fetch:nil];
     return query.password;
 }
 
