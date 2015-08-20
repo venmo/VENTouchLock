@@ -32,9 +32,10 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActiveNotification) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
     self.view.backgroundColor = [self.touchLock appearance].passcodeViewControllerBackgroundColor;
     
     if (!self.isSnapshotViewController) {
@@ -61,6 +62,13 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     if (!self.isSnapshotViewController && [self.invisiblePasscodeField isFirstResponder]) {
         [self.invisiblePasscodeField resignFirstResponder];
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillLayoutSubviews
@@ -200,6 +208,15 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     return UIInterfaceOrientationPortrait;
+}
+
+#pragma mark - notification action
+
+- (void)didBecomeActiveNotification
+{
+    if (!self.isSnapshotViewController && ![self.invisiblePasscodeField isFirstResponder]) {
+        [self.invisiblePasscodeField becomeFirstResponder];
+    }
 }
 
 @end
