@@ -100,6 +100,12 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (void)lock;
 
 /**
+ If the passcode screen is presented, calling this method will unlock it.
+ @param animated Whether or not the unlocking should animate.
+ */
+- (void)unlockAnimated:(BOOL)animated;
+
+/**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
  */
 - (VENTouchLockAppearance *)appearance;
