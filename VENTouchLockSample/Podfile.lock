@@ -1,7 +1,7 @@
 PODS:
-  - KIF (3.2.2):
-    - KIF/XCTest (= 3.2.2)
-  - KIF/XCTest (3.2.2)
+  - KIF (3.3.0):
+    - KIF/Core (= 3.3.0)
+  - KIF/Core (3.3.0)
   - SSKeychain (1.2.2)
 
 DEPENDENCIES:
@@ -9,7 +9,7 @@ DEPENDENCIES:
   - SSKeychain (~> 1.2.2)
 
 SPEC CHECKSUMS:
-  KIF: b0bd762b0c7890b04920cf618021d6d4fd5127bd
+  KIF: 0a82046d06f3648799cac522d2d0f7934214caac
   SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
 
 COCOAPODS: 0.38.2
