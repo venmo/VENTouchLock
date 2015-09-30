@@ -13,9 +13,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (!self.isSnapshotViewController) {
-        self.touchLock.backgroundLockVisible = NO;
-    }
 }
 
 - (instancetype)init

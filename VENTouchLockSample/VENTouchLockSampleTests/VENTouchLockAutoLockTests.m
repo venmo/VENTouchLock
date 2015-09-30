@@ -148,7 +148,6 @@
             [splashViewController dismissWithUnlockSuccess:YES unlockType:VENTouchLockSplashViewControllerUnlockTypePasscode animated:NO];
         }
     }
-    [VENTouchLock sharedInstance].backgroundLockVisible = NO;
     [[VENTouchLock sharedInstance] deletePasscode];
 }
 

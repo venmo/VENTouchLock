@@ -15,11 +15,6 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 @interface VENTouchLock : NSObject
 
 /**
- YES if the app is locked after having entered the background, and NO otherwise.
- */
-@property (assign, nonatomic) BOOL backgroundLockVisible;
-
-/**
  @return A singleton VENTouchLock instance.
  */
 + (instancetype)sharedInstance;
