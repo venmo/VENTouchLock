@@ -14,6 +14,8 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 
 @interface VENTouchLock : NSObject
 
+@property (assign, nonatomic, getter=isPasscodePresented) BOOL passcodePresented;
+
 /**
  @return A singleton VENTouchLock instance.
  */

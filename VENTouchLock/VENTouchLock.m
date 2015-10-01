@@ -68,6 +68,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     self.splashViewControllerClass = splashViewControllerClass;
 }
 
+- (BOOL)isPasscodePresented
+{
+    return self.lockWindow.isKeyWindow;
+}
+
 
 #pragma mark - Keychain Methods
 
@@ -182,7 +187,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)lock
 {
-    if (![self isPasscodeSet] || self.lockWindow.isKeyWindow) {
+    if (![self isPasscodeSet] || self.isPasscodePresented) {
         return;
     }
 
