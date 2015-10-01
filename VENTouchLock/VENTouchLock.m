@@ -188,6 +188,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         VENTouchLockSplashViewController *splashViewController = [[self.splashViewControllerClass alloc] init];
         if ([splashViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
             self.lockWindow = [[UIWindow alloc] initWithFrame:self.mainWindow.frame];
+            self.lockWindow.windowLevel = UIWindowLevelAlert + 1;
 
             if (self.appearance.splashShouldEmbedInNavigationController) {
                 self.displayController = [splashViewController ventouchlock_embeddedInNavigationControllerWithNavigationBarClass:self.appearance.navigationBarClass];
