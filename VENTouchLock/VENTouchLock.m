@@ -97,6 +97,8 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void)deletePasscode
 {
+    [self unlockAnimated:NO];
+
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:VENTouchLockUserDefaultsKeyTouchIDActivated];
     [VENTouchLockEnterPasscodeViewController resetPasscodeAttemptHistory];
     [[NSUserDefaults standardUserDefaults] synchronize];
