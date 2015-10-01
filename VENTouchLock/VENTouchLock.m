@@ -220,9 +220,11 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
             [UIView animateWithDuration:0.2 animations:^{
                 self.lockWindow.alpha = 0;
             } completion:^(BOOL finished) {
+                self.lockWindow.hidden = YES;
                 [self.mainWindow makeKeyAndVisible];
             }];
         } else {
+            self.lockWindow.hidden = YES;
             [self.mainWindow makeKeyAndVisible];
         }
     });
