@@ -2,10 +2,6 @@
 #import "VENTouchLockEnterPasscodeViewController.h"
 #import "VENTouchLock.h"
 
-@interface VENTouchLockSplashViewController ()
-@property (nonatomic, assign) BOOL isSnapshotViewController;
-@end
-
 @implementation VENTouchLockSplashViewController
 
 #pragma mark - Creation and Lifecycle
@@ -13,9 +9,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (!self.isSnapshotViewController) {
-        self.touchLock.backgroundLockVisible = NO;
-    }
 }
 
 - (instancetype)init
@@ -49,23 +42,9 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    if (!self.isSnapshotViewController) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self showUnlockAnimated:NO];
-        });
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        [self showUnlock];
     }
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 
@@ -125,13 +104,6 @@
     return enterPasscodeVC;
 }
 
-- (void)appWillEnterForeground
-{
-    if (!self.presentedViewController) {
-        [self showUnlockAnimated:NO];
-    }
-}
-
 - (void)unlockWithType:(VENTouchLockSplashViewControllerUnlockType)unlockType
 {
     [self dismissWithUnlockSuccess:YES
@@ -143,16 +115,23 @@
                       unlockType:(VENTouchLockSplashViewControllerUnlockType)unlockType
                         animated:(BOOL)animated
 {
-    [self.presentingViewController dismissViewControllerAnimated:animated completion:^{
-        if (self.didFinishWithSuccess) {
-            self.didFinishWithSuccess(success, unlockType);
-        }
-    }];
+    [self.touchLock unlockAnimated:animated];
+    if (self.didFinishWithSuccess) {
+        self.didFinishWithSuccess(success, unlockType);
+    }
 }
 
 - (void)initialize
 {
     _touchLock = [VENTouchLock sharedInstance];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUnlock) name:UIApplicationWillEnterForegroundNotification object:nil];
+}
+
+- (void)showUnlock
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showUnlockAnimated:NO];
+    });
 }
 
 @end

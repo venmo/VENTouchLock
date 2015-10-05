@@ -14,10 +14,7 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 
 @interface VENTouchLock : NSObject
 
-/**
- YES if the app is locked after having entered the background, and NO otherwise.
- */
-@property (assign, nonatomic) BOOL backgroundLockVisible;
+@property (assign, nonatomic, getter=isPasscodePresented) BOOL passcodePresented;
 
 /**
  @return A singleton VENTouchLock instance.
@@ -98,6 +95,12 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  @note The app is automatically locked when on launch and on entering background. Use this method only if necessary in other circumstances.
  */
 - (void)lock;
+
+/**
+ If the passcode screen is presented, calling this method will unlock it.
+ @param animated Whether or not the unlocking should animate.
+ */
+- (void)unlockAnimated:(BOOL)animated;
 
 /**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.

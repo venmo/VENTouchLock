@@ -140,15 +140,7 @@
 
 - (void)dismissAndResetLock
 {
-    UIViewController *viewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    while (viewController.presentedViewController) {
-        viewController = viewController.presentedViewController;
-        if ([viewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
-            VENTouchLockSplashViewController *splashViewController = (VENTouchLockSplashViewController *)viewController;
-            [splashViewController dismissWithUnlockSuccess:YES unlockType:VENTouchLockSplashViewControllerUnlockTypePasscode animated:NO];
-        }
-    }
-    [VENTouchLock sharedInstance].backgroundLockVisible = NO;
+    [[VENTouchLock sharedInstance] unlockAnimated:NO];
     [[VENTouchLock sharedInstance] deletePasscode];
 }
 
@@ -162,6 +154,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationWillEnterForegroundNotification object:nil];
     [tester waitForTimeInterval:0.5];
     [[NSNotificationCenter defaultCenter] postNotificationName:UIApplicationDidBecomeActiveNotification object:nil];
+    [tester waitForTimeInterval:0.5];
 }
 
 @end
