@@ -14,7 +14,7 @@ static CGFloat const VENTouchLockCreatePasscodeViewControllerAnimationDuration =
 {
     self = [super init];
     if (self) {
-        self.title = [self.touchLock appearance].enterPasscodeViewControllerTitle;
+        self.title = [self.touchLock appearance].createPasscodeViewControllerTitle;
     }
     return self;
 }
