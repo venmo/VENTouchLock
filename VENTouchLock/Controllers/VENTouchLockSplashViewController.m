@@ -49,16 +49,16 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    if (!self.isSnapshotViewController) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self showUnlockAnimated:NO];
-        });
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if (!self.isSnapshotViewController) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showUnlockAnimated:NO];
+        });
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
