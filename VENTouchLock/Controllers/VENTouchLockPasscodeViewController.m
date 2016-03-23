@@ -62,11 +62,6 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     if (!self.isSnapshotViewController && [self.invisiblePasscodeField isFirstResponder]) {
         [self.invisiblePasscodeField resignFirstResponder];
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -113,7 +108,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
 - (void)finishWithResult:(BOOL)success animated:(BOOL)animated
 {
     [self.invisiblePasscodeField resignFirstResponder];
-
+    
     [self dismissViewControllerAnimated:animated completion:^{
         if (self.didFinishWithResult) {
             self.didFinishWithResult(success);
@@ -185,7 +180,7 @@ static const NSInteger VENTouchLockViewControllerPasscodeLength = 4;
     }
     NSString *newString = textField.text;
     NSUInteger newLength = [newString length];
-
+    
     if (newLength == VENTouchLockViewControllerPasscodeLength) {
         self.shouldIgnoreTextFieldDelegateCalls = YES;
         textField.text = @"";
