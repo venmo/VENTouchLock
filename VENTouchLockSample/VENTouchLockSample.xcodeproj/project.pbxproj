@@ -297,11 +297,9 @@
 				TargetAttributes = {
 					3A30CE2919A2E7570098AAD1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 55377VK7X2;
 					};
 					3A30CE3F19A2E7570098AAD1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 55377VK7X2;
 						TestTargetID = 3A30CE2919A2E7570098AAD1;
 					};
 				};
