@@ -98,3 +98,63 @@ describe(@"shouldUseTouchID", ^{
 });
 
 SpecEnd
+
+SpecBegin(VENTouchLockAccessGroup)
+
+beforeAll(^{
+    [[VENTouchLock sharedInstance] setKeychainService:@"keychainService"
+                                      keychainAccount:@"keychainAccount"
+                                  keychainAccessGroup:@"keychainAccessGroupAccount"
+                                        touchIDReason:@"touchIDReason"
+                                 passcodeAttemptLimit:0
+                            splashViewControllerClass:NULL];
+});
+
+beforeEach(^{
+    [[VENTouchLock sharedInstance] deletePasscode];
+});
+
+describe(@"setPasscode:", ^{
+
+    it(@"should register a passcode with VENTouchLock", ^{
+        VENTouchLock *touchLock = [VENTouchLock sharedInstance];
+        expect([touchLock isPasscodeSet]).to.equal(NO);
+        expect([touchLock currentPasscode]).to.beNil();
+
+        [[VENTouchLock sharedInstance] setPasscode:@"testPasscode"];
+
+        expect([touchLock isPasscodeSet]).to.equal(YES);
+        expect([touchLock currentPasscode]).to.equal(@"testPasscode");
+    });
+
+});
+
+describe(@"isPasscodeValid", ^{
+
+    it(@"should return YES if the parameter sent is equal to the set passcode and NO otherwise", ^{
+        VENTouchLock *touchLock = [VENTouchLock sharedInstance];
+        [touchLock setPasscode:@"testPasscode"];
+        expect([touchLock isPasscodeValid:@"testPasscode"]).to.equal(YES);
+        expect([touchLock isPasscodeValid:@"wrongPasscode"]).to.equal(NO);
+    });
+
+});
+
+describe(@"deletePasscode", ^{
+
+    it(@"should register a passcode with VENTouchLock", ^{
+        VENTouchLock *touchLock = [VENTouchLock sharedInstance];
+
+        [[VENTouchLock sharedInstance] setPasscode:@"testPasscode"];
+        expect([touchLock isPasscodeSet]).to.equal(YES);
+        expect([touchLock currentPasscode]).to.equal(@"testPasscode");
+
+        [touchLock deletePasscode];
+
+        expect([touchLock isPasscodeSet]).to.equal(NO);
+        expect([touchLock currentPasscode]).to.beNil();
+    });
+    
+});
+
+SpecEnd
