@@ -1,12 +1,14 @@
 language: objective-c
 script:
-- xctool -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO 
+- xctool -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xcodebuild test -workspace VENTouchLock.xcworkspace -scheme VENTouchLockTests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 - xctool test -workspace VENTouchLockSample/VENTouchLockSample.xcworkspace -scheme VENTouchLockSample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 before_install:
 - gem i cocoapods --no-ri --no-rdoc
 - brew uninstall xctool; brew install xctool --HEAD;
+- brew update && brew install carthage
+- carthage bootstrap --verbose
 install:
 - pod install
 - pod install --project-directory=VENTouchLockSample/
