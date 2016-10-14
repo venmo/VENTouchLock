@@ -15,7 +15,7 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (assign, nonatomic) Class splashViewControllerClass;
 @property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
-@property (nonatomic) NSInteger secondsToLock;
+@property (nonatomic) NSUInteger secondsToLock;
 @property (strong, nonatomic) NSDate* lastRefreshDate;
 
 @end
@@ -62,6 +62,22 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     self.touchIDReason = reason;
     self.passcodeAttemptLimit = attemptLimit;
     self.splashViewControllerClass = splashViewControllerClass;
+}
+
+- (void)setKeychainService:(NSString *)service
+           keychainAccount:(NSString *)account
+             touchIDReason:(NSString *)reason
+             secondsToLock:(NSUInteger)secondsToLock
+      passcodeAttemptLimit:(NSUInteger)attemptLimit
+ splashViewControllerClass:(Class)splashViewControllerClass
+{
+    [self setKeychainService:service
+             keychainAccount:account
+               touchIDReason:reason
+        passcodeAttemptLimit:attemptLimit
+   splashViewControllerClass:splashViewControllerClass];
+    
+    self.secondsToLock = secondsToLock;
 }
 
 
@@ -233,6 +249,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 
 - (void) updateRefreshDate {
     _lastRefreshDate = [NSDate date];
+}
+
+- (void) setSecondsToLock:(NSUInteger) secondsToLock {
+    _secondsToLock = secondsToLock;
 }
 
 

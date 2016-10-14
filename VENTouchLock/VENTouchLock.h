@@ -38,6 +38,22 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  splashViewControllerClass:(Class)splashViewControllerClass;
 
 /**
+ Set the defaults. This method should be called at launch.
+ @param service The keychain service for which to set and return a passcode
+ @param account The keychain account for which to set and return a passcode
+ @param splashViewControllerClass The class of the custom splash view controller. This class should be a subclass of VENTouchLockSplashViewController and any of its custom initialization must be in its init function
+ @param reason The default message displayed on the TouchID prompt
+ @param secondsToLock The number of seconds from lastRefreshDate that the app will wait for lock
+ */
+- (void)setKeychainService:(NSString *)service
+           keychainAccount:(NSString *)account
+             touchIDReason:(NSString *)reason
+             secondsToLock:(NSUInteger)secondsToLock
+      passcodeAttemptLimit:(NSUInteger)attemptLimit
+ splashViewControllerClass:(Class)splashViewControllerClass;
+
+
+/**
  Returns YES if a passcode exists, and NO otherwise.
  */
 - (BOOL)isPasscodeSet;
@@ -94,6 +110,16 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 - (NSUInteger)passcodeAttemptLimit;
 
 /**
+ Updates de refreshDate value with current date
+ */
+- (void) updateRefreshDate;
+
+/**
+ Sets the number of seconds that the app has to wait since lastRefreshDate to lock
+ */
+- (void) setSecondsToLock:(NSUInteger) secondsToLock;
+
+/**
  If a passcode is set, calling this method will lock the app. Otherwise, calling it will not do anything.
  @note The app is automatically locked if needed (see method below) when on launch and on entering background. Use this method only if necessary in other circumstances.
  */
@@ -104,15 +130,11 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
  */
 - (void) lockIfNeeded;
 
-
 /**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
  */
 - (VENTouchLockAppearance *)appearance;
 
-/**
-Updates de refreshDate value with current date
-*/
-- (void) updateRefreshDate;
+
 
 @end
