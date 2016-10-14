@@ -95,13 +95,24 @@ typedef NS_ENUM(NSUInteger, VENTouchLockTouchIDResponse) {
 
 /**
  If a passcode is set, calling this method will lock the app. Otherwise, calling it will not do anything.
- @note The app is automatically locked when on launch and on entering background. Use this method only if necessary in other circumstances.
+ @note The app is automatically locked if needed (see method below) when on launch and on entering background. Use this method only if necessary in other circumstances.
  */
 - (void)lock;
+
+/**
+  Locks the app if has passed 'secondsToLock' from 'lastRefreshDate'. Otherwile, calling it will not do anything.
+ */
+- (void) lockIfNeeded;
+
 
 /**
  @return The proxy for the receiver's user interface. Custom appearance preferences may optionally be set by editing the returned instance's properties.
  */
 - (VENTouchLockAppearance *)appearance;
+
+/**
+Updates de refreshDate value with current date
+*/
+- (void) updateRefreshDate;
 
 @end

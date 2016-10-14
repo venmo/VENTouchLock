@@ -15,6 +15,8 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (assign, nonatomic) Class splashViewControllerClass;
 @property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (nonatomic) NSInteger secondsToLock;
+@property (strong, nonatomic) NSDate* lastRefreshDate;
 
 @end
 
@@ -217,18 +219,34 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     }
 }
 
+- (void) lockIfNeeded {
+    if (_lastRefreshDate) {
+        if (fabsf([_lastRefreshDate timeIntervalSinceNow]) >= _secondsToLock) {
+            [self lock];
+        }
+    } else {
+        [self lock];
+    }
+}
+
+#pragma mark - Refresh date methods
+
+- (void) updateRefreshDate {
+    _lastRefreshDate = [NSDate date];
+}
+
 
 #pragma mark - NSNotifications
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [self lock];
+    [self lockIfNeeded];
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
     if (!self.backgroundLockVisible) {
-        [self lock];
+        [self lockIfNeeded];
     }
 }
 
