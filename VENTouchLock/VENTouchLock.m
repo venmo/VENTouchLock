@@ -276,7 +276,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         [self.snapshotView removeFromSuperview];
         self.snapshotView = nil;
     });
-
+    
+    if (!self.backgroundLockVisible) {
+        [self lockIfNeeded];
+    }
 }
 
 @end
