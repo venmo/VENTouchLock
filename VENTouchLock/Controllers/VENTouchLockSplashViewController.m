@@ -83,19 +83,22 @@
 
 - (void)showTouchID
 {
-    __weak __typeof__(self) weakSelf = self;
-    [self.touchLock requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
-        switch (response) {
-            case VENTouchLockTouchIDResponseSuccess:
-                [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypeTouchID];
-                break;
-            case VENTouchLockTouchIDResponseUsePasscode:
-                [weakSelf showPasscodeAnimated:YES];
-                break;
-            default:
-                break;
-        }
-    }];
+    BOOL fromBackground = [UIApplication sharedApplication].applicationState == UIApplicationStateBackground;
+    if (fromBackground == NO) {
+        __weak __typeof__(self) weakSelf = self;
+        [self.touchLock requestTouchIDWithCompletion:^(VENTouchLockTouchIDResponse response) {
+            switch (response) {
+                case VENTouchLockTouchIDResponseSuccess:
+                    [weakSelf unlockWithType:VENTouchLockSplashViewControllerUnlockTypeTouchID];
+                    break;
+                case VENTouchLockTouchIDResponseUsePasscode:
+                    [weakSelf showPasscodeAnimated:YES];
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
 }
 
 - (void)showPasscodeAnimated:(BOOL)animated

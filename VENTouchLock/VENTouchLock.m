@@ -237,6 +237,12 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.snapshotView removeFromSuperview];
         self.snapshotView = nil;
+
+        UIViewController *rootViewController = [UIViewController ventouchlock_topMostController];
+        if ([rootViewController isKindOfClass:[VENTouchLockSplashViewController class]]) {
+            VENTouchLockSplashViewController *splashViewController = (VENTouchLockSplashViewController *)rootViewController;
+            [splashViewController showUnlockAnimated:NO];
+        }
     });
 
 }
