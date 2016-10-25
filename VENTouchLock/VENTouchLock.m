@@ -15,6 +15,8 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
 @property (assign, nonatomic) Class splashViewControllerClass;
 @property (strong, nonatomic) UIView *snapshotView;
 @property (strong, nonatomic) VENTouchLockAppearance *appearance;
+@property (nonatomic) NSUInteger secondsToLock;
+@property (strong, nonatomic) NSDate* lastRefreshDate;
 
 @end
 
@@ -60,6 +62,22 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     self.touchIDReason = reason;
     self.passcodeAttemptLimit = attemptLimit;
     self.splashViewControllerClass = splashViewControllerClass;
+}
+
+- (void)setKeychainService:(NSString *)service
+           keychainAccount:(NSString *)account
+             touchIDReason:(NSString *)reason
+             secondsToLock:(NSUInteger)secondsToLock
+      passcodeAttemptLimit:(NSUInteger)attemptLimit
+ splashViewControllerClass:(Class)splashViewControllerClass
+{
+    [self setKeychainService:service
+             keychainAccount:account
+               touchIDReason:reason
+        passcodeAttemptLimit:attemptLimit
+   splashViewControllerClass:splashViewControllerClass];
+    
+    self.secondsToLock = secondsToLock;
 }
 
 
@@ -217,18 +235,38 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
     }
 }
 
+- (void) lockIfNeeded {
+    if (_lastRefreshDate) {
+        if (fabsf([_lastRefreshDate timeIntervalSinceNow]) >= _secondsToLock) {
+            [self lock];
+        }
+    } else {
+        [self lock];
+    }
+}
+
+#pragma mark - Refresh date methods
+
+- (void) updateRefreshDate {
+    _lastRefreshDate = [NSDate date];
+}
+
+- (void) setSecondsToLock:(NSUInteger) secondsToLock {
+    _secondsToLock = secondsToLock;
+}
+
 
 #pragma mark - NSNotifications
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [self lock];
+    [self lockIfNeeded];
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
     if (!self.backgroundLockVisible) {
-        [self lock];
+        [self lockIfNeeded];
     }
 }
 
@@ -238,7 +276,10 @@ static NSString *const VENTouchLockUserDefaultsKeyTouchIDActivated = @"VENTouchL
         [self.snapshotView removeFromSuperview];
         self.snapshotView = nil;
     });
-
+    
+    if (!self.backgroundLockVisible) {
+        [self lockIfNeeded];
+    }
 }
 
 @end
