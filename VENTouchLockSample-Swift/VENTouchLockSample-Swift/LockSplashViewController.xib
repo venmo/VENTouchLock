@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LockSplashViewController">
+            <connections>
+                <outlet property="touchIDButton" destination="a8s-sC-twh" id="Gjd-nS-44E"/>
+                <outlet property="view" destination="iN0-l3-epB" id="zd4-hU-DTp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Splash" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUb-v8-HMw">
+                    <rect key="frame" x="110" y="66" width="155" height="27"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srq-B3-pYJ">
+                    <rect key="frame" x="134" y="570" width="107" height="30"/>
+                    <state key="normal" title="Enter Passcode">
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="userTappedEnterPasscode:" destination="-1" eventType="touchUpInside" id="OEg-wb-0ga"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8s-sC-twh">
+                    <rect key="frame" x="141" y="524" width="92" height="30"/>
+                    <state key="normal" title="Use Touch ID">
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="userTappedShowTouchID:" destination="-1" eventType="touchUpInside" id="4bu-dI-vzv"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="srq-B3-pYJ" firstAttribute="top" secondItem="a8s-sC-twh" secondAttribute="bottom" constant="16" id="7FO-gw-f2z"/>
+                <constraint firstItem="a8s-sC-twh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="KQi-1e-zvg"/>
+                <constraint firstAttribute="bottom" secondItem="srq-B3-pYJ" secondAttribute="bottom" constant="67" id="aEm-uG-k1G"/>
+                <constraint firstItem="qUb-v8-HMw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iCu-6l-FyP"/>
+                <constraint firstItem="qUb-v8-HMw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="66" id="mmb-z9-OkQ"/>
+                <constraint firstItem="srq-B3-pYJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nBW-EH-sRq"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

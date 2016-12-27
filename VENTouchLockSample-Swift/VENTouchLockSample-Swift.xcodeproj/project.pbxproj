@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03B161A91DFD53DB001548EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B161A81DFD53DB001548EA /* AppDelegate.swift */; };
+		03B161AB1DFD53DB001548EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B161AA1DFD53DB001548EA /* ViewController.swift */; };
+		03B161AE1DFD53DB001548EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03B161AC1DFD53DB001548EA /* Main.storyboard */; };
+		03B161B01DFD53DB001548EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03B161AF1DFD53DB001548EA /* Assets.xcassets */; };
+		03B161B31DFD53DB001548EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03B161B11DFD53DB001548EA /* LaunchScreen.storyboard */; };
+		03B161BB1DFD5561001548EA /* LockSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B161BA1DFD5561001548EA /* LockSplashViewController.swift */; };
+		03B161BD1DFD556A001548EA /* LockSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B161BC1DFD556A001548EA /* LockSplashViewController.xib */; };
+		C208CCC76AD66BD8DBCB8C44 /* Pods_VENTouchLockSample_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892E58DD703118787FA22889 /* Pods_VENTouchLockSample_Swift.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03B161A51DFD53DB001548EA /* VENTouchLockSample-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VENTouchLockSample-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03B161A81DFD53DB001548EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03B161AA1DFD53DB001548EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		03B161AD1DFD53DB001548EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		03B161AF1DFD53DB001548EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03B161B21DFD53DB001548EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		03B161B41DFD53DB001548EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03B161BA1DFD5561001548EA /* LockSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockSplashViewController.swift; sourceTree = "<group>"; };
+		03B161BC1DFD556A001548EA /* LockSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LockSplashViewController.xib; sourceTree = "<group>"; };
+		43DE4ACD05D9CDBB0016A031 /* Pods-VENTouchLockSample-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockSample-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockSample-Swift/Pods-VENTouchLockSample-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		892E58DD703118787FA22889 /* Pods_VENTouchLockSample_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VENTouchLockSample_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4BB6A2D802565D5885B8F8 /* Pods-VENTouchLockSample-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENTouchLockSample-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VENTouchLockSample-Swift/Pods-VENTouchLockSample-Swift.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03B161A21DFD53DB001548EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C208CCC76AD66BD8DBCB8C44 /* Pods_VENTouchLockSample_Swift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03B1619C1DFD53DB001548EA = {
+			isa = PBXGroup;
+			children = (
+				03B161A71DFD53DB001548EA /* VENTouchLockSample-Swift */,
+				03B161A61DFD53DB001548EA /* Products */,
+				8DE41B3CD2BD65789A86DE37 /* Pods */,
+				40F17C1A3CB40F9376DE0EC8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		03B161A61DFD53DB001548EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03B161A51DFD53DB001548EA /* VENTouchLockSample-Swift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03B161A71DFD53DB001548EA /* VENTouchLockSample-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				03B161A81DFD53DB001548EA /* AppDelegate.swift */,
+				03B161AA1DFD53DB001548EA /* ViewController.swift */,
+				03B161BA1DFD5561001548EA /* LockSplashViewController.swift */,
+				03B161AC1DFD53DB001548EA /* Main.storyboard */,
+				03B161BC1DFD556A001548EA /* LockSplashViewController.xib */,
+				03B161AF1DFD53DB001548EA /* Assets.xcassets */,
+				03B161B11DFD53DB001548EA /* LaunchScreen.storyboard */,
+				03B161B41DFD53DB001548EA /* Info.plist */,
+			);
+			path = "VENTouchLockSample-Swift";
+			sourceTree = "<group>";
+		};
+		40F17C1A3CB40F9376DE0EC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				892E58DD703118787FA22889 /* Pods_VENTouchLockSample_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DE41B3CD2BD65789A86DE37 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF4BB6A2D802565D5885B8F8 /* Pods-VENTouchLockSample-Swift.debug.xcconfig */,
+				43DE4ACD05D9CDBB0016A031 /* Pods-VENTouchLockSample-Swift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03B161A41DFD53DB001548EA /* VENTouchLockSample-Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03B161B71DFD53DB001548EA /* Build configuration list for PBXNativeTarget "VENTouchLockSample-Swift" */;
+			buildPhases = (
+				E37519B7668B566EE3E1A6FC /* [CP] Check Pods Manifest.lock */,
+				03B161A11DFD53DB001548EA /* Sources */,
+				03B161A21DFD53DB001548EA /* Frameworks */,
+				03B161A31DFD53DB001548EA /* Resources */,
+				C436132A1CD150C8FC27294C /* [CP] Embed Pods Frameworks */,
+				D1054DB89B70A76721A63C0A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VENTouchLockSample-Swift";
+			productName = "VENTouchLockSample-Swift";
+			productReference = 03B161A51DFD53DB001548EA /* VENTouchLockSample-Swift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03B1619D1DFD53DB001548EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Pouria Almassi";
+				TargetAttributes = {
+					03B161A41DFD53DB001548EA = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 03B161A01DFD53DB001548EA /* Build configuration list for PBXProject "VENTouchLockSample-Swift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03B1619C1DFD53DB001548EA;
+			productRefGroup = 03B161A61DFD53DB001548EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03B161A41DFD53DB001548EA /* VENTouchLockSample-Swift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03B161A31DFD53DB001548EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B161BD1DFD556A001548EA /* LockSplashViewController.xib in Resources */,
+				03B161B31DFD53DB001548EA /* LaunchScreen.storyboard in Resources */,
+				03B161B01DFD53DB001548EA /* Assets.xcassets in Resources */,
+				03B161AE1DFD53DB001548EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C436132A1CD150C8FC27294C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockSample-Swift/Pods-VENTouchLockSample-Swift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1054DB89B70A76721A63C0A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VENTouchLockSample-Swift/Pods-VENTouchLockSample-Swift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E37519B7668B566EE3E1A6FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03B161A11DFD53DB001548EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B161AB1DFD53DB001548EA /* ViewController.swift in Sources */,
+				03B161A91DFD53DB001548EA /* AppDelegate.swift in Sources */,
+				03B161BB1DFD5561001548EA /* LockSplashViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		03B161AC1DFD53DB001548EA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03B161AD1DFD53DB001548EA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		03B161B11DFD53DB001548EA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03B161B21DFD53DB001548EA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03B161B51DFD53DB001548EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		03B161B61DFD53DB001548EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03B161B81DFD53DB001548EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF4BB6A2D802565D5885B8F8 /* Pods-VENTouchLockSample-Swift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "VENTouchLockSample-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.kortina.labs.Venmo..VENTouchLockSample-Swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		03B161B91DFD53DB001548EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43DE4ACD05D9CDBB0016A031 /* Pods-VENTouchLockSample-Swift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "VENTouchLockSample-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.kortina.labs.Venmo..VENTouchLockSample-Swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03B161A01DFD53DB001548EA /* Build configuration list for PBXProject "VENTouchLockSample-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B161B51DFD53DB001548EA /* Debug */,
+				03B161B61DFD53DB001548EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03B161B71DFD53DB001548EA /* Build configuration list for PBXNativeTarget "VENTouchLockSample-Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B161B81DFD53DB001548EA /* Debug */,
+				03B161B91DFD53DB001548EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03B1619D1DFD53DB001548EA /* Project object */;
+}
