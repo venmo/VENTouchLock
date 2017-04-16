@@ -23,7 +23,7 @@ VENTouchLock requires a custom splash view controller to hide the contents of yo
 ### 2. Start the framework
 Add the VENTouchLock header file to your app delegate. Import this header in any of your implementation files to use the framework.
 ```obj-c
-#import <VENTouchLock/VENTouchLock.h>
+# import <VENTouchLock/VENTouchLock.h>
 ```
 Add the following code to initialize VENTouchLock in your app delegate's ```application:didFinishLaunchingWithOptions:``` method.
 ```obj-c
