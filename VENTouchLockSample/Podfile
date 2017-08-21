@@ -1,7 +1,7 @@
 platform :ios, "7.0"
 
 target "VENTouchLockSample" do
-	pod 'SSKeychain', '~> 1.2.2'
+	pod 'SAMKeychain', '~> 1.5.2'
 end
 
 target "VENTouchLockSampleTests" do
