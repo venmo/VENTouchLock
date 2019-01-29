@@ -8,8 +8,15 @@ DEPENDENCIES:
   - KIF (~> 3.0)
   - SSKeychain (~> 1.2.2)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - KIF
+    - SSKeychain
+
 SPEC CHECKSUMS:
   KIF: b0bd762b0c7890b04920cf618021d6d4fd5127bd
   SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
 
-COCOAPODS: 0.37.2
+PODFILE CHECKSUM: 67d6b2d616d8a907e1241fb30fe6406e14cf51c5
+
+COCOAPODS: 1.5.3
